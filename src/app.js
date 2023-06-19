@@ -5,9 +5,9 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const tasksRoutes = require('./routes/tasks');
 const { JSDOM } = require('jsdom');
-const jquery = require('jquery');
+/*const jquery = require('jquery');
 const { window } = new JSDOM();
-const $ = jquery(window);
+*/
 
 const app = express();
 
