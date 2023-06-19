@@ -1,0 +1,1649 @@
+/*ESTILOS HEADER POS*/
+
+.css_flecha_naranja {
+    appearance: none;
+    background-repeat: no-repeat, repeat !important;
+    background-position: right 0.7em top 50%, 0 0 !important;
+    background-size: 0.7em 0.7em, 100% !important;
+    padding-right: 22px !important;
+}   
+html{
+    overflow: hidden;    
+} 
+html::-webkit-scrollbar {
+    display: none;
+   
+    }    
+/* CSS NEGOCIA 9B9B9B*/
+body{
+font-family: 'Cabin', sans-serif !important;
+background: #ccc !important;
+overflow-y: scroll;
+overflow-x: hidden;
+padding-top: 0px !important;
+overflow: hidden;
+}
+ 
+
+/*IMAGENES*/
+.pv_img_default{
+width:25pt;
+height:auto;
+}
+
+nav{
+  position: absolute;
+  left:0;
+  top:0;
+  width: 228px;
+  top: 55px;
+  height:calc(100vh - 50px);
+  background:#FF9C00;
+}
+
+.navigation{
+  list-style:none;
+  margin: 0;
+}
+.navigation li{
+  list-style:none;
+}
+
+.navigation a{
+  display: block;
+  line-height:3.5;
+  padding: 0;
+  text-decoration:none;
+}
+
+/*BOTONES
+.pv_btn_close{
+color: #fff;
+font-size: 25pt;
+cursor: pointer;
+margin-top: -15px !important;
+margin-right:-5px;
+}
+.pv_btn_close:hover{
+color: #fff;
+}
+*/
+.pv_btn_close{
+color: #fff;    
+}
+
+.pv_btn_color1{
+margin: 0 auto;
+padding-left: 15px;
+padding-right: 15px;
+background: #ff5900;
+color: #fff; 
+width: auto; 
+text-align: center;
+font-size: 12px;
+border-radius: 5px;
+cursor: pointer;
+height: 30px;
+border:1px solid #ff9c00;
+}
+.pv_btn_color2{
+margin: 0 auto;
+padding-left: 15px;
+padding-right: 15px;
+background: #ff9c00;
+color: #fff; 
+width: auto; 
+text-align: center;
+font-size: 12px;
+border-radius: 5px;
+cursor: pointer;
+/*height: 30px;*/
+border:1px solid #ff9c00;
+}
+.pv_btn_color_modal{
+margin: 0 auto;
+padding-left: 2px;
+padding-right: 2px;
+background: #FF4E00;
+color: #fff !important; 
+width: auto; 
+text-align: center;
+font-size: 12px;
+border-radius: 5px;
+cursor: pointer;
+/*height: 30px;*/
+border:1px solid #FF4E00;
+}
+.pv_btn_color3{
+margin: 0 auto;
+padding-left: 15px;
+padding-right: 15px;
+background: #fff;
+color: #ff9c00; 
+width: auto; 
+text-align: center;
+font-size: 12px;
+border-radius: 5px;
+cursor: pointer;
+height: 30px;
+border:1px solid #ff9c00;
+}
+
+
+/*BOTONES HOVER*/
+.pv_btn_color1:hover{
+color:#fff;
+}
+.pv_btn_color2:hover{
+color:#fff;
+}
+.pv_btn_color3:hover{
+color:#ff9c00;
+}
+
+
+/*FONDO DE COLOR (BACKGROUND)*/
+.pv_fondo_color1{
+background: #ff5900;
+}
+.pv_fondo_color2{
+background: #ff9c00;
+}
+
+
+/*TEXTOS*/
+.pv_texto_color1{
+color: #ff5900;
+}
+.pv_texto_color2{
+color: #ff9c00;
+}
+.pv_texto_color4{
+color: red;
+}
+.pv_texto_header{
+font-size:18px; color:#fff;
+}
+
+
+/*DIV*/
+.pv_div_sin_borde{
+border:none;
+}
+.pv_div_cierre_caja{
+border: 1px solid #ff9c00;   
+padding: 5px;
+margin-top: 10px;
+padding-bottom:10px;
+width: 100%;
+}
+.pv_div_turno{
+margin-top:-17px;
+margin-left: auto;
+margin-right: auto;
+width: 40%;
+background: #fff;
+font-weight: bold;
+font-size: 14px;
+}
+
+ 
+.pv_input_center{
+text-align: center;
+}
+.pv_input{
+margin: 0 auto; font-size: 9pt; height: 25px; padding: 0; text-align: center; width: 70% !important;
+}
+.clase_movil_usuario{
+ padding: 0px;   
+}
+@media screen and (max-width: 1301px) {
+.p_movil_ca_adcionale{
+padding: 0px !important;    
+}
+}
+
+@media screen and (max-width: 768px) {
+    .lado_dere_movil{
+        display: block !important;   
+       }   
+       #btn_pos_pagar{
+        height: 40px !important;
+       }
+       .p_movil_ca_adcionale{
+        padding-left: 4px !important;
+        padding-right: 4px !important;
+       }
+.clase_movil_sucursal{
+text-align: center !important;
+font-weight: 900 !important;
+justify-content: center !important;
+}
+.ubicacion_contenido_css_movil{
+display: flex !important;
+justify-content: start !important;
+align-items: center !important;
+}
+.top_movil_css_icon{
+padding-top: 0px !important;    
+}
+.clase_movil_pestana{
+padding: 0 !important;
+padding-left: 5px !important;
+}
+.td_menu_lateral{
+padding-top: 11px !important;    
+}
+.nav_lateral{
+width: 100vw;    
+height: auto !important;
+}
+.navigation{
+bottom:0 !important;    
+position: relative !important;
+padding: 0 !important;
+}
+.navigation li{
+border-bottom: 1px solid white !important;    
+padding-left: 20px !important;
+}
+.clase_movil_expandir{
+display: none !important;    
+}
+.clase_gasto_movil{
+display: block !important;
+display: inline-block !important;
+ 
+}
+.altura_img_movil{
+font-size: 20px !important;    
+}
+.color_movil_letra_css{
+color: #545a6d !important;     
+}
+.clase_gasto_movil_reporte{
+display: block !important;
+ 
+}
+.clase_gasto_movil_config{
+display: block !important;
+ 
+}
+.line_css_movil{
+line-height: 2.5 !important;    
+}
+.nuevo_li{
+display: block !important;    
+}
+
+.class_width_nombre_usuario{
+display: none !important;    
+}
+.clase_movil_usuario{
+ padding-right: 10px;   
+}
+.menu_nav_principal_pos{
+ height: 42px !important;   
+}
+.align-self-center{
+min-width: auto !important;    
+}
+.cuadro_pestania {
+min-width: auto !important;     
+}
+.pestania_adicional_mas {
+display: none !important;    
+}
+.icono_arrow_ver_mas{
+display: none;    
+}
+.icono_arrow_ver_mas_movil{
+display: block !important;  
+font-weight: bold;
+}
+}
+
+
+.modal-content{
+border: 0px !important;    
+}
+
+@media only screen and (min-width: 1300px) {
+.width_col_lg_izquiera_menu {
+width: 63% !important;
+}
+.width_col_lg_centro_menu {
+width: 15% !important;
+}
+.width_col_lg_derecho_menu {
+width: 21% !important;
+}
+}
+
+.cuadro_pestania{
+min-width: 200px;
+width: auto; 
+min-height: 100px; 
+background: #fff; 
+border-radius: 5px;
+border-left: 1px solid #ccc;
+border-top: 1px solid #ccc;
+border-right: 1px solid #ccc;
+}
+.border_color_pestania_1{
+background: red;
+color: white;
+}
+.border_color_pestania_2{
+background: #ccc;
+color: #000;
+}
+.border_color_pestania_0{
+background: green;
+color: white;
+}
+.border_color_pestania_1_1{
+color: white;
+}
+.border_color_pestania_1_2{
+color: #000;
+}
+.border_color_pestania_0_1{
+color: white;
+}
+
+
+
+
+
+
+
+
+
+
+.css_tab_invertido_secundario{
+    cursor:pointer; width: auto; height: 100%; border-radius: 7px 0px 0px 0px;  background-color: #E6E6E6; text-align: center; color: #000000; font-weight: 700;  border: none; padding-top: 8px;    
+    }
+    .css_tab_invertido_secundario_icon{
+    cursor:pointer; width: auto; height: 100%; border-radius: 0px 7px 0px 0px;  background-color: #E6E6E6; text-align: center; color: #000000; font-weight: 700;  border: none; padding-top: 8px; padding-bottom: 4px;    
+    }
+    .css_tab_invertido_principal{
+    cursor:pointer; width: auto; height: 100%; border-radius: 5px 5px 0px 0px; background-color: #ccc; text-align: center; color: #fff; font-weight: 700;  border: none; padding-top: 8px;    
+    }
+    .css_tab_secundario{
+    cursor:pointer; width: auto; min-width: 50px; height: 100%;  border-radius: 5px 5px 0px 0px; background-color: #F6F6F6; text-align: left; color: #000; font-weight: 700;  margin-left: 2px; padding-top: 8px; 
+    }   
+    .css_tab_principal{
+    cursor:pointer; width: auto; height: 100%; border-radius: 5px 5px 0px 0px; background-color: #fff; text-align: center; color: #fff; font-weight: 700; padding-top: 8px; 
+    }
+    .css_tab_circle{
+    cursor:pointer; width: auto; height: 25px; border-radius: 50%; background-color: transparent; text-align: center; font-size: 13px; color: #A2A2A2; font-weight: 400; padding-top: 2px;
+    }
+    .css_padding_pestana_index{
+    padding-top: 8px !important;    
+    }
+    .css_tab_secundario_mas{
+    cursor:pointer; width: auto; height: 100%;  border-radius: 5px 5px 0px 0px; background-color: #FFF; text-align: left; color: #000; font-weight: 700;  margin-left: 2px; padding-top: 8px; 
+    }   
+    .centrar_mas{
+    height: 100%; width: 100%; text-align: center; align-items: center; justify-content: center; display: flex;    
+    }
+    .ul_opciones{
+    position: absolute; z-index: 2; top: 40px;    
+    }
+    .li_opciones{
+     background: #fff; 
+     margin-left: 35px;   
+     padding-top: 6px;
+     padding-left: 10px;
+     padding-right: 10px;
+     box-shadow: 1px 4px 5px #ccc;
+     cursor: pointer;
+     color: black;
+    }
+    .li_nuevo_select{
+    color:#000000; text-align: right; border-bottom: 1px solid #E5E5E5; line-height: 1.2; padding-bottom: 3px; padding-top: 7px; cursor: pointer;    
+    }
+
+    /*ESTILOS TABS Y TABLA*/
+.div_tabla_tabs{
+    overflow-x: auto; 
+    height: 100%;
+}
+
+.td_burger_icon{
+    padding: 5px; padding-bottom: 0; padding-right: 15px; padding-top: 13px;
+}
+.encabezado_pos_general{
+    width: 100%; padding: 0; margin: 0; background: #fff !important; height: auto;
+}
+.row{
+margin:0px !important;    
+}
+
+.css_tab_secundario_mas{
+
+ margin-left: 15px;  
+}
+.svg_relleno{
+    display: inline-block !important; 
+}
+.btn_regresar_pos_index{
+    color: #ff9c00;
+}
+.icon_li_pos_orange{
+    fill: #ff9c00;   
+    width: 25px;
+    height: 25px;
+    font-size:25px; 
+}
+.icon_li_pos{
+    font-size:25px; 
+    fill: #545a6d;   
+    width: 25px;
+    height: 25px;
+}
+
+.pd_0{
+padding: 0px;
+}
+/*------------------------------TERMINA ESTILOS INDEX POS-----------------------------*/
+
+
+
+
+/*------------------------------INDEX RENEW STYLOS-----------------------------*/
+
+
+.padding_celda_encabezado{
+    padding: 0.75rem;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    }
+    
+    #fn_table_load_detalle{
+    width: 100% !important;
+    margin-bottom: 10px !important;
+    }
+    
+    .col_vista1_hover:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-transition: 0.2s; /* Safari prior 6.1 */
+    transition: 0.2s;
+    border-radius: 10px;
+    }
+    
+    /*DIV*/
+    .pv_div_cierre_caja{
+    border: 1px solid #ff9c00;   
+    padding: 5px;
+    margin-top: 10px;
+    padding-bottom:10px;
+    width: 100%;
+    }
+    
+    
+    .pv_input_center{
+    text-align: center;
+    }
+    .pv_input{
+    margin: 0 auto; font-size: 9pt; height: 25px; padding: 0; text-align: center; width: 45% !important;
+    }
+    .pv_input_tabla{
+    margin: 0 auto; font-size: 9pt; height: 25px; padding: 0; text-align: center; width: 100% !important;
+    }
+    .pv_select{
+    font-size: 9pt; margin-bottom:10px; height: 25px; padding: 0; padding-left: 10px; padding-right: 10px; width: 40%; margin: 0 auto;
+    }
+    .pv_select2{
+    font-size: 9pt; margin-bottom:10px; height: 25px; padding: 0; padding-left: 10px; padding-right: 10px; width: 100%; margin: 0 auto;
+    }
+    
+    /*MEDIOS DE PAGO*/
+    .title_mp{
+    background:#ff5900; border-radius: 7px 7px 0px 0px; text-align: center; color: #fff; padding:3px; font-size: 15pt; margin-bottom: 15px;
+    }
+    .accordion_div_a{
+    padding: 2px;
+    border: none;
+    }
+    #accordion_a1, #accordion_a2, #accordion_a3 {
+    text-decoration: none;
+    font-size: 14pt;
+    }
+    #accordion_a4{
+    text-decoration: none;
+    font-size: 12px; 
+    }
+    .check1
+    {
+    color: #E3E3E3; font-size: 15pt; background: #E3E3E3;
+    }
+    .check2
+    {
+    color: #ff9c00; font-size: 15pt; background: none;
+    }
+    .check_text1{
+    color:#666;
+    }
+    .check_text2{
+    color:#000;
+    }
+    
+    /* The container */
+    .container_check {
+      display: block;
+      position: relative;
+      padding-left: 35px;
+      margin-bottom: 5px;
+      cursor: pointer;
+      font-size: 20px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      color: #666;
+    }
+    
+    /* Hide the browser's default checkbox */
+    .container_check input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+    
+    /* Create a custom checkbox */
+    .checkmark {
+      position: absolute;
+      top: -5px;
+     
+      height: 15px;
+      width: 15px;
+      background-color: transparent;
+      border-radius: 3px;
+      border: 1px solid #999;
+    }
+    
+    /* On mouse-over, add a grey background color */
+    .container:hover input ~ .checkmark {
+      background-color: #ccc;
+    }
+    
+    /* When the checkbox is checked, add a blue background */
+    .container_check input:checked ~ .checkmark {
+      background-color: #ff9c00;
+        border: 1px solid #ff9c00;
+    }
+    
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+    
+    /* Show the checkmark when checked */
+    .container_check input:checked ~ .checkmark:after {
+      display: block;
+    }
+    
+    /* Style the checkmark/indicator */
+    .container_check .checkmark:after {
+      left: 4px;
+      top: 1px;
+      width: 5px;
+      height: 9px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+    
+    @keyframes anim{
+        0% {border-left: 2px solid #FF5900; border-right: 2px solid #FF9C00; border-top: 2px solid #FF5900; border-bottom: 2px solid #FF9C00; border-radius: 5px; background-color: #fff; color: #000;}
+       25% {border-left: 2px solid #FF9C00; border-right: 2px solid #FF5900; border-top: 2px solid #FF9C00; border-bottom: 2px solid #FF5900; border-radius: 3px; background-color: #fff; color: #000;}
+       50% {border-left: 2px solid #FF5900; border-right: 2px solid #FF9C00; border-top: 2px solid #FF5900; border-bottom: 2px solid #FF9C00; border-radius: 5px; background-color: #ECECEC; color: #000;}
+       75% {border-left: 2px solid #FF9C00; border-right: 2px solid #FF5900; border-top: 2px solid #FF9C00; border-bottom: 2px solid #FF5900; border-radius: 3px; background-color: #fff; color: #000;}
+      100% {border-left: 2px solid #FF5900; border-right: 2px solid #FF9C00; border-top: 2px solid #FF5900; border-bottom: 2px solid #FF9C00; border-radius: 5px; background-color: #fff; color: #000;}
+    }
+    @keyframes anim_productos{
+        0% {border-left: 4px solid #FF5900;}
+       25% {border-left: 4px solid #FF9C00;}
+       50% {border-left: 4px solid #FF5900;}
+       75% {border-left: 4px solid #FF9C00;}
+      100% {border-left: 4px solid #FF5900;}
+    }
+    
+    /*
+    #chbx_opcion {
+      animation-name: anim;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+    }
+    .anim_productos {
+      animation-name: anim_productos;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+    }
+    */
+    /* FONDO NEGRO - MODAL*/
+    div#toppins_modal_pos {
+        background-color: rgba(0,0,0, 0.3) !important;
+    }
+
+
+    
+.alert .close{
+    background: transparent;
+    border:0px;
+    }
+    #loader-wrapper{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:1000;
+    background-color: #fff;
+    }
+    .display_initil{
+    display:initial;    
+    }
+    .recortar_text_mini_header{
+    display: inline-block;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;    
+    }
+    .serie_venta_texto_orden_pedido{
+    white-space: nowrap;
+    overflow: hidden;
+    border-radius: 20px;
+    position: relative;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    width: 100%;
+    display: block !important;
+    }
+    .paddind_table_sub_tabla{
+    padding: 0.75rem !important;    
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    }
+    #loader{
+    display: block;
+    position: relative;
+    left:50%;
+    top:50%;
+    width:200px;
+    height:200px;
+    margin:-100px 0 0 -100px;
+    border-top:3px solid #FF9C00;
+    border-radius:50%;
+    
+    -webkit-animation: spin 3.5s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+    animation: spin 3.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+    }
+    
+    .placeholder_color::-webkit-input-placeholder { color: #7B7B7B; } 
+    .placeholder_color:-moz-placeholder { /* Firefox 18- */ color: #7B7B7B; } 
+    .placeholder_color::-moz-placeholder { /* Firefox 19+ */ color: #7B7B7B; } 
+    .placeholder_color:-ms-input-placeholder { color: #7B7B7B; }
+    .placeholder_color:focus::-webkit-input-placeholder{color: #7B7B7B;}
+    
+    #loader:before{
+    content:"";
+    position:absolute;
+    top:5px;
+    left:5px;
+    bottom:5px;
+    right:5px;
+    border-top: 3px solid #FF5900;
+    border-radius:50%;
+    
+    -webkit-animation: spin 2.5s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+    animation: spin 2.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+    }
+    
+    #loader:after{
+    content:"";
+    position:absolute;
+    top:15px;
+    left:15px;
+    bottom:15px;
+    right:15px;
+    border-top: 3px solid #FF9C00;
+    border-radius:50%;
+    
+    -webkit-animation: spin 1.5s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+    animation: spin 1.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+    }
+    
+    @-webkit-keyframes spin {
+    0%   {
+    -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+    -ms-transform: rotate(0deg);  /* IE 9 */
+    transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+    }
+    100% {
+    -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+    -ms-transform: rotate(360deg);  /* IE 9 */
+    transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+    }
+    }
+    @keyframes spin {
+    0%   {
+    -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+    -ms-transform: rotate(0deg);  /* IE 9 */
+    transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+    }
+    100% {
+    -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+    -ms-transform: rotate(360deg);  /* IE 9 */
+    transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+    }
+    }
+    .div_derecha_2{
+    overflow-x: hidden;       
+    }
+    .div_derecho_3::-webkit-scrollbar{
+     display: none;   
+    }
+    
+    .padding_izquierdo{
+    padding-left: 10px !important;  
+    padding-right: 20px !important;
+    }
+    .mobile_row{
+        padding-left: 5px !important;
+        padding-right: 10px !important;
+    }
+    
+    .padding_vendedor{
+    padding-left: 5px;    
+    }
+    @media screen and (max-width: 992px) {
+    .ocultar_span_ver_por{
+    display:none !important;  
+    }
+    #ver_panel_izquierdo_info{
+    width: 100%;   
+    }
+    .movil_w_btn_reg{
+    width: 100%;    
+    }
+    }
+    @media screen and (max-width: 576px) {
+    .p_total_left{
+    padding-left:0px; 
+    }   
+    .p_movil_opera_css{
+    padding-right:0px;    
+    }
+    }
+    @media screen and (max-width: 1326px) {
+    .padding_izquierdo{
+        padding-left: 5px !important;
+        padding-right: 15px !important;
+    }
+    }
+    
+    #ver_panel_izquierdo_info{
+    width: 70%;    
+    }
+    .movil_w_btn_reg{
+    width: 45px;    
+    }
+    @media screen and (max-width: 768px) {
+     .lado_css_none{
+     display: none;   
+     }   
+    .padding_adicionales_cat, .bloque_select_productos, .div_contener_select {
+     padding-left: 0px !important;   
+     padding-right: 0px !important;  
+    }
+    .div_contenedor_nuevo_p {
+     padding: 0px !important;   
+    }
+    
+    .ancho_tabla_unidades{
+    width: 100% !important; 
+    }
+    .padding_credito_etiqueta{
+    padding: 0px !important;    
+    padding-top: 10px !important; 
+    padding-bottom: 10px !important; 
+    }
+    .width_css_movil_btn, .width_css_movil_btn_1{
+    width: 100px !important;    
+    }
+    .height_otros_css_movil{
+    height: 40px !important;
+    padding-top:10px;
+    }
+    .padd_top_movil{
+    padding: 0px !important;    
+    }
+    .btn_continuar_detalle_seleccionados{
+    display: block !important;    
+    }
+    .padding_adicionales_cat{
+    padding-bottom: 5px !important;    
+    }
+    .paddind_table_sub_tabla{
+    padding: 0px !important;    
+    }
+    .display_initil{
+    display: block;    
+    }
+    .mostrar_encabezado_regresar{
+    padding: 5px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    }
+    .mobile_row, .padding_izquierdo{
+      padding: 0 !important;  
+      margin: 0 !important;
+    }
+    .div_cambio_vista_producto {
+    width: 100% !important;   
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    }
+    .div_cambio_vista_producto_detalle {
+     width: 40% !important;   
+    }
+    .clase_movil_botones_pagar{
+    padding-right: 0px !important;    
+    padding-left: 2px !important;
+    }
+    .td_css_movil_remove_padding{
+      padding: 0px !important;  
+    }
+    .configuraciones_pc{
+    display: none !important;    
+    }
+    .nombre_producto_pos_movil{
+    width: 40% !important;    
+    }
+    .clase_pos_row{
+     margin: 0 !important;
+     border-radius: 20px !important;
+     padding: 10px !important;
+    }
+    .clase_pos_row::-webkit-scrollbar{
+     display: none;    
+    }
+    .div_load_info_cliente{
+    padding-left: 0 !important;    
+    }
+    .info_orden_movil, .info_cotizacion_movil{
+    background: #EBEBEB !important;    
+    }
+    .info_orden_movil{
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+    padding: 0 !important;
+    padding-right: 10px !important;
+    }
+    .info_cotizacion_movil{
+     border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;   
+    }
+    .info_principal{
+    padding: 5px !important;
+    background: #EBEBEB;
+    border-radius: 10px;
+    } 
+    .border_info_cliente_4{
+    padding: 8px !important;
+    margin: 5px !important;
+    border-bottom: 0 !important;
+    background: #fff;
+    border-radius: 10px ;
+    box-shadow:0px 2px 10px #ccc;
+    }
+    .border_info_cliente_2{
+    padding: 8px !important;
+    margin: 5px !important;
+    border-bottom: 0 !important;    
+    }
+    .speech-bubble{
+    margin-top: 65px;    
+    }
+    .row_movil_orden_venta{
+    margin: 0 !important;    
+    }
+    .eliminar_pos_cotizaciones {
+    padding-bottom: 10px !important;    
+    }
+    .padding_izquierdo{
+    background: #EBEBEB;   
+    width: 100%;
+    }
+    #lado_derecho{
+    width: 100%;    
+    }
+    .etiqueta_vendedor_movil{
+    display: none;
+    }
+    .div_izquierdo_2::-webkit-scrollbar{
+     display: none;   
+    }
+    .div_derecha_2::-webkit-scrollbar{
+     display: none;       
+    }
+    .br_movil_block{
+    display: block !important;    
+    }
+    .br_movil_none{
+    display: none;    
+    }
+    .div_select_vendedor{
+     width: 100% !important;
+     background: #FFF !important;
+     border: none !important;
+     padding-left: 0 !important;
+     margin-left: 0 !important;
+    }
+    .div_contener_select{
+    margin-bottom: 5px;    
+    }
+    .div_contenedor_nuevo_p{
+    top: 0px;
+    position:absolute;
+    right: 1px !important;   
+    margin-top: 3px !important;
+    }
+    .icono_producto_p{
+    /*height: 29px !important;*/    
+    border-radius: 5px !important;
+    font-weight: 700 !important;
+    }
+    
+    .div_cambio_icono{
+    text-align: right !important;
+    margin-top: 7px !important;
+    margin-bottom: 3px !important;
+    padding-right: 5px !important;
+    top: 0 !important;
+    position: absolute !important;
+    right: 0px;
+    width: 100px !important;
+    }
+    .visualizar_lupa{
+    display: block !important;    
+    }
+    .css_buscador{
+    padding-left: 25px !important;    
+    /*background: #DFDFDF !important;*/
+    border: 1px solid #DFDFDF !important;
+    }
+    .tabla_movil_producto{
+    padding: 0 !important;
+    padding-left: 0px !important;
+    padding-right: 12px !important;
+    margin-left: 3px !important;
+    }
+    .div_izquierdo_2{
+    padding-left: 2px !important;    
+    }
+    .outer_div{
+    background: #F7F7F7 !important;
+    }
+     
+    .div_izquierdo_3{
+    height: 80px !important;    
+    }
+    .tmano_tabla_tipo_1{
+    height: 170px !important;    
+    }
+    .titulo_vista_1{
+        padding-top:10px !important;
+        padding-right:10px !important;
+    }
+    .icono_vista_1{
+    margin-top:  0px !important;    
+    }
+    .stock_contable, .precio_costo_registrado, .precio_costo_promedio, .costo_registrado, .descripcion_pos_producto{
+    display: none !important;    
+    }
+    .div_select_tipo_moneda, #moneda{
+        width: 50px !important;
+    }
+    .input-number-decrement{
+    border: none !important;    
+    }
+    .input-number-custom{
+    border: none !important;   
+    }
+    .input-number-custom{
+    border: none !important;     
+    }
+    
+    .reporte_number_movil{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    }
+    .unidad_derecha_movil{
+    width: 100% !important;   
+    display: inline-block !important;
+    }
+    .precio_derecha_movil{  
+    width: 50px !important;   
+    display: inline-block !important;
+    }
+    .div_derecho_3{
+     height: 130px !important;   
+    }
+    .nombre_producto_pos_movil{
+    padding-left: 0px !important;
+    }
+    .eliminar_pos_movil{
+    width: 10% !important;    
+    }
+    .eliminar_pos_products{
+    display: none !important;    
+    }
+    .abrir_detalle_config_pos{
+    display: block !important;    
+    }
+    .sum_total_td{
+    padding-right: 0 !important;
+    }
+    .div_select_tipo_despacho{
+    width: 100px !important;    
+    }
+    .campo_td_monto_desc{
+        width: 100% !important;
+      
+    }
+    .monto_des{
+      border: 0px solid #ccc !important;   
+      border-radius: 0px !important;
+    }
+    .td_vistas_descuento{
+        display: none !important;
+    }
+    .pago_efectivo_movil, .div_comision_tarjeta, .otro_metodo_transferencia_bancaria, .otro_metodo_deposito_bancaria, .otro_metodo_1, .otro_metodo_2, .otro_metodo_3{
+    width: 100% !important;
+    padding: 0 !important;
+    padding-bottom: 12px !important;
+    padding-top: 7px !important;
+    min-width: 0px !important;
+    margin-bottom: 0px !important;
+    }
+    .checkmark-box2{
+    width: 20px !important;
+    height:  20px !important;
+    }
+    .container-checkbox2 .checkmark-box2:after{
+    left: 6px !important;
+    top: 2px !important;
+    }
+    .monto_pago_pos_movil{
+    margin-bottom: 5px !important;    
+    }
+    .billetes_pago_pos, .billetes_1, .billetes_2, .primer_billete, .tarjeta_botom, .padding_tarjeta_movil, .content_img_tarjeta{
+    padding: 0px !important;
+    padding-left: 1px !important;
+    padding-right: 1px !important;
+    }
+    .billetes_pago_pos, .tarjeta_botom{
+    margin-bottom: 10px !important;    
+    }
+    .pv_select2{
+    border: 1px solid #ccc !important;    
+    }
+    .padding_otros{
+    padding-left: 5px !important;    
+    }
+    .div_pos_pagar{
+    padding-left: 0px !important;    
+    }
+    .credito_css_mobile{
+    width: 100% !important;
+    min-width: 0px !important;    
+    }
+    .info_cliente_movil, .info_guias_movil{
+    display:none;    
+    }
+   
+    .n_producto_contenedor{
+    padding: 0 !important;    
+    }
+    .clas_mas_opcion_m{
+    display:none !important;    
+    }
+    .div_select_tipo_despacho{
+    width: 170px !important;    
+    }
+    .movil_id_fecha{
+    padding-top: 5px !important;    
+    }
+    .botones_padd{
+    padding:0;    
+    }
+    .select_bancos_movil{
+    height: 40px !important;
+    }
+    .div_selec_banco_movil{
+     padding-left: 0 !important;   
+     padding-top: 10px !important;
+    }
+    .div_selec_otros_banco_movil{  
+     padding-top: 10px !important;
+    }
+    .n_operacion_movil{
+    padding-top: 0px !important;    
+    }
+    .seleccion_serie_movil{
+    margin-left: 0px !important;    
+    }
+    .desc_movil{
+    padding-left: 20px !important;  
+    }
+    #filtro_campos_adicionales{
+    width: 100% !important;    
+    }
+    .margen_select_pago_css{
+    margin-bottom: 0px !important;    
+    }
+    .padding_vendedor{
+    padding-left: 0px !important;    
+    }
+    /*UI SELECT*/
+    .ui-menu-item-wrapper{
+    padding-top:3px;   
+    padding-bottom:3px;
+    }
+    .icono_arrow_ver_mas{
+    display:none;    
+    }
+    .icono_arrow_ver_mas_movil{
+    display: block !important;    
+    }
+    
+    }
+    
+    
+    /*TERMINA 768*/
+    @media screen and (max-width: 920px) {
+    .ubicacion_css_fechas {
+    width: 100% !important;  
+    justify-content: center !important;
+    padding-top: 7px;
+    }
+    }
+    @media screen and (max-width: 1306px) {
+    .n_producto_contenedor{
+    padding-left: 10px !important;
+    padding-top: 10px !important;
+    }
+    .mostrar_encabezado_regresar{
+    padding-left: 0px !important;
+    }
+    .ocultar_span_ver_por{
+    display:none !important;  
+    }
+    #ver_panel_izquierdo_info{
+    width: 97%;    
+    }
+    .table_margen_select_tipo{
+    margin-top: 10px !important;
+    
+    }
+    .div_cambio_icono{
+     margin-top: 10px;   
+    }
+    .padding_icono_products{
+    padding:0px !important;    
+    }
+    .billetes_1, .billetes_2, .padding_tarjeta_movil{
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-left: 0 !important;
+    }
+    
+    .padding_izquierdo{
+    padding-left: 0px !important;  
+    padding-right: 0px !important;  
+    }
+    .margin_div_1{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    }
+    .ver_por{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    }
+    .margen_modo_tablet, .nuevo_producto_url{
+    margin-left: 0px !important;
+    margin-top: 10px !important;
+    margin-bottom: 0px !important;
+    }
+    .padding_vendedor{
+    padding-left: 7px;    
+    }
+    }
+    @media only screen and (max-width: 890px) {
+    .padding_vendedor{
+    padding-left: 11px;    
+    }
+    }
+    
+    @media (min-width: 576px){
+    .modal_css_toppins .modal-dialog {
+        max-width: 500px !important;
+       
+    }
+    }
+    .border_precio_td_etiqueta{
+       border-bottom: 1px solid #ccc; 
+       border-left: 1px solid #ccc; 
+       border-top: 1px solid #ccc; 
+    }
+    .border_precio_td{
+        border-right: 1px solid #ccc; 
+        border-bottom: 1px solid #ccc; 
+        border-top: 1px solid #ccc; 
+    }
+    .sub_total_venta_pos{
+    padding-top:5px;
+    padding-left:0px;
+    }
+    .total_venta_pos_css{
+     padding-top: 5px; 
+     padding-left:0px;
+    }
+    .padding_titulo_derecha{
+    padding-top: 4px;    
+    padding-bottom: 4px;   
+    }
+    .paddind_td_sub_tabla{
+    padding: 0.75rem;    
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    }
+    
+    .borde_sub_tabla{
+    border: 1px solid #ccc;    
+    }
+    .borde_sub_tabla_mas_opciones{
+    border-left: 1px solid #ccc;  
+    border-right: 1px solid #ccc; 
+    border-bottom: 1px solid #ccc; 
+    }
+    .paddind_bottom_sub_td{
+        padding-bottom: 22px;
+        padding-top: 22px;
+    }
+    
+    #lado_derecho{
+    box-shadow: -1px 4px 5px  #ccc;
+    padding: 0px;
+    background: rgb(255, 255, 255); margin-top: 10px; padding: 0px;
+    }
+    .box_izquierdo{
+    box-shadow: -1px 4px 5px  #ccc;
+    }
+    .row{
+       margin:0px; 
+    }
+    .ver_por{
+        padding-top: 10px; padding-left: 10px; padding-bottom: 10px; padding-right: 7px;
+    }
+    .border_radius{
+    border-radius: 0.25rem !important;    
+    }
+    .border_radius_top{
+    border-top-right-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important
+    }
+    .border_radius_left{
+    border-top-left-radius: 0.25rem !important;
+    border-bottom-left-radius: 0.25rem !important
+    }
+    @media only screen and (min-width: 1280px) {
+    .width_col_lg_izquiera_renew {
+    width: 63% !important;
+    }
+    .width_col_lg_centro_renew {
+    width: 37% !important;
+    }
+    }
+    @media only screen and (max-width: 1098px) {
+    .movil_w_btn_reg {
+    width: 38px ;
+    }
+    }
+    @media only screen and (max-width: 326px) {
+    .p_movil_ca_adcionale{
+    padding:0px !important;    
+    }
+    .table_margen_select_tipo {
+    padding-right: 1px !important;    
+    }
+    .movil_w_btn_reg {
+    width: 40px !important;
+    }
+    }
+    
+    .width_820{
+    width: 100% !important;    
+    }
+
+    @media (min-width: 768px){
+        #modal_buscar_cliente .modal-dialog {
+            width: 450px;
+        
+        }    
+        }
+        @media (max-width: 450px){
+        #modal_buscar_cliente .modal-dialog {
+            width: auto;
+        
+        }    
+        }  
+
+.div_izquierdo_1{
+    height: auto; padding: 0; margin-left: 10px; margin-right: 0px; padding-bottom: 15px;   
+}
+
+.bloque_select_productos{
+    padding: 0;margin-bottom: 10px; padding-top: 10px;   
+}
+
+.table_margen_select_tipo{
+    padding:0px !important; padding-right: 3px;
+}
+
+.div_hijo_select_prod{
+    padding:0px;  color:#ccc; background: #fff;
+}
+
+#ver_panel_izquierdo_info{
+    color:#000; border:0px; background: #fff !important;
+}
+
+.div_registrar_producto{
+    height: 100%; text-align: center; font-size: 0px; 
+    background: #fff; color: red !important; padding: 0;   
+    background-color: #fff !important;
+}
+
+#elvendedor{
+    border: none; width: 100%; font-size: 13px; height: 40px; padding: 0; padding-left: 3px; background: #fff; color: #000000; border-radius: 5px;    
+}
+#elvendedor option{
+    color:#333;    
+}
+
+.div_contener_select{
+    padding-right:0px !important; padding: 0px !important;  
+}
+
+.padding_adicionales_cat{
+    padding:0px; padding-top: 5px;
+}
+
+#filtro_campos_adicionales{
+    color:#000; border:0px; background: #F7F7F7; width: 75px;    
+}
+
+.border_radius_left{
+    padding:0px; color:#ccc; background: #F7F7F7 ;   
+}
+.select_campos_filtros{
+    border-right: 3px solid #FF4E00;   
+}
+
+.border_radius_top{
+    padding:0px; color:#737373 !important; background: #F7F7F7 !important;
+}
+.alto_row_filtros{
+    height: 100% !important;   
+}
+.ver_mas_adicionales{
+    color: #464646 !important; cursor: pointer; fill: #464646;
+}
+
+#mas_categorias_panel{
+    position:absolute; z-index:2; background: #fff; display: none;
+}
+
+#mas_categorias_panel div{
+    border-bottom: 1px solid #E5E5E5; margin-bottom: 8px;box-shadow: 0px 10px -2px -6px #ccc;
+}
+#mas_categorias_panel span{
+    position: absolute !important;z-index:1 !important;top: 8px; margin-left: 15px !important;margin-top: 0px !important;color: black !important; font-size:20px !important; 
+    display: block !important;
+}
+
+#buscador_adicionales{
+    width: 100%;  color: #000000;  border: none;background:  #FFF; height: 45px; display: inline-block; text-align: left; padding: 0; padding-left: 38px;   
+}
+#btn_vista_orden{
+    width: 40px;  display: none; text-align: center; font-size: 12px; background: #FF4E00; color: white !important; padding: 0; border-radius: 7px; outline: none;   
+}
+
+#btn_vista{
+    width: 40px;  display: inline-block; text-align: center; font-size: 12px; background: #FF4E00; color: white !important; padding: 0; border-radius: 7px; outline: none;
+}
+
+.icon_cambio_vista{
+ fill: #fff;
+ width: 35px;
+ height: 35px;
+}
+
+.row_productos_load{
+    padding: 0; margin: 0; padding-left: 8px; padding-right: 10px;  width: 100%; height: 99%; overflow-y: auto;    
+}
+
+.col_vista1_hover{
+    padding: 10px; margin: 0; margin-bottom: 10px;   
+}
+.tmano_tabla_tipo_1{
+    width: 100% !important; height: 160px; background: #fff; border-radius: 10px;    
+}
+.titulo_vista_1{
+    width: 100%; height: 35px !important; text-align: center; border-radius: 0px !important; cursor: default;
+}
+
+.icono_vista_1{
+    float: right; margin-right: 10px; margin-top: 2px;
+}
+
+.nombre_product_vista_1{
+    width: 100%; padding-top: 5px;   
+}
+.nombre_product_vista_1 span{
+    font-size: 12px; position: relative; left: 0px; color: #000; border: 0px solid #fff; padding-top: 10px; padding-left: 0px; padding-right: 2px;
+}
+.img_vista_1{
+    width: 100%; height: 80px !important; cursor: pointer; border-radius: 0px !important; background-color:transparent;
+}
+
+.precio_vista_1{
+    width: 100%; position: relative; bottom: 5px;
+}
+.precio_vista_1 span{
+    color: #000; font-size: 13px;
+}
+
+.resultados_pos{
+    padding-top: 5px; padding-bottom: 5px; border-radius: 5px;    
+}
+#lado_pagination{
+    height: 45px; padding: 0; padding-top: 2px;
+}
+
+#lado_pagination #load_left, #lado_pagination #load_right {
+    background: #ff5900; border: none; color: white; height: 35px; width: 35px; padding: 2px;
+}
+
+.btn_atajo_pagar{
+background: #FF4E00;padding:0;height:100%;border-radius:20px;padding-top:5px;margin-top:10px;color: white; font-size: 700; font-size: 13px; display: none;
+}
+.width_col_lg_centro_renew{
+background: #fff; margin-top: 10px; padding: 0px;
+}
+
+#n_producto{
+    border:0px !important; height: 100%; display: inline-block; float: none; text-align: left; font-size: 14px; padding: 0; cursor: text; padding-left: 25px; text-decoration: inherit;   
+}
+.visualizar_lupa{
+    position: absolute !important;color: #ccc !important; font-size:10px !important; float: right; left: 7px; top: 11px;
+}
+
+.nuevo_producto_url{
+    padding:0; border-left: 1px solid #ccc;
+}
+.lado_dere_movil{
+margin-top: 0px; font-weight: bold; 
+font-size: 15px; color: #ff9c00; margin-bottom: 1px; 
+padding-left: 0; 
+display: none; padding-top: 5px; padding-bottom: 5px;
+}
+.circule_movil_bx{
+width: 20px;
+height: 20px;
+fill: #ff9c00; position: relative; top:3px;    
+}
+.pointer{
+    cursor: pointer;   
+}
+.clas_mas_opcion_m{
+    background:  #F7F7F7;margin:0;padding:0; cursor: pointer; color:red; font-size:12px;padding-top: 7px; font-weight: bold;
+}
+.pagar_venta{
+    float: right;   
+}
+
+.css_titulo_totales{
+    text-align: left; color: #464646; font-size: 14px;font-weight: normal;
+}
+.css_titulo_input_totales{
+    text-align: right;
+}
+.css_titulo_total_venta{
+    text-align: left; color: #000; font-size: 15px; font-weight: bold;   
+}
+.input_pos_css_totales{
+    font-weight: normal; background: none; padding: 0; margin: 0; border: 0; text-align: right; font-size: 14px; max-width: 85%;
+}
+.input_pos_css_totales_total{
+    outline: none; font-weight: bold; background: none; padding: 0; margin: 0; border: 0; text-align: right; font-size: 15px; max-width: 85%;
+}
+.tabla_movil_producto_tabla{
+    border: 0.5px solid #ff9c00; width: 98% !important; height: 40px !important; background: #fff; border: 2px solid #ccc; border-left: none; border-right: none; border-top:none; margin: 0 auto; margin-left: 10px; margin-top: 5px; margin-bottom: 5px; margin-right: 10px;   
+}
+.btn_click_tabla{
+    width: 99%; height: 60px; border: none; background: transparent;
+}
+
+.tipo_2_css_img{
+    width: 8% !important; height: 50px !important; cursor: pointer; border-radius: 0px !important;
+  }
+.inline{
+display: inline-block;    
+}
+
+.mobile_row{
+    background: #E6E6E6; margin:0px;
+}
+.buscador_margin{
+    background: #fff; margin-left: 5px;
+}
+
+.div_contenedor_nuevo_p {
+    padding: 0px !important;   
+   }
+.icon_tabla_css_prod{
+    width: 5% !important; height: 40px !important; text-align: right;    
+}
+.css_a_tabla{
+    margin-top: 2px; margin-right:15px;
+}
+.div_derecho_1{
+    width:100%; padding-top: 5px; font-size: 13px !important; margin: 0px; background: #F7F7F7 !important;    
+}
+.td_contenedor_detalle{
+    font-size: 13px; font-weight: normal; text-align: left; height: 20px !important;   
+}
+.costo_registrado, stock_real, .marca_detalle, .descripcion_pos_producto, .descripcion_pos_producto{
+    margin-left: 20px;
+}
+.border_tipo_doc{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.11); border-right: 1px solid rgba(0, 0, 0, 0.11);
+}
+.titulo_opciones_pos{
+font-size: 12px; font-weight: normal; margin-bottom: 0px !important; color: #464646;
+}
+.border_serie_orden{
+border-bottom: 1px solid rgba(0, 0, 0, 0.11); border-right: 1px solid rgba(0, 0, 0, 0.11);
+}
+.border_serie_correlativo{
+border-bottom: 1px solid rgba(0, 0, 0, 0.11); border-right: 1px solid rgba(0, 0, 0, 0.11);   
+}
+.formato_select_number{
+color: #000; border: none !important; height: 30px; display: inline-block; padding: 0 !important;   font-size: 13px; background: #F7F7F7 !important;   
+}
+.div_buscador_cliente{
+    background:#F7F7F7; border-bottom: 1px solid rgba(0, 0, 0, 0.11);border-right: 1px solid rgba(0, 0, 0, 0.11);    
+}
+.div_hijo_cliente_b{
+    padding:0px !important; margin-top: 5px; margin-bottom: 5px; background:  rgba(196, 196, 196, 0.14);   
+}
+.lupa_cliente{
+    position: absolute !important;z-index:1 !important;top:12px; margin-left: 5px !important;margin-top: 0px !important;color: black !important; font-size:20px !important; 
+    display: block !important;  
+}
+#b{
+    width: 100% !important;  color: #000;  border: none !important;background:  #F7F7F7; height: 30px; display: inline-block; text-align: left; padding: 0; padding-left: 28px; border-radius: 5px;   
+}
+
+#btn_cobrar{
+    background: #F7F7F7;padding:0;border-bottom: 1px solid rgba(0, 0, 0, 0.11); margin: 0px;    
+}
+.ver_puntos{
+    background: #F7F7F7;    
+}
+.label_titulo_mas_opciones{
+    font-weight: bold; font-size: 14px; margin-bottom: 5pt;
+}
+.css_modal_inputs{
+    height: 30px; font-weight: bold; font-size: 9pt !important; width: 150px; margin-bottom: 15px; padding: 0; padding-left: 10px; box-shadow: none !important; background: white; cursor: default; cursor: pointer;    
+}
+.nom_load_products{
+    width: 40% !important; color: #bcbcbc;  border-bottom: 1px solid rgba(0, 0, 0, 0.11);   
+}
+
+.cant_load_products{
+    width: 25% !important; text-align: center; color: #bcbcbc;  border-bottom: 1px solid rgba(0, 0, 0, 0.11);    
+}
+.total_load_products{
+    width: 35% !important; padding-left: 0px; text-align: center; color: #bcbcbc;  border-bottom: 1px solid rgba(0, 0, 0, 0.11);    
+}
+.div_derecha_2{
+    padding: 0 !important; margin: 0 !important; width: 100% !important; height: 100% !important; overflow-y: auto;
+}
+.div_derecho_3{
+    padding: 0px;padding-top: 5px;
+}
+.back_footer_totales{
+    padding-top:0px;background: #F7F7F7;
+}
+
+btns_total_footer{
+    width: 100%; border-top: 1px solid rgba(0, 0, 0, 0.11);   
+}
+.btn_guardar_cambios_pos{
+    display: none !important; margin-top: 8px; width: 100% !important; font-size: 16px; float:right; height: 50px; border-radius: 0px; background: #FF4E00; color: white;    
+}
+
