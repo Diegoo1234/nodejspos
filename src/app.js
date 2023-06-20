@@ -15,6 +15,9 @@ const axios = require('axios');
 const app = express();
 app.use(cors());
  
+ 
+
+/*PERMITIR LEER LIBRERIAS COMO LINK*/
 app.use(express.static('src'));
 app.use('/axios', express.static('node_modules/axios/dist'));
 app.set('port', 4000);
