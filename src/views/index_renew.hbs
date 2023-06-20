@@ -1,712 +1,84 @@
- //POS
-<div id="demo-content">
-<div id="loader-wrapper">
-<div id="loader"> <img src="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/operaciones_img_logo_sin_letra.png" style="margin-top: 40px; margin-left: 35px; width: 100px; height: auto;"></div>
-</div>
-</div>
-<style>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <title>Libreria negocia.pe</title>
+    
+    <!-- Tailwind CSS Link -->
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.1/tailwind.min.css">
 
-.alert .close{
-background: transparent;
-border:0px;
-}
-#loader-wrapper{
-position: fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:1000;
-background-color: #fff;
-}
-.display_initil{
-display:initial;    
-}
-.recortar_text_mini_header{
-display: inline-block;
-white-space: nowrap !important;
-overflow: hidden !important;
-text-overflow: ellipsis !important;    
-}
-.serie_venta_texto_orden_pedido{
-white-space: nowrap;
-overflow: hidden;
-border-radius: 20px;
-position: relative;
-text-overflow: ellipsis;
-cursor: pointer;
-width: 100%;
-display: block !important;
-}
-.paddind_table_sub_tabla{
-padding: 0.75rem !important;    
-padding-top: 0px !important;
-padding-bottom: 0px !important;
-}
-#loader{
-display: block;
-position: relative;
-left:50%;
-top:50%;
-width:200px;
-height:200px;
-margin:-100px 0 0 -100px;
-border-top:3px solid #FF9C00;
-border-radius:50%;
+    <!-- Fontawesome Link -->
+    <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+ <link rel="stylesheet" href="../../css/estilos_pos.css" type="text/css">
 
--webkit-animation: spin 3.5s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
-animation: spin 3.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
-}
+<!-- JQUERY -->
+<script src="{{EC2_DOMINIO}}crm/assets/libs/jquery/jquery.min.js?v=4" type="text/javascript"></script>
 
-.placeholder_color::-webkit-input-placeholder { color: #7B7B7B; } 
-.placeholder_color:-moz-placeholder { /* Firefox 18- */ color: #7B7B7B; } 
-.placeholder_color::-moz-placeholder { /* Firefox 19+ */ color: #7B7B7B; } 
-.placeholder_color:-ms-input-placeholder { color: #7B7B7B; }
-.placeholder_color:focus::-webkit-input-placeholder{color: #7B7B7B;}
+<!-- BOOTSTRAP 5 -->
+<link href="{{EC2_DOMINIO}}crm/assets/css/bootstrap.min.css?v=4" id="bootstrap-style" rel="stylesheet" type="text/css" />
+<script src="{{EC2_DOMINIO}}crm/assets/libs/bootstrap/js/bootstrap.bundle.min.js?v=3"></script>
 
-#loader:before{
-content:"";
-position:absolute;
-top:5px;
-left:5px;
-bottom:5px;
-right:5px;
-border-top: 3px solid #FF5900;
-border-radius:50%;
+<!-- CSS PRINCIPAL -->
+<link href="{{EC2_DOMINIO}}css/css_negocia.css?v=00001" rel="stylesheet" type="text/css">
 
--webkit-animation: spin 2.5s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
-animation: spin 2.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
-}
+<!-- JS PRINCIPAL -->
+<script src="{{EC2_DOMINIO}}js/funcion_ajax.js?v=00010" type="text/javascript"></script>
+<link href="{{EC2_DOMINIO}}css/paginacion_dinamica.css?v=4" rel="stylesheet" type="text/css">
+<!-- ICONOS FONT AWESOME -->
+<link href="{{EC2_DOMINIO}}css/iconos/css/font-awesome.min.css?v=00001" rel="stylesheet" type="text/css">
+<link href="{{EC2_DOMINIO}}crm/assets/css/icons.min.css?v=4" rel="stylesheet" type="text/css" />
 
-#loader:after{
-content:"";
-position:absolute;
-top:15px;
-left:15px;
-bottom:15px;
-right:15px;
-border-top: 3px solid #FF9C00;
-border-radius:50%;
+<!-- ALERTAS SWEETALERT -->
+<link rel="stylesheet" href="{{EC2_DOMINIO}}Operaciones/SweetAlert2/sweetalert2.min.css?v=00001">
+<script src="{{EC2_DOMINIO}}Operaciones/SweetAlert2/sweetalert2.all.min.js?v=00001"></script>
 
--webkit-animation: spin 1.5s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
-animation: spin 1.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
-}
+<!-- VENTANA PARA IMPRIMIR -->
+<script src="{{EC2_DOMINIO}}Operaciones/js/VentanaCentrada.js?v=00001" type="text/javascript"></script>
 
-@-webkit-keyframes spin {
-0%   {
--webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
--ms-transform: rotate(0deg);  /* IE 9 */
-transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
-}
-100% {
--webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
--ms-transform: rotate(360deg);  /* IE 9 */
-transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
-}
-}
-@keyframes spin {
-0%   {
--webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
--ms-transform: rotate(0deg);  /* IE 9 */
-transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
-}
-100% {
--webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
--ms-transform: rotate(360deg);  /* IE 9 */
-transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
-}
-}
-.div_derecha_2{
-overflow-x: hidden;       
-}
-.div_derecho_3::-webkit-scrollbar{
- display: none;   
-}
+<!-- TIPO DE FUENTE -->
+<link href="//fonts.googleapis.com/css?family=Cabin&display=swap" rel="stylesheet">
 
-.padding_izquierdo{
-padding-left: 10px !important;  
-padding-right: 20px !important;
-}
-.mobile_row{
-    padding-left: 5px !important;
-    padding-right: 10px !important;
-}
-.margen_modo_tablet{
-margin-left: 10px ;    
-}
-.padding_vendedor{
-padding-left: 5px;    
-}
-@media screen and (max-width: 992px) {
-.ocultar_span_ver_por{
-display:none !important;  
-}
-#ver_panel_izquierdo_info{
-width: 100%;   
-}
-.movil_w_btn_reg{
-width: 100%;    
-}
-}
-@media screen and (max-width: 576px) {
-.p_total_left{
-padding-left:0px; 
-}   
-.p_movil_opera_css{
-padding-right:0px;    
-}
-}
-@media screen and (max-width: 1326px) {
-.padding_izquierdo{
-    padding-left: 5px !important;
-    padding-right: 15px !important;
-}
-}
+<!--COD PAISES-->
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+<!-- SELECT2 - NUEVO -->
+<link href="{{EC2_DOMINIO}}config/select2/select2.min.css?v=11" rel="stylesheet">
+<script src="{{EC2_DOMINIO}}config/select2/select2.min.js?v=11"></script>
 
-#ver_panel_izquierdo_info{
-width: 70%;    
-}
-.movil_w_btn_reg{
-width: 45px;    
-}
-@media screen and (max-width: 768px) {
-.ancho_tabla_unidades{
-width: 100% !important; 
-}
-.padding_credito_etiqueta{
-padding: 0px !important;    
-padding-top: 10px !important; 
-padding-bottom: 10px !important; 
-}
-.width_css_movil_btn, .width_css_movil_btn_1{
-width: 100px !important;    
-}
-.height_otros_css_movil{
-height: 40px !important;
-padding-top:10px;
-}
-.padd_top_movil{
-padding: 0px !important;    
-}
-.btn_continuar_detalle_seleccionados{
-display: block !important;    
-}
-.padding_adicionales_cat{
-padding-bottom: 5px !important;    
-}
-.paddind_table_sub_tabla{
-padding: 0px !important;    
-}
-.display_initil{
-display: block;    
-}
-.mostrar_encabezado_regresar{
-padding: 5px !important;
-padding-left: 0px !important;
-padding-right: 0px !important;
-}
-.mobile_row, .padding_izquierdo{
-  padding: 0 !important;  
-  margin: 0 !important;
-}
-.div_cambio_vista_producto {
- width: 100% !important;   
-}
-.div_cambio_vista_producto_detalle {
- width: 40% !important;   
-}
-.clase_movil_botones_pagar{
-padding-right: 0px !important;    
-padding-left: 2px !important;
-}
-.td_css_movil_remove_padding{
-  padding: 0px !important;  
-}
-.configuraciones_pc{
-display: none !important;    
-}
-.nombre_producto_pos_movil{
-width: 40% !important;    
-}
-.clase_pos_row{
- margin: 0 !important;
- border-radius: 20px !important;
- padding: 10px !important;
-}
-.clase_pos_row::-webkit-scrollbar{
- display: none;    
-}
-.div_load_info_cliente{
-padding-left: 0 !important;    
-}
-.info_orden_movil, .info_cotizacion_movil{
-background: #EBEBEB !important;    
-}
-.info_orden_movil{
-border-top-left-radius: 10px !important;
-border-bottom-left-radius: 10px !important;
-padding: 0 !important;
-padding-right: 10px !important;
-}
-.info_cotizacion_movil{
- border-top-right-radius: 10px !important;
-border-bottom-right-radius: 10px !important;   
-}
-.info_principal{
-padding: 5px !important;
-background: #EBEBEB;
-border-radius: 10px;
-} 
-.border_info_cliente_4{
-padding: 8px !important;
-margin: 5px !important;
-border-bottom: 0 !important;
-background: #fff;
-border-radius: 10px ;
-box-shadow:0px 2px 10px #ccc;
-}
-.border_info_cliente_2{
-padding: 8px !important;
-margin: 5px !important;
-border-bottom: 0 !important;    
-}
-.speech-bubble{
-margin-top: 65px;    
-}
-.row_movil_orden_venta{
-margin: 0 !important;    
-}
-.eliminar_pos_cotizaciones {
-padding-bottom: 10px !important;    
-}
-.padding_izquierdo{
-background: #EBEBEB;   
-width: 100%;
-}
-#lado_derecho{
-width: 100%;    
-}
-.etiqueta_vendedor_movil{
-display: none;
-}
-.div_izquierdo_2::-webkit-scrollbar{
- display: none;   
-}
-.div_derecha_2::-webkit-scrollbar{
- display: none;       
-}
-.br_movil_block{
-display: block !important;    
-}
-.br_movil_none{
-display: none;    
-}
-.div_select_vendedor{
- width: 100% !important;
- background: #FFF !important;
- border: none !important;
- padding-left: 0 !important;
- margin-left: 0 !important;
-}
-.div_contener_select{
-margin-bottom: 5px;    
-}
-.div_contenedor_nuevo_p{
-top: 0px;
-position:absolute;
-right: 1px !important;   
-margin-top: 3px !important;
-}
-.icono_producto_p{
-/*height: 29px !important;*/    
-border-radius: 5px !important;
-font-weight: 700 !important;
-}
+<!-- ICONO LOGO -->
+<link rel="apple-touch-icon" sizes="57x57" href="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/metas_apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/metas_apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/metas_apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/metas_apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/metas_apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/metas_apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/metas_apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/metas_apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/metas_apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/metas_android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/metas_favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/metas_favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/metas_favicon-16x16.png">
+<!--<link rel="manifest" href="{{EC2_DOMINIO}}images/logo/manifest.json">-->
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/metas_ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
 
-.div_cambio_icono{
-text-align: right !important;
-margin-top: 7px !important;
-margin-bottom: 3px !important;
-padding-right: 5px !important;
-top: 0 !important;
-position: absolute !important;
-right: 0px;
-width: 100px !important;
-}
-.visualizar_lupa{
-display: block !important;    
-}
-.css_buscador{
-padding-left: 25px !important;    
-/*background: #DFDFDF !important;*/
-border: 1px solid #DFDFDF !important;
-}
-.tabla_movil_producto{
-padding: 0 !important;
-padding-left: 0px !important;
-padding-right: 12px !important;
-margin-left: 3px !important;
-}
-.div_izquierdo_2{
-padding-left: 2px !important;    
-}
-.outer_div{
-background: #F7F7F7 !important;
-}
-.tipo_2_css_img{
-  width: 20% !important;  
-}
-.div_izquierdo_3{
-height: 80px !important;    
-}
-.tmano_tabla_tipo_1{
-height: 170px !important;    
-}
-.titulo_vista_1{
-    padding-top:10px !important;
-    padding-right:10px !important;
-}
-.icono_vista_1{
-margin-top:  0px !important;    
-}
-.stock_contable, .precio_costo_registrado, .precio_costo_promedio, .costo_registrado, .descripcion_pos_producto{
-display: none !important;    
-}
-.div_select_tipo_moneda, #moneda{
-    width: 50px !important;
-}
-.input-number-decrement{
-border: none !important;    
-}
-.input-number-custom{
-border: none !important;   
-}
-.input-number-custom{
-border: none !important;     
-}
+<!--TITLE-->
+<title>Pos Múltiple</title>
 
-.reporte_number_movil{
-padding-left: 0 !important;
-padding-right: 0 !important;
-}
-.unidad_derecha_movil{
-width: 100% !important;   
-display: inline-block !important;
-}
-.precio_derecha_movil{  
-width: 50px !important;   
-display: inline-block !important;
-}
-.div_derecho_3{
- height: 130px !important;   
-}
-.nombre_producto_pos_movil{
-padding-left: 0px !important;
-}
-.eliminar_pos_movil{
-width: 10% !important;    
-}
-.eliminar_pos_products{
-display: none !important;    
-}
-.abrir_detalle_config_pos{
-display: block !important;    
-}
-.sum_total_td{
-padding-right: 0 !important;
-}
-.div_select_tipo_despacho{
-width: 100px !important;    
-}
-.campo_td_monto_desc{
-    width: 100% !important;
-  
-}
-.monto_des{
-  border: 0px solid #ccc !important;   
-  border-radius: 0px !important;
-}
-.td_vistas_descuento{
-    display: none !important;
-}
-.pago_efectivo_movil, .div_comision_tarjeta, .otro_metodo_transferencia_bancaria, .otro_metodo_deposito_bancaria, .otro_metodo_1, .otro_metodo_2, .otro_metodo_3{
-width: 100% !important;
-padding: 0 !important;
-padding-bottom: 12px !important;
-padding-top: 7px !important;
-min-width: 0px !important;
-margin-bottom: 0px !important;
-}
-.checkmark-box2{
-width: 20px !important;
-height:  20px !important;
-}
-.container-checkbox2 .checkmark-box2:after{
-left: 6px !important;
-top: 2px !important;
-}
-.monto_pago_pos_movil{
-margin-bottom: 5px !important;    
-}
-.billetes_pago_pos, .billetes_1, .billetes_2, .primer_billete, .tarjeta_botom, .padding_tarjeta_movil, .content_img_tarjeta{
-padding: 0px !important;
-padding-left: 1px !important;
-padding-right: 1px !important;
-}
-.billetes_pago_pos, .tarjeta_botom{
-margin-bottom: 10px !important;    
-}
-.pv_select2{
-border: 1px solid #ccc !important;    
-}
-.padding_otros{
-padding-left: 5px !important;    
-}
-.div_pos_pagar{
-padding-left: 0px !important;    
-}
-.credito_css_mobile{
-width: 100% !important;
-min-width: 0px !important;    
-}
-.info_cliente_movil, .info_guias_movil{
-display:none;    
-}
-.lado_dere_movil{
- display: block !important;   
-}
-.n_producto_contenedor{
-padding: 0 !important;    
-}
-.clas_mas_opcion_m{
-display:none !important;    
-}
-.div_select_tipo_despacho{
-width: 170px !important;    
-}
-.movil_id_fecha{
-padding-top: 5px !important;    
-}
-.botones_padd{
-padding:0;    
-}
-.select_bancos_movil{
-height: 40px !important;
-}
-.div_selec_banco_movil{
- padding-left: 0 !important;   
- padding-top: 10px !important;
-}
-.div_selec_otros_banco_movil{  
- padding-top: 10px !important;
-}
-.n_operacion_movil{
-padding-top: 0px !important;    
-}
-.seleccion_serie_movil{
-margin-left: 0px !important;    
-}
-.desc_movil{
-padding-left: 20px !important;  
-}
-#filtro_campos_adicionales{
-width: 100% !important;    
-}
-.margen_select_pago_css{
-margin-bottom: 0px !important;    
-}
-.padding_vendedor{
-padding-left: 0px !important;    
-}
-/*UI SELECT*/
-.ui-menu-item-wrapper{
-padding-top:3px;   
-padding-bottom:3px;
-}
-.icono_arrow_ver_mas{
-display:none;    
-}
-.icono_arrow_ver_mas_movil{
-display: block !important;    
-}
+  </head>
+<body id="body_contenedor">
 
-}
-
-
-/*TERMINA 768*/
-@media screen and (max-width: 920px) {
-.ubicacion_css_fechas {
-width: 100% !important;  
-justify-content: center !important;
-padding-top: 7px;
-}
-}
-@media screen and (max-width: 1306px) {
-.n_producto_contenedor{
-padding-left: 10px !important;
-padding-top: 10px !important;
-}
-.mostrar_encabezado_regresar{
-padding-left: 0px !important;
-}
-.ocultar_span_ver_por{
-display:none !important;  
-}
-#ver_panel_izquierdo_info{
-width: 97%;    
-}
-.table_margen_select_tipo{
-margin-top: 10px !important;
-
-}
-.div_cambio_icono{
- margin-top: 10px;   
-}
-.padding_icono_products{
-padding:0px !important;    
-}
-.billetes_1, .billetes_2, .padding_tarjeta_movil{
-padding-top: 10px !important;
-padding-bottom: 10px !important;
-padding-left: 0 !important;
-}
-
-.padding_izquierdo{
-padding-left: 0px !important;  
-padding-right: 0px !important;  
-}
-.margin_div_1{
-margin-left: 0px !important;
-margin-right: 0px !important;
-}
-.ver_por{
-padding-left: 0px !important;
-padding-right: 0px !important;
-}
-.margen_modo_tablet, .nuevo_producto_url{
-margin-left: 0px !important;
-margin-top: 10px !important;
-margin-bottom: 0px !important;
-}
-.padding_vendedor{
-padding-left: 7px;    
-}
-}
-@media only screen and (max-width: 890px) {
-.padding_vendedor{
-padding-left: 11px;    
-}
-}
-
-@media (min-width: 576px){
-.modal_css_toppins .modal-dialog {
-    max-width: 500px !important;
-   
-}
-}
-.border_precio_td_etiqueta{
-   border-bottom: 1px solid #ccc; 
-   border-left: 1px solid #ccc; 
-   border-top: 1px solid #ccc; 
-}
-.border_precio_td{
-    border-right: 1px solid #ccc; 
-    border-bottom: 1px solid #ccc; 
-    border-top: 1px solid #ccc; 
-}
-.sub_total_venta_pos{
-padding-top:5px;
-padding-left:0px;
-}
-.total_venta_pos_css{
- padding-top: 5px; 
- padding-left:0px;
-}
-.padding_titulo_derecha{
-padding-top: 4px;    
-padding-bottom: 4px;   
-}
-.paddind_td_sub_tabla{
-padding: 0.75rem;    
-padding-top: 0px !important;
-padding-bottom: 0px !important;
-}
-
-.borde_sub_tabla{
-border: 1px solid #ccc;    
-}
-.borde_sub_tabla_mas_opciones{
-border-left: 1px solid #ccc;  
-border-right: 1px solid #ccc; 
-border-bottom: 1px solid #ccc; 
-}
-.paddind_bottom_sub_td{
-    padding-bottom: 22px;
-    padding-top: 22px;
-}
-
-#lado_derecho{
-box-shadow: -1px 4px 5px  #ccc;
-}
-.box_izquierdo{
-box-shadow: -1px 4px 5px  #ccc;
-}
-.row{
-   margin:0px; 
-}
-.ver_por{
-    padding-top: 10px; padding-left: 10px; padding-bottom: 10px; padding-right: 7px;
-}
-.border_radius{
-border-radius: 0.25rem !important;    
-}
-.border_radius_top{
-border-top-right-radius: 0.25rem !important;
-border-bottom-right-radius: 0.25rem !important
-}
-.border_radius_left{
-border-top-left-radius: 0.25rem !important;
-border-bottom-left-radius: 0.25rem !important
-}
-@media only screen and (min-width: 1280px) {
-.width_col_lg_izquiera_renew {
-width: 63% !important;
-}
-.width_col_lg_centro_renew {
-width: 37% !important;
-}
-}
-@media only screen and (max-width: 1098px) {
-.movil_w_btn_reg {
-width: 38px ;
-}
-}
-@media only screen and (max-width: 326px) {
-.p_movil_ca_adcionale{
-padding:0px !important;    
-}
-.table_margen_select_tipo {
-padding-right: 1px !important;    
-}
-.movil_w_btn_reg {
-width: 40px !important;
-}
-}
-
-.width_820{
-width: 100% !important;    
-}
-
-
-
-</style>
 <div id="div_recargar_session"></div>
-
 
 <!-- CONTENIDO -->
 <form id="datos_factura">
 
-<input type="hidden" id="countv" name="countv" value="<?php echo $GET_COUNTV;?>">
+<input type="hidden" id="countv" name="countv" value="">
 
 <!-- DATOS -->
 <input type="hidden" id="input_page" value="1" readonly="readonly">
@@ -721,7 +93,7 @@ width: 100% !important;
 <input type="hidden" id="select_orden_venta" name="select_orden_venta" readonly="readonly">
 <input type="hidden" id="id_tipodoc_venta" readonly="readonly">
 <input type="hidden" id="id_serie_venta" readonly="readonly">
-<input type="hidden" id="id_mesa_pedido" name="id_mesa_pedido" value="<?php echo $id_mesa; ?>" readonly="readonly">
+<input type="hidden" id="id_mesa_pedido" name="id_mesa_pedido" value="" readonly="readonly">
 <input type="hidden" id="check_multiple_id_pedido" name="check_multiple_id_pedido" readonly="readonly">
 <!--GUIA REMISION-->
 <input type="hidden" id="check_multiple_guia_remision" name="check_multiple_guia_remision" readonly="readonly">
@@ -735,364 +107,303 @@ width: 100% !important;
 <input type="hidden" id="vuelto_POS" name="vuelto_POS" value="0" readonly="readonly">
 
 
-<div class="row mobile_row" style="background: #E6E6E6; margin:0px; ">
+<div class="row mobile_row"  >
 <div class="col-lg-7 col-md-6 col-sm-12 col-12 width_col_lg_izquiera_renew padding_izquierdo" id="lado_izquierdo">
-<div class="row div_izquierdo_1 padding_izquierdo margin_div_1" style="height: auto; padding: 0; margin-left: 10px; margin-right: 0px; padding-bottom: 15px;">
+<div class="row div_izquierdo_1 padding_izquierdo margin_div_1" >
 <div class="row p_movil_ca_adcionale">  
 
-<div class="col-lg-12 col-md-12 col-sm-12 col-12 row" style="padding: 0;margin-bottom: 10px; padding-top: 10px;">
-<div class="col-lg-3 col-md-3 col-sm-2 col-3 table_margen_select_tipo" style="padding:0px; padding-right: 3px;" >
-<div class="col-12 border_radius" style="padding:0px;  color:#ccc; background: #fff;">    
+<div class="col-lg-12 col-md-12 col-sm-12 col-12 row bloque_select_productos" >
+<div class="col-lg-3 col-md-3 col-sm-2 col-3 table_margen_select_tipo" >
+<div class="col-12 border_radius div_hijo_select_prod" >    
 <div class="col-auto ver_por" >    
 <span class="ocultar_span_ver_por">Ver por:</span> 
-<select style="color:#000; border:0px; background: #fff !important;" id="ver_panel_izquierdo_info" onchange="mostrar_panel_izquierdo();">
+<select id="ver_panel_izquierdo_info" onchange="mostrar_panel_izquierdo();">
 <option value="1">Productos</option>
-<?php
-
-if(!empty($_SESSION['neg_ver_cotizaciones_14'])){
-?>
 <option value="2">Orden de pedido</option>
-<?php
-}
-if(!empty($_SESSION['neg_ver_orden_venta_7'])){
-?>
 <option value="3">Cotizaciones</option>
-<?php
-}
-if(!empty($_SESSION['neg_ver_guias_remision_21'])){
-?>
 <option value="4">Guias de remisi&oacute;n</option>
-<?php    
-}
-?>
 </select>
 </div>
 </div>
 </div> 
-<div class="col-lg-6 col-md-5 col-sm-6 col margen_modo_tablet border_radius" style="background: #fff; margin-left: 5px;">   
-<input id="n_producto" onkeyup="fn_buscar_productos();" type="text" class="btn form-control css_buscador" placeholder=" Buscar producto:" autocomplete="off" style="border:0px !important; height: 100%; display: inline-block; float: none; text-align: left; font-size: 14px; padding: 0; cursor: text; padding-left: 25px; text-decoration: inherit;">
-<span class="visualizar_lupa" style=" position: absolute !important;color: #ccc !important; font-size:10px !important; float: right; left: 7px; top: 11px;">
-<i class="bx bx-search" style="font-size: 19px; color: #999999;"></i>
+
+<div class="col-lg-6 col-md-5 col-sm-6 col margen_modo_tablet border_radius buscador_margin"  >   
+<input id="n_producto" onkeyup="fn_buscar_productos();" type="text" class="btn form-control css_buscador" placeholder=" Buscar producto:" autocomplete="off"  >
+<span class="visualizar_lupa" >
+<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"><path fill="#999999" d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396l1.414-1.414l-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8s3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6s-6-2.691-6-6s2.691-6 6-6z"/></svg>
 </span>
 </div>
-<div class="col-lg-auto col-auto col-sm-1 col-auto col-md-1 text-start div_contenedor_nuevo_p nuevo_producto_url" style="padding:0; border-left: 1px solid #ccc;">
-<button onclick="modal_productos(0);" type="button" class="btn div_registrar_producto movil_w_btn_reg icono_producto_p d-flex align-items-center justify-content-center"  style="height: 100%; text-align: center; font-size: 0px; background: #fff; color: red !important; padding: 0;">
-<i class="dripicons-plus" aria-hidden="true" style="font-size: 22px;position:relative;padding-top:5px;"></i>
+
+<div class="col-lg-auto col-auto col-sm-1 col-auto col-md-1 text-start div_contenedor_nuevo_p nuevo_producto_url" >
+<button onclick="modal_productos(0);" type="button" class="btn div_registrar_producto movil_w_btn_reg icono_producto_p d-flex align-items-center justify-content-center" >
+<svg xmlns="http://www.w3.org/2000/svg" width="22px" height="22px" viewBox="0 0 20 20" fill="none">
+  <path fill="#ff0000" fill-rule="evenodd" d="M9 17a1 1 0 102 0v-6h6a1 1 0 100-2h-6V3a1 1 0 10-2 0v6H3a1 1 0 000 2h6v6z"></path>
+</svg>
 </button>
 </div>
-<!-- window.open('{{EC2_DOMINIO}}Registros/Productos.php?pos_cut=1', '_blank');  -->
-<!--SELECT VENDEDOR O ALMACEN-->
-<div class="col-lg-2 col-md-3 col-sm-3 col-12 div_contener_select margen_modo_tablet " style="padding-right:0px; padding: 0px;">
-<div class="col-12 padding_vendedor">
-    
-<?php
-//RUBRO RESTAURANT
-if(!empty($_SESSION['poc_vendedor_select_ocultar_pos'])){
-?>
-<select id="elvendedor" name="elvendedor" class="div_select_vendedor " style="<?php if(empty($_SESSION['neg_cambiar_vendedor_pos_42'])){ echo 'pointer-events: none;'; } ?> border: none; width: 100%; font-size: 13px; height: 40px; padding: 0; padding-left: 3px; background: #fff; color: #000000; border-radius: 5px;">
-<option value="0" style="color:#333;">Seleccione Vendedor</option>
-<?php
-$sql_mozo = mysqli_query($con, "SELECT id_cliente, nombre_cliente FROM colaboradores WHERE status_cliente = 1 AND empresa = '".$_SESSION['IDEMPRESA']."' ORDER BY nombre_cliente ASC");
-while($row_mozo = mysqli_fetch_array($sql_mozo)){
-?>
-<option style="color:#333;" value="<?php echo $row_mozo[0]; ?>" <?php if($_SESSION['IDCOLABORADOR'] == $row_mozo[0]){ ?> selected="selected" <?php } ?>><?php echo ucwords(mb_strtolower($row_mozo[1])); ?></option>
-<?php
-}
-?>
-</select>
-<?php
-} 
 
-//RESTO DE RUBROS
-else {
-?>
-<select style="border: none; width: 100%; font-size: 13px; height: 40px; padding: 0; padding-left: 3px; background: #fff; color: #000000; border-radius: 5px;"
-name="almacen_empresa" id="almacen_empresa" class="div_select_vendedor" 
-onchange="load(1);">
-<?php
-$sql_consulta = "SELECT tb_almacen.id, tb_almacen.nombre from almacen_usuario tb_usuario 
-INNER JOIN almacen tb_almacen ON tb_usuario.id_sucursal = tb_almacen.id 
-WHERE tb_usuario.empresa = '".$_SESSION['IDEMPRESA']."' AND 
-(tb_almacen.tipo = '2' OR tb_almacen.tipo = '3') AND tb_almacen.estado = '1' AND tb_almacen.id_sucursal = '".$_SESSION['IDSUCURSAL']."' AND tb_usuario.id_usuario =  '".$_SESSION['IDUSUARIO']."' ORDER BY tb_almacen.id ASC";
-$array_consulta = mysqli_query($con, $sql_consulta);
-while($row_almacen = mysqli_fetch_array($array_consulta)){
-?>   
-<option value="<?php echo $row_almacen[0]; ?>" <?php if($_SESSION['IDSUCURSAL'] == $row_almacen[0]){ echo 'Selected = "Selected" '; } ?>><?php echo $row_almacen[1]; ?></option>    
-<?php    
-}
-?>
+<!--SELECT VENDEDOR O ALMACEN-->
+<div class="col-lg-2 col-md-3 col-sm-3 col-12 div_contener_select margen_modo_tablet "  >
+<div class="col-12 padding_vendedor">
+<select id="elvendedor" name="elvendedor" class="div_select_vendedor ">
+<option value="0"  >Seleccione Vendedor</option>
 </select>
-<?php
-}
-?>
-    
 </div>
 </div>
 </div>
     
     
-<div class="col-12 padding_adicionales_cat" style="padding:0px; padding-top: 5px;">
+<div class="col-12 padding_adicionales_cat"  >
 <div class="row">     
-<div class="col-lg-11 col-md-11 col-sm-11 col-11 text-center " style="padding:0;">
+<div class="col-lg-11 col-md-11 col-sm-11 col-11 text-center p-0 "  >
 <div class="row">    
-<div class="col-lg-2 col-md-3 col-sm-3 col-3 border_radius_left" style="padding:0px; color:#ccc; background: #F7F7F7 ;">
-<div class="col-12 ver_por" style="border-right: 3px solid #FF4E00;">    
-<select style="color:#000; border:0px; background: #F7F7F7; width: 75px;" onchange="filtro_campos_adicionales_productos(0);" id="filtro_campos_adicionales">   
+
+<div class="col-lg-2 col-md-3 col-sm-3 col-3 border_radius_left" >
+<div class="col-12 ver_por select_campos_filtros" >    
+<select onchange="filtro_campos_adicionales_productos(0);" id="filtro_campos_adicionales">   
 <option value="categoria">Categoria</option>
 <option value="marca">Marca</option>
-<?php
-$sql_tipo_campo_adicional = mysqli_query($con, " SELECT * FROM producto_campo_adicional_tipo WHERE empresa = '".$_SESSION['IDEMPRESA']."' AND estado = '1' ORDER BY nombre ASC");
-while($row_tipo_campo_adicional = mysqli_fetch_array($sql_tipo_campo_adicional)){
-?>
-<option value="<?php echo $row_tipo_campo_adicional['id']; ?>"><?php echo $row_tipo_campo_adicional['nombre']; ?></option>
-<?php
-}
-?>
+ <option value="marca">Adicionales</option>
 </select>
-
 </div>
 </div>
 
-<div class="col-lg-10 col-md-9 col-sm-9 col-9 border_radius_top" style="padding:0px; color:#737373 !important; background: #F7F7F7 !important;">
-<div class="row"  style="height: 100% !important;">
+<div class="col-lg-10 col-md-9 col-sm-9 col-9 border_radius_top" >
+<div class="row alto_row_filtros" >
 <div class="col-10">    
-<div class="row m-0 p-0"  style="height: 100% !important;">
+<div class="row m-0 p-0 alto_row_filtros" >
 <div class="cargar_vista_horizontal_categorias"> 
 </div>
 </div>  
 </div>
-<div class="col-2 d-flex justify-content-end align-items-center" style="color: #464646 !important; cursor: pointer;" onclick="filtro_buscador_campo_adicional(1);$('#mas_categorias_panel').toggle();"> 
-<span class="icono_arrow_ver_mas">Ver m&aacute;s </span> <i class="bx bx-right-arrow-alt icono_arrow_ver_mas"></i>  <i class="bx bx-chevron-down icono_arrow_ver_mas_movil" style="display:none; font-weight: bold;"></i> 
 
+<div class="col-2 d-flex justify-content-end align-items-center ver_mas_adicionales"  onclick=""> 
+<span class="icono_arrow_ver_mas">Ver m&aacute;s </span> 
+<svg xmlns="http://www.w3.org/2000/svg" class="icono_arrow_ver_mas" width="14" height="14" viewBox="0 0 24 24"><path fill="currentColor" d="m11.293 17.293l1.414 1.414L19.414 12l-6.707-6.707l-1.414 1.414L15.586 11H6v2h9.586z"/></svg>
 </div>   
 </div>
-<div class="col-12" id="mas_categorias_panel" style="position:absolute; z-index:2; background: #fff; display: none;">
-<div class="col-12" style="border-bottom: 1px solid #E5E5E5; margin-bottom: 8px;box-shadow: 0px 10px -2px -6px #ccc;">
-<span style="position: absolute !important;z-index:1 !important;top: 8px; margin-left: 15px !important;margin-top: 0px !important;color: black !important; font-size:20px !important; 
-display: block !important;">
-<i class="bx bx-search" style="font-size: 18px; color: #707070;"></i>
+
+<div class="col-12" id="mas_categorias_panel" >
+<div class="col-12">
+<span>
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="#707070" d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396l1.414-1.414l-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8s3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6s-6-2.691-6-6s2.691-6 6-6z"/></svg>
 </span>
-<input id="buscador_adicionales" type="text" class="form-control placeholder_color ui-autocomplete-input" placeholder="Buscar Categor&iacute;a" style="width: 100%;  color: #000000;  border: none;background:  #FFF; height: 45px; display: inline-block; text-align: left; padding: 0; padding-left: 38px;" autocomplete="off">
+<input id="buscador_adicionales" type="text" class="form-control placeholder_color ui-autocomplete-input" placeholder="Buscar Categor&iacute;a"  autocomplete="off">
 </div>    
 <div class="resultados_busqueda_catgegorias_adicionales"></div>
-</div>    
+</div>  
+
 </div>
+
 <!--ID DE DETALLE O MARCA O CATEGORIA-->
 <input type="hidden" value="" id="id_filtro_detalle_relacion">
-<script>
-function filtro_campos_adicionales_productos(page){
-var variable_campo = $('#filtro_campos_adicionales').val();   
-var load_limpieza = $('#id_filtro_detalle_relacion').val();
-var window_width_categorias = parseInt($(window).width());
-$('#mas_categorias_panel').css('display', 'none');
-var data = new FormData();
-data.append('variable_campo', variable_campo);
-data.append('pagina', page);
-data.append('window_width_categorias', window_width_categorias);
-eval(devolver_ajax(2, '{{EC2_DOMINIO}}Operaciones/ajax/cargar_filtros_adicionales.php', 'data', '.cargar_vista_horizontal_categorias', ''));   
-if(load_limpieza != ''){
-$('#id_filtro_detalle_relacion').val('');    
-load(1);    
-}
-}
-
-function filtro_buscador_campo_adicional(page){
-var variable_campo = $('#filtro_campos_adicionales').val();   
-if($('#buscador_adicionales').length){
-var buscador_adicionales = $('#buscador_adicionales').val();
-} else {
-var buscador_adicionales ='';
-}
-var id_filtro_detalle_relacion = $('#id_filtro_detalle_relacion').val();  
-var data = new FormData();
-data.append('variable_campo', variable_campo);
-data.append('pagina', page);
-data.append('buscador_adicionales', buscador_adicionales);
-data.append('es_dropdow', 1);
-data.append('id_filtro_detalle_relacion', id_filtro_detalle_relacion);
-eval(devolver_ajax(2, '{{EC2_DOMINIO}}Operaciones/ajax/cargar_filtros_adicionales.php', 'data', '.resultados_busqueda_catgegorias_adicionales', ''));    
-}
-filtro_campos_adicionales_productos();
-$('#buscador_adicionales').on('keyup', function(){
-
-clearTimeout(time_controller);
-time_controller = setTimeout(function(){
-filtro_buscador_campo_adicional();
-}, 500);
-});
-function seleccionar_el_vendedor(id_el_vendedor){
-$('#elvendedor').val(id_el_vendedor);    
-}
-</script>
+ 
 </div>
 </div>    
+
 <!--CAMBIAR VISTA PRODUCTOS div_cambio_icono-->
 <div class="col-lg-1 col-md-1 col-sm-1 col-1 d-flex justify-content-start padding_icono_products ">
-<button id="btn_vista_orden" type="button" class="btn hint--bottom hint--negocia div_cambio_vista_producto border_radius" aria-label="Cambiar vista de productos" style="width: 40px;  display: none; text-align: center; font-size: 12px; background: #FF4E00; color: white !important; padding: 0; border-radius: 7px; outline: none;">
-<i class="fa fa-file-text" style="font-size: 20px;"></i>
+<button tabindex="-1" onclick="" id="btn_vista" type="button" class="btn hint--bottom hint--negocia div_cambio_vista_producto border_radius" aria-label="Cambiar vista de productos"  >
+<svg xmlns="http://www.w3.org/2000/svg" class="icon_cambio_vista"   viewBox="0 0 24 24"><path   d="M4 6h2v2H4zm0 5h2v2H4zm0 5h2v2H4zm16-8V6H8.023v2H18.8zM8 11h12v2H8zm0 5h12v2H8z"/></svg>
 </button>
-<button tabindex="-1" id="btn_vista" type="button" class="btn hint--bottom hint--negocia div_cambio_vista_producto border_radius" aria-label="Cambiar vista de productos" style="width: 40px;  display: inline-block; text-align: center; font-size: 12px; background: #FF4E00; color: white !important; padding: 0; border-radius: 7px; outline: none;">
-<img src="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/lista.png" width="65%" height="65%">
-</button>
-</div>
-</div>
-</div> 
-    
-    
-    
 </div>
 
 </div>
-    
-<div id="tamano_izquierda" class="col-sm-12 col-12" style="padding:0;">
-<div class="row div_izquierdo_2 padding_izquierdo" style="padding: 0; margin: 0; padding-left: 8px; padding-right: 10px;  width: 100%; height: 99%; overflow-y: auto;">
-<div class="outer_div padding_izquierdo" style="padding-top: 5px; padding-bottom: 5px; border-radius: 5px;"></div>
-<div class="resultados_pos" style="padding-top: 5px; padding-bottom: 5px; border-radius: 5px;"></div>
+</div> 
+</div>
+</div>
+
+
+<div id="tamano_izquierda" class="col-sm-12 col-12 p-0" >
+<div class="row div_izquierdo_2 padding_izquierdo row_productos_load" >
+<div class="outer_div padding_izquierdo" style="padding-top: 5px; padding-bottom: 5px; border-radius: 5px;">
+<!--FORMATO DE PRODUCTOS CUADRADOS-->
+<div class="row formato_1">
+<div class="col-lg-3 col-md-4 col-sm-6 col-6 text-center col_vista1_hover"  >
+<table title="PRODUCTO OFFLINE" class="tmano_tabla_tipo_1" >
+<tr>
+<td class="titulo_vista_1" >
+<div style="width: 100%;">
+<a id="btn_info_producto_343434" class="icono_vista_1" href="javascript:void(0)"  >
+<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 1536 1536"><path fill="#ff5900" d="M1024 1248v-160q0-14-9-23t-23-9h-96V544q0-14-9-23t-23-9H544q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 352V192q0-14-9-23t-23-9H672q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zm640 416q0 209-103 385.5T1153.5 1433T768 1536t-385.5-103T103 1153.5T0 768t103-385.5T382.5 103T768 0t385.5 103T1433 382.5T1536 768z"/></svg>
+</a>
+</div>
+<div class="nombre_product_vista_1" >
+  {{#each datos}}
+<span   title="PRODUCTO OFFLINE">{{datos.ruc}}</span> 
+  {{/each}} 
+</div>    
+</td>
+</tr>
+<tr>
+<td  class="img-tabla img_vista_1" style=" background-image: url('views/images/null.png');"></td>
+</tr>
+<tr>
+<td>
+<div class="precio_vista_1" >
+<span> S/ 12.55 </span>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<!--FORMATO DE PRODUCTOS LISTA-->
+<div class="row formato_2">
+<table title="PRODUCTO NODE JS" class="tabla_movil_producto_tabla" >
+<tr>
+
+<td>
+
+<table style="width: 100%;">
+<tr>
+<td>
+<button type="button" class="btn_click_tabla" >
+<table style="width: 100%;">
+<tr>
+<td  class="img-tabla tipo_2_css_img" style=" background-image: url('views/images/null.png');"></td>
+<td style="width: 2%; height: 40px !important;"></td>
+<td style="width: 80%; height: 40px !important; cursor: pointer; border-radius: 0px !important; background-color:transparent;">
+<table style="width: 100% !important; background: #fff; border-radius:5px; height: 40px !important;">
+<tr>
+<td style="font-size: 14px; font-weight: bold; text-align: left; height: 20px !important; ">
+PRODUCTO NODE JS
+</td>
+</tr>
+<tr>
+<td class="td_contenedor_detalle">
+
+<span class="precio_real">Precio: S/ 300.00</span>
+<span class="costo_registrado"  >Precio Costo Registrado: S/ 12.00</span>
+<span class="stock_real"  >Stock Real: 13</span>
+<span class="marca_detalle">Marca: Saga</span>
+<span class="descripcion_pos_producto" >Descripci&oacute;n: Negocia.pe</span>
+ 
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</button>
+</td>
+<td class="img-tabla icon_tabla_css_prod" >
+<a tabindex="-1" id="btn_info_producto_9899" class="inline css_a_tabla" href="javascript:void(0)"   >
+ <svg xmlns="http://www.w3.org/2000/svg" class="inline" width="15" height="15" viewBox="0 0 1536 1536"><path fill="#ff5900" d="M1024 1248v-160q0-14-9-23t-23-9h-96V544q0-14-9-23t-23-9H544q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 352V192q0-14-9-23t-23-9H672q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zm640 416q0 209-103 385.5T1153.5 1433T768 1536t-385.5-103T103 1153.5T0 768t103-385.5T382.5 103T768 0t385.5 103T1433 382.5T1536 768z"></path></svg>
+
+  </a>
+</td>
+</tr>
+</table>
+</td>
+
+
+
+
+
+</tr>
+</table>
+
+</div>
+
+
+
+
+</div>
+<div class="resultados_pos"></div>
 <div id="resultados"></div>
 <div id="resultados_serie_f"></div>
 <div id="resultados_lp"></div>
 </div>
 </div>
-<div class="text-center div_izquierdo_3 col-sm-12 col-12" id="lado_pagination" style="height: 45px; padding: 0; padding-top: 2px;">
-<button id="load_left" type="button" class="btn" style="background: #ff5900; border: none; color: white; height: 35px; width: 35px; padding: 2px;">
-<i class="fa fa-angle-left" style="font-size: 28px;"></i>
+<div class="text-center div_izquierdo_3 col-sm-12 col-12" id="lado_pagination" >
+<button id="load_left" type="button" class="btn">
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 608 1280"><path fill="white" d="M595 288q0 13-10 23L192 704l393 393q10 10 10 23t-10 23l-50 50q-10 10-23 10t-23-10L23 727q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l50 50q10 10 10 23z"/></svg>
 </button>
-<button id="load_right" type="button" class="btn" style="background: #ff5900; border: none; color: white; height: 35px; width: 35px; padding: 2px;">
-<i class="fa fa-angle-right" style="font-size: 28px;"></i>
+<button id="load_right" type="button" class="btn" >
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 608 1280"><g transform="translate(608 0) scale(-1 1)"><path fill="white" d="M595 288q0 13-10 23L192 704l393 393q10 10 10 23t-10 23l-50 50q-10 10-23 10t-23-10L23 727q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l50 50q10 10 10 23z"/></g></svg>
 </button>
-<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#mp_crear_producto_improvisado_<?php echo $id_mesa; ?>" style="float: right;padding: 0px;margin-right: 10px; " >
-<img src="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/con _shopping_bags_.png" style="width: 32px;">
+
+<button type="button" class="btn d-none" data-bs-toggle="modal" data-bs-target="#mp_crear_producto_improvisado_" style="float: right;padding: 0px;margin-right: 10px; " >
+<img src="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/con%20_shopping_bags_.png" style="width: 32px;">
 <i class=" bx bxl-product-hunt" style="display: none; font-size: 30pt;color: #FF9900;"></i>
 </button>
+
 <div class="col-sm-12 col-12 btn_atajo_pagar btn_continuar_detalle_seleccionados" onclick="$('#lado_izquierdo').css('display', 'none');
-$('#lado_derecho').css('display', '');" style="background: #FF4E00;padding:0;height:100%;border-radius:20px;padding-top:5px;margin-top:10px;color: white; font-size: 700; font-size: 13px; display: none;">Continuar</div>
+$('#lado_derecho').css('display', 'block');" >Continuar
 </div>
+
+</div>
+
 <div class="div_load_info_cliente " style="margin-top: 10px; display: none; overflow-y: auto;"></div>
 <div class="div_load_info_producto " style="margin-top: 10px;display: none; overflow-y: auto;"></div>
 <div class="div_pos_pagar " style="margin-top: 10px; display: none; overflow-y: auto;"></div>
+
 </div>
-<div class="col-lg-5 col-md-6 col-sm-12 col-12 width_col_lg_centro_renew" id="lado_derecho" style="background: #fff; margin-top: 10px; padding: 0px;">
+
+
+<div class="col-lg-5 col-md-6 col-sm-12 col-12 width_col_lg_centro_renew lado_css_none" id="lado_derecho" >
 <div id="select_serie"></div>
 <div id="select_serie_pos"></div>
 <div id="select_correlativo_pos"></div>
 
-<div class=" col-12 lado_dere_movil" style="margin-top: 0px; font-weight: bold; font-size: 15px; color: #ff9c00; margin-bottom: 1px; padding-left: 0; display: none; padding-top: 5px; padding-bottom: 5px;" onclick="$('.outer_div, .div_izquierdo_1, .div_izquierdo_2, .div_izquierdo_3, #tamano_izquierda').css('display', ''); $('.div_load_info_cliente').css('display', 'none');$('#lado_derecho').css('display', 'none');$('#lado_izquierdo').css('display', ''); $('.div_pos_pagar').html('');$('#ver_panel_izquierdo_info').val('1');">
-<i class="bx bxs-caret-left-circle" style="font-size: 20px; color: #ff9c00; position: relative; top:3px; "></i>Agregar m&aacute;s Productos
+<div class=" col-12 lado_dere_movil" onclick="$('.outer_div, .div_izquierdo_1, .div_izquierdo_2, .div_izquierdo_3, #tamano_izquierda').css('display', ''); $('.div_load_info_cliente').css('display', 'none');$('#lado_derecho').css('display', 'none');$('#lado_izquierdo').css('display', ''); $('.div_pos_pagar').html('');$('#ver_panel_izquierdo_info').val('1');">
+ 
+<svg xmlns="http://www.w3.org/2000/svg" class="inline" width="20" height="20" viewBox="0 0 24 24"><path fill="#ff9c00" d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10s10-4.486 10-10S17.514 2 12 2zm2 15l-6-5l6-5v10z"/></svg>Agregar m&aacute;s Productos
 </div> 
 
 <div class="hidden-lg hidden-md hidden-sm col-6" style="margin-top: 13px; margin-bottom: 10px; display: none;">
 <span style="float:right; font-size: 12px; font-weight: bold; color: red;" onclick="$('#mas_opciones_pos').modal('show');" >M&aacute;s opciones</span>  
 </div>
 
-<div class="row  div_derecho_1" style="width:100%; padding-top: 5px; font-size: 13px !important; margin: 0px; background: #F7F7F7 !important;">
+<div class="row  div_derecho_1"  >
    
 <!--TIPO DOCUMENTO div_select_tipodoc-->
-<div class="col-lg-5 col-md-5 col-sm-4 col-5 padding_celda_encabezado clase_tipo_doc_remove" style=" border-bottom: 1px solid rgba(0, 0, 0, 0.11); border-right: 1px solid rgba(0, 0, 0, 0.11); <?php if(!empty($excel_conteo)){ echo 'height: 32px;'; } ?> ">
-<label style="font-size: 12px; font-weight: normal; margin: 0; color: #464646;" class="<?php if(!empty($excel_conteo)){ echo 'display_excel'; } else{ echo 'd-flex text-start'; } ?> ">Tipo de documento</label>    
-<select class="form-control <?php if(!empty($excel_conteo)){ echo 'display_excel'; } ?> " name="tipodoc" id="tpodoc" 
-onchange="
-var data = new FormData();
-data.append('TMPPOS_TPODOC_OP_G_COUNT', '<?php echo $GET_COUNTV; ?>');
-data.append('TMPPOS_TPODOC_OP_G_<?php echo $GET_COUNTV; ?>', $(this).val());
-eval(devolver_ajax(4, '{{EC2_DOMINIO}}Operaciones/ajax_graficos_fernando/ajax_update.php', 'data', '', ''));
-"
-style=" <?php if(!empty($excel_conteo)){  echo 'pointer-events: none;'; } ?> color: #000; border: none; height: 30px; display: inline-block; padding: 0; border-radius: 5px; font-size: 13px; background: #F7F7F7 !important;">
+<div class="col-lg-5 col-md-5 col-sm-4 col-5 padding_celda_encabezado clase_tipo_doc_remove border_tipo_doc"  >
+<label class="d-flex text-start titulo_opciones_pos">Tipo de documento</label>    
+<select class="form-control formato_select_number" name="tipodoc" id="tpodoc" 
+onchange="">
 <option value="0" hidden="hidden">Tipo Documento:</option>
-<?php
-
-if(empty($_SESSION['labsac_empresa_facturacion'])){
-?>
-<option value="1" <?php echo $ocultar_options; ?>>Boleta Tradicional</option>
-<option value="2" <?php echo $ocultar_options; ?>>Factura Tradicional</option>
-<?php
-} else {
-if(!empty($_SESSION['neg_reg_facturar'])){
-?>
-<option value="3" <?php echo $ocultar_options; ?>>Boleta Electr&oacute;nica</option>
-<option value="4" <?php echo $ocultar_options; ?>>Factura Electr&oacute;nica</option>
-<?php
-//PERMISO OCULTAR FACTURA CONTINGENCIA
-if ($_SESSION['poc_factura_contingencia_ocultar'] == 1){
-?>
-<option value="19" <?php echo $ocultar_options; ?>>Factura (Contingencia)</option>
-<?php
-}
-
-}
-}
-if(!empty($_SESSION['poc_reg_nota_venta_view'])){
-?>
-<option value="5" <?php echo $ocultar_options; ?>>Nota de Venta</option>
-<?php
-}
-if(!empty($_SESSION['neg_reg_cotizaciones_14'])){
-?>
-<option value="51" <?php if(!empty($cotizar)){ echo 'Selected="Selected"'; } ?>>Cotizaci&oacute;n</option>
-<?php
-}
-if(!empty($_SESSION['neg_realiza_orden_venta_7'])){
-?>
-<option value="50" <?php if(!empty($orden_pedido)){ echo 'Selected="Selected"'; } ?>>Orden de Pedido</option>
-<?php
-}
-
-?>
 </select>
 </div>
-<?php
-$sql_ult_factura = "SELECT tipodoc FROM facturas WHERE empresa = '".$_SESSION['IDEMPRESA']."' AND id_almacen = '".$_SESSION['IDSUCURSAL']."' ORDER BY id_factura DESC LIMIT 1";
-$query_ult_factura = mysqli_query($con, $sql_ult_factura);
-$row_ult_factura = mysqli_fetch_array($query_ult_factura);
-$ult_factura = (int)$row_ult_factura[0];
-?>
-<script>
-<?php
-if(empty($orden_pedido) && empty($cotizar)){
-?>
-$( document ).ready(function() {      
-$("#tpodoc option[value=<?php echo $ult_factura;?>]"). attr("selected",true);
-});
-<?php
-}
-?>
-</script>
+
 
 <!--SERIE-->
-<div class="col-lg-3 col-md-3 col-sm-3 col-3 padding_celda_encabezado mostrar_serie_orden_venta" style="border-bottom: 1px solid rgba(0, 0, 0, 0.11); border-right: 1px solid rgba(0, 0, 0, 0.11);">
-<label style="font-size: 12px; font-weight: normal; margin: 0; color: #464646;" class="<?php if(!empty($excel_conteo)){ echo 'display_excel'; } else{ echo 'd-flex text-start'; } ?> ">Serie</label>     
-<select class="form-control div_select_serie seleccion_serie_movil <?php if(!empty($excel_conteo)){ echo 'display_excel'; } ?>" name="serie" id="serie" style=" height: 30px; display: inline-block; padding: 0; color: #000; border: none; background: #F7F7F7 !important;">
+<div class="col-lg-3 col-md-3 col-sm-3 col-3 padding_celda_encabezado mostrar_serie_orden_venta border_serie_orden" >
+<label class="d-flex text-star titulo_opciones_pos">Serie</label>     
+<select class="form-control div_select_serie seleccion_serie_movil formato_select_number" name="serie" id="serie"  >
 <option value="0">N&#176; Serie</option>
 </select>
 </div>
 
 
 <!--CORRELATIVO-->
-<div class="col-lg-3 col-md-3 col-sm-3 col-3 padding_celda_encabezado n_factura_remove_class" style=" border-bottom: 1px solid rgba(0, 0, 0, 0.11); border-right: 1px solid rgba(0, 0, 0, 0.11);">
-<label style="font-size: 12px; font-weight: normal; margin: 0; color: #464646;" class=" <?php if(!empty($excel_conteo)){ echo 'display_excel'; } else{ echo 'd-flex text-start'; } ?>  ">N&#176;</label>     
-<input type="number" class="form-control div_input_num_factura <?php if(!empty($excel_conteo)){ echo 'display_excel'; } ?>" id="num_factura" name="num_factura" style=" color: #000;background: #F7F7F7 !important; border: none; padding: 0px; display: inline-block; text-align: left; height: 30px; border-radius: 5px; ">
+<div class="col-lg-3 col-md-3 col-sm-3 col-3 padding_celda_encabezado n_factura_remove_class border_serie_correlativo"  >
+<label class="d-flex text-start titulo_opciones_pos">N&#176;</label>     
+<input type="number" class="form-control div_input_num_factura formato_select_number" id="num_factura" name="num_factura"  >
 </div>
 
 <div class="col-1 padding_celda_encabezado d-flex justify-content-center align-items-center" onclick="$('#mas_opciones_pos').modal('show');" style="cursor: pointer; border-bottom: 1px solid rgba(0, 0, 0, 0.11);margin: 0px; ">
-<i class="fa fa-ellipsis-v <?php if(!empty($excel_conteo)){ echo 'display_excel'; } ?>" style="color: #000; font-size: 16px; cursor: pointer;"></i>    
+<svg xmlns="http://www.w3.org/2000/svg" class="pointer" width="16" height="16" viewBox="0 0 384 1408"><path fill="currentColor" d="M384 1120v192q0 40-28 68t-68 28H96q-40 0-68-28t-28-68v-192q0-40 28-68t68-28h192q40 0 68 28t28 68zm0-512v192q0 40-28 68t-68 28H96q-40 0-68-28T0 800V608q0-40 28-68t68-28h192q40 0 68 28t28 68zm0-512v192q0 40-28 68t-68 28H96q-40 0-68-28T0 288V96q0-40 28-68T96 0h192q40 0 68 28t28 68z"/></svg>
 </div>
-
-
-
 
 </div> 
+
+
+
 <div class="row div_derecho_1 col-lg-12 col-md-12 col-sm-12 col-12" style="margin:0px;">
 <!--CLIENTE div_input_cliente-->
-<div class="col-lg-11 col-md-11 col-sm-11 col-11 padding_celda_encabezado"  style="background:#F7F7F7; border-bottom: 1px solid rgba(0, 0, 0, 0.11);border-right: 1px solid rgba(0, 0, 0, 0.11);">
-<div class="<?php if(!empty($excel_conteo)){ echo 'display_excel'; } ?>" style="padding:0px; margin-top: 5px; margin-bottom: 5px; background:  rgba(196, 196, 196, 0.14);">    
-<span style="position: absolute !important;z-index:1 !important;top:6px; margin-left: 5px !important;margin-top: 0px !important;color: black !important; font-size:20px !important; 
-display: block !important;">
-<i class="bx bx-search" style="font-size: 16px; color: #707070;"></i>
+<div class="col-lg-11 col-md-11 col-sm-11 col-11 padding_celda_encabezado div_buscador_cliente"   >
+<div class="div_hijo_cliente_b" >    
+<span class="lupa_cliente">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="#707070" d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396l1.414-1.414l-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8s3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6s-6-2.691-6-6s2.691-6 6-6z"/></svg>
 </span>   
-    <input id="b" type="text" class="form-control placeholder_color" placeholder="Buscar Cliente" style="width: 100%;  color: #000;  border: none;background:  #F7F7F7; height: 30px; display: inline-block; text-align: left; padding: 0; padding-left: 28px; border-radius: 5px;">
+<input id="b" type="text" class="form-control placeholder_color" placeholder="Buscar Cliente"  >
 </div>
 </div>
+
 <!--OJITO DE REGRESAR AL PANEL DE ORDENES Y COTIZACIONES-->
-<div id="btn_cobrar" class="col-lg-1 col-md-1 col-sm-1 col-1 d-flex justify-items-center justify-content-center padding_celda_encabezado" style="background: #F7F7F7;padding:0;border-bottom: 1px solid rgba(0, 0, 0, 0.11); margin: 0px; <?php if(!empty($excel_conteo)){ echo 'height: 32px;'; } ?>">
+<div id="btn_cobrar" class="col-lg-1 col-md-1 col-sm-1 col-1 d-flex justify-items-center justify-content-center padding_celda_encabezado "  >
 <span class="div_btn_cliente hint--bottom" aria-label="M&aacute;s Opciones" onclick="
 $('#btn_pos_pagar').css('display', ''); 
 $('#btn_save_factura').css('display', 'none'); 
@@ -1103,23 +414,22 @@ if (fn_id_info_cliente == fn_formulario_info_cliente) {
 $('.outer_div, .div_izquierdo_1, .div_izquierdo_2, .div_izquierdo_3, #tamano_izquierda, .div_load_info_producto, .div_pos_pagar').css('display', 'none');
 $('.div_load_info_cliente, #btn_pos_pagar').css('display', '');
 } 
-if (fn_id_info_cliente != fn_formulario_info_cliente) {
-genera_info_cliente(fn_id_info_cliente);
 }
-}
-else{ <?php if(!empty($_SESSION['neg_ver_cotizaciones_14']) || !empty($_SESSION['neg_ver_orden_venta_7'])){ ?> 
-genera_info_cliente('negocia.pe'); <?php } ?> } 
 var funcion_width_movil = $(window).width(); 
 if(funcion_width_movil <= 768){ $('#lado_izquierdo').css('display', '');
 $('#lado_derecho').css('display', 'none'); } " style="cursor: pointer; padding-top: 10px;">
-<i class="bx bxs-show <?php if(!empty($excel_conteo)){ echo 'display_excel'; } ?>" style="font-size: 18px; color: #727272;"></i>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="#727272" d="M12 5c-7.633 0-9.927 6.617-9.948 6.684L1.946 12l.105.316C2.073 12.383 4.367 19 12 19s9.927-6.617 9.948-6.684l.106-.316l-.105-.316C21.927 11.617 19.633 5 12 5zm0 11c-2.206 0-4-1.794-4-4s1.794-4 4-4s4 1.794 4 4s-1.794 4-4 4z"/><path fill="#727272" d="M12 10c-1.084 0-2 .916-2 2s.916 2 2 2s2-.916 2-2s-.916-2-2-2z"/></svg>
+
+
 </span>
 </div>
 
-<div class="col-lg-1 col-md-1 col-sm-1 hidden text-center clas_mas_opcion_m" onclick="$('#mas_opciones_pos').modal('show');" style=" background:  #F7F7F7;margin:0;padding:0; cursor: pointer; color:red; font-size:12px;padding-top: 7px; font-weight: bold;">
+<div class="col-lg-1 col-md-1 col-sm-1 hidden text-center clas_mas_opcion_m" onclick="$('#mas_opciones_pos').modal('show');" >
 M&aacute;s opciones
 </div>
-<div class="col-lg-12 col-md-12 col-sm-12 col-12 ver_puntos" style="background: #F7F7F7;">
+<div class="col-lg-12 col-md-12 col-sm-12 col-12 ver_puntos"  >
 </div>
 <div class="ver_modal_cliente_new"></div>
 <div id="modal_registrar_productos"></div>
@@ -1145,15 +455,15 @@ M&aacute;s opciones
 <div class=" col-12 col-sm-12 col-md-12 col-lg-12">
 
 <div class="col-lg-12 col-md-12 col-sm-12 col-12" >
-<div class="col-lg-12 col-md-12 col-sm-12 col-12" style="padding:0;<?php if(empty($_SESSION['neg_cambiar_fecha_menor_venta_6'])){ echo 'display:none;'; } ?>">
-<label class="control-label" style="font-weight: bold; font-size: 14px; margin-bottom: 5pt;">Fecha Venta</label>
-<input type="date" id="id_fecha" name="id_fecha" value="" autocomplete="off" style="height: 25px; font-weight: bold; font-size: 8pt; width: 150px; margin-bottom: 15px; padding: 0; padding-left: 10px; box-shadow: none !important; background: white; cursor: default; cursor: pointer;" class="form-control movil_id_fecha input-sm <?php echo $_SESSION['labsac_style_modo_input_general'].' '.$_SESSION['labsac_style_modo_input']; ?>" placeholder="Fecha de Emisi&oacute;n">
+<div class="col-lg-12 col-md-12 col-sm-12 col-12" style="padding:0; ">
+<label class="control-label label_titulo_mas_opciones" >Fecha Venta</label>
+<input type="date" id="id_fecha" name="id_fecha" value=""  autocomplete="off" class="form-control movil_id_fecha input-sm css_modal_inputs " placeholder="Fecha de Emisi&oacute;n">
 </div>
 </div>      
 <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="">
 <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="padding:0;">
-<label class="control-label" style="font-weight: bold; font-size: 14px; margin-bottom: 5pt;">Despacho de productos</label><br>
-<select class="form-control div_select_tipo_despacho" name="chbx_opcion" id="chbx_opcion" style="font-size: 12px;width: 150px; background : #fff; color: #000; height: 25px; display: inline-block; padding: 0; border-radius: 5px; border: 1px solid #ccc;padding-left: 10px; font-weight: bold;">
+<label class="control-label label_titulo_mas_opciones" >Despacho de productos</label><br>
+<select class="form-control div_select_tipo_despacho css_modal_inputs" name="chbx_opcion" id="chbx_opcion"  >
 <option value="1">Despachar todo</option>
 <option value="3">Despachar despues</option>
 <option value="4">No despachar</option>
@@ -1164,8 +474,8 @@ M&aacute;s opciones
     
 <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="padding-top: 10px;">    
 <div class="col-lg-12 col-md-12 col-sm-12 col-12 div_tipodoc_serie_venta padding_celda_encabezado " style="margin: 0; padding: 0px; ">
-<label style="font-weight: bold; font-size: 14px; margin-bottom: 5pt;" class="d-flex text-start serie_venta_texto_orden_pedido">Comprobante Pago</label>  
-<select name="tipodoc_venta" id="tipodoc_venta" onchange="act_serie_pos();" class="form-control <?php if(!empty($excel_conteo)){ echo 'display_excel'; } ?>" style=" color: #000; height: 30px; width: 150px; padding: 0; border-radius: 5px; ">
+<label class="d-flex text-start serie_venta_texto_orden_pedido label_titulo_mas_opciones">Comprobante Pago</label>  
+<select name="tipodoc_venta" id="tipodoc_venta" onchange="act_serie_pos();" class="form-control css_modal_inputs "  >
 <option value="0" selected="selected" hidden="hidden">Orden de Pedido</option>
 <option value="3">Boleta Electr&oacute;nica</option>
 <option value="4">Factura Electr&oacute;nica</option>
@@ -1178,8 +488,8 @@ M&aacute;s opciones
  
 <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="padding-top: 10px;">
 <div class="col-12 div_tipodoc_serie_venta_ser padding_celda_encabezado" style="padding:0px;">
-<label style="font-weight: bold; font-size: 14px; margin-bottom: 5pt;" class="d-flex text-start">Serie</label>      
-<select name="serie_venta" id="serie_venta" class="form-control "  style="height: 30px; display: inline-block; padding: 0;  width: 150px;">
+<label   class="d-flex text-start label_titulo_mas_opciones">Serie</label>      
+<select name="serie_venta" id="serie_venta" class="form-control css_modal_inputs"   >
 <option value="0" hidden="hidden">Seleccione</option>
 </select>  
 </div>
@@ -1189,48 +499,12 @@ M&aacute;s opciones
 <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="padding:0; padding-top: 10px;">
     
 
-<?php
-//RUBRO RESTAURANT
-if(!empty($_SESSION['poc_vendedor_select_ocultar_pos'])){
-?>
-<label class="control-label" style="font-weight: bold; font-size: 14px; margin-bottom: 5pt;">Almac&eacute;n</label><br>
-<select style="font-size: 8pt; margin-bottom: 5px; height: 25px; width: 150px; padding: 0; padding-left: 3px;" name="almacen_empresa" id="almacen_empresa" class="form-control input-sm" 
-onchange="load(1);">
-<?php
-$sql_consulta = "SELECT tb_almacen.id, tb_almacen.nombre from almacen_usuario tb_usuario 
-INNER JOIN almacen tb_almacen ON tb_usuario.id_sucursal = tb_almacen.id 
-WHERE tb_usuario.empresa = '".$_SESSION['IDEMPRESA']."' AND (tb_almacen.tipo = '2' OR tb_almacen.tipo = '3') AND tb_almacen.estado = '1'
-AND tb_almacen.id_sucursal = '".$_SESSION['IDSUCURSAL']."' AND tb_usuario.id_usuario =  '".$_SESSION['IDUSUARIO']."' ORDER BY tb_almacen.id ASC";
-$array_consulta = mysqli_query($con, $sql_consulta);
-while($row_almacen = mysqli_fetch_array($array_consulta)){
-?>   
-<option value="<?php echo $row_almacen[0]; ?>" <?php if($_SESSION['IDSUCURSAL'] == $row_almacen[0]){ echo 'Selected = "Selected" '; } ?>><?php echo $row_almacen[1]; ?></option>    
-<?php    
-}
-?>
+ 
+<label class="control-label label_titulo_mas_opciones"  >Almac&eacute;n</label><br>
+<select   name="almacen_empresa" id="almacen_empresa" class="form-control input-sm css_modal_inputs" >
+<option>Almacen</option> 
 </select>
-<?php
-}
-
-//RESTO DE RUBROS
-else {
-?>
-<label class="control-label" style="font-weight: bold; font-size: 14px; margin-bottom: 5pt;">Vendedor</label><br>
-<select id="elvendedor" name="elvendedor" class="form-control input-sm"
-style="font-size: 8pt; margin-bottom: 5px; height: 25px; width: 150px; padding: 0; padding-left: 3px; <?php if(empty($_SESSION['neg_cambiar_vendedor_pos_42'])){ echo 'pointer-events: none;'; } ?>">
-<option value="0" style="color:#333;">Seleccione Vendedor</option>
-<?php
-$sql_mozo = mysqli_query($con, "SELECT id_cliente, nombre_cliente FROM colaboradores WHERE status_cliente = 1 AND empresa = '".$_SESSION['IDEMPRESA']."' ORDER BY nombre_cliente ASC");
-while($row_mozo = mysqli_fetch_array($sql_mozo)){
-?>
-<option style="color:#333;" value="<?php echo $row_mozo[0]; ?>" <?php if($_SESSION['IDCOLABORADOR'] == $row_mozo[0]){ ?> selected="selected" <?php } ?>><?php echo ucwords(mb_strtolower($row_mozo[1])); ?></option>
-<?php
-}
-?>
-</select>
-<?php
-}
-?>
+ 
 
 
 </div>
@@ -1238,52 +512,23 @@ while($row_mozo = mysqli_fetch_array($sql_mozo)){
 
 <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="">
 <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="padding:0; padding-top: 10px;">
-<label class="control-label" style="font-weight: bold; font-size: 14px; margin-bottom: 5pt;">Unidad de Transporte:</label><br>
-<select id="id_dato_distribucion_1" name="id_unidad_transporte" style="font-size: 8pt; height: 25px; padding: 0; padding-left: 3px; width: 150px; margin-bottom: 10px;" class="form-control input-sm" >
+<label class="control-label label_titulo_mas_opciones"  >Unidad de Transporte:</label><br>
+<select id="id_dato_distribucion_1" name="id_unidad_transporte"   class="form-control input-sm css_modal_inputs" >
 <option value="0" selected="selected">Seleccione</option>
-<?php
-$query_unidad_transporte = mysqli_query($con, "SELECT id, marca_transporte, placa_transporte FROM unidad_transporte WHERE empresa = '" . $_SESSION['IDEMPRESA'] . "' AND estado = 1 ORDER BY marca_transporte ASC");
-while ($row_unidad_transporte = mysqli_fetch_array($query_unidad_transporte)) {
-$sql_id_unidad_transporte = (int) $row_unidad_transporte[0];
-$sql_nombre_unidad_transporte = $row_unidad_transporte[1] . ' ' . $row_unidad_transporte[2];
-?>
-<option value="<?php echo $sql_id_unidad_transporte; ?>" > <?php echo $sql_nombre_unidad_transporte; ?></option>
-<?php
-}
-?>
+ 
+ 
 </select>
 </div>
 </div>
     
 <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="padding-top:10px;">
 <div class="col-lg-12 col-md-12 col-sm-12 col-12 row" style="padding:0;">
-<label class="control-label" style="font-weight: bold; font-size: 14px; margin-bottom: 5pt;">Moneda</label><br>
+<label class="control-label label_titulo_mas_opciones"  >Moneda</label><br>
 <div class="col-lg-6 col-md-6 col-sm-6 col-6 row" style="padding:2px; background: #EBEBEB; border-radius: 10px; cursor: pointer; margin-bottom: 8px;">
 <div class="col-lg-6 col-md-6 col-sm-6 col-6 tipo_m_1" onclick="modal_tipo_moneda(1);" style="border-radius: 10px;background: #ff9c00; color: #fff; font-size: 11px; padding-top: 3px;padding-bottom: 3px;">Soles</div>
 <div class="col-lg-6 col-md-6 col-sm-6 col-6 tipo_m_2" onclick="modal_tipo_moneda(2);" style="border-radius: 10px;background: #EBEBEB; color: black; font-size: 11px; padding-bottom: 3px; padding-top: 3px;">D&oacute;lares</div>   
 </div>
-<script>
-function modal_tipo_moneda(tipo){
-if(tipo == 1){
-$('.tipo_m_1').css('background', '#ff9c00'); 
-$('.tipo_m_1').css('color', '#fff');  
-$('.tipo_m_2').css('background', '#EBEBEB'); 
-$('.tipo_m_2').css('color', 'black'); 
-$('#moneda').val('1'); 
-activa_cambio();
-}
-if(tipo == 2){
-$('.tipo_m_2').css('background', '#ff9c00'); 
-$('.tipo_m_2').css('color', '#fff');  
-$('.tipo_m_1').css('background', '#EBEBEB'); 
-$('.tipo_m_1').css('color', 'black');    
-$('#moneda').val('2'); 
-$('.div_select_tipo_moneda').css('display', '');
-activa_cambio();
-}
-
-}
-</script>
+ 
 <div class="div_select_tipo_moneda" style="width: 150px; margin-left: 5px; display: none; padding-left: 0px; ">
 <select class="form-control" id="moneda" name="moneda" onchange="activa_cambio()" style=" width: 80px !important; background : #fff; color: #000; height: 30px; display: none; padding: 0; border-radius: 5px; border: none;">
 <option value="1" selected="selected">Soles</option>
@@ -1296,7 +541,7 @@ activa_cambio();
 </div>  
     
 <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="padding-top:10px;">
-<label class="control-label" style="font-weight: bold; font-size: 14px; margin-bottom: 5pt;">Referido</label><br>
+<label class="control-label label_titulo_mas_opciones"  >Referido</label><br>
 <input autocomplete="off" style="font-size: 8pt; height: 25px; padding: 0; padding-left: 3px;" type="text" class="form-control input-sm <?php echo $_SESSION['labsac_style_modo_input_general'] . ' ' . $_SESSION['labsac_style_modo_input']; ?>" id="nombre_referido" placeholder="Buscar referido:">
 <input autocomplete="off" id="id_referido" name="id_referido" type="hidden" readonly="readonly">
 
@@ -1318,7 +563,7 @@ Guardar</buton>
 </div>
 
 <div class="col-lg-12 col-md-12 col-sm-12 col-12 row padding_celda_encabezado" style="margin:0px; margin-top: 5px;">
-<div class="col-lg-5 col-md-5 col-sm-8 col-6 padding_titulo_derecha" style="width: 40% !important; color: #bcbcbc;  border-bottom: 1px solid rgba(0, 0, 0, 0.11);">    
+<div class="col-lg-5 col-md-5 col-sm-8 col-6 padding_titulo_derecha nom_load_products"  >    
 <!--CHECK DIVIDIR CUENTA-->
 <div>
 <label class="container_check">
@@ -1339,40 +584,52 @@ $( '.checks_icon_tmp' ).change();
 </div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Productos
 </div>
-<div class="col-lg-3 col-md-3 col-sm-2 col-4 padding_titulo_derecha text-left desc_movil" style="width: 25% !important; text-align: center; color: #bcbcbc;  border-bottom: 1px solid rgba(0, 0, 0, 0.11);">    
+<div class="col-lg-3 col-md-3 col-sm-2 col-4 padding_titulo_derecha cant_load_products text-left desc_movil "  >    
 Cantidad
 </div>
-<div class="col-lg-4 col-md-4 col-sm-2 col-2 padding_titulo_derecha precio_titulo_movil display_css_titulo_total" style=" width: 35% !important; padding-left: 0px; text-align: center; color: #bcbcbc;  border-bottom: 1px solid rgba(0, 0, 0, 0.11);">    
+<div class="col-lg-4 col-md-4 col-sm-2 col-2 padding_titulo_derecha total_load_products precio_titulo_movil display_css_titulo_total"  >    
 Total
 </div>
 </div>
+
+
+
+
 <div id="tamano_derecha" class="div_derecho_2">
 <div id="agregar_cotizacion_orden_pos" style="display:none;"></div>    
 
-<div class="row div_derecha_2" style="padding: 0; margin: 0; width: 100%; height: 100%; overflow-y: auto;">
+<div class="row div_derecha_2" >
 
 <table class="table table-condensed table-hover reportes_tabla_principal" id="table_append" style="width: 100% !important; margin-bottom:10px; display: none;"></table>
 
 <div id="div_load_tabla_detalle"></div>
 </div>
 </div>
-<div style="padding: 0px;padding-top: 5px;" class="col-12 div_derecho_3 padding_celda_encabezado">
-<div style="padding-top:0px;background: #F7F7F7;" class="col-12 padding_celda_encabezado">    
-<div style="width: 100%; border-top: 1px solid rgba(0, 0, 0, 0.11); " class="">
-<div class="row contenedor_totales_footer <?php if(!empty($excel_conteo)){ echo 'display_excel'; } ?>">
+
+<div class="col-12 div_derecho_3 padding_celda_encabezado">
+<div class="col-12 padding_celda_encabezado back_footer_totales">    
+<div class="btns_total_footer">
+<div class="row contenedor_totales_footer  ">
 
 <input type="hidden" readonly="readonly" id="final_isc" value="0.00">
 <div id="total_letras" style="display: none;">SON 0.00 SOLES</div>
 
-<div class="col-6 sub_total_venta_pos" style="text-align: left; color: #464646; font-size: 14px;font-weight: normal;">Subtotal</div>
-<div class="col-6 sub_total_venta_pos" style="text-align: right;"><input type="text" disabled="disabled" style="font-weight: normal; background: none; padding: 0; margin: 0; border: 0; text-align: right; font-size: 14px; max-width: 85%;" id="final_subtotal" value="S/0.00"></div>
-<div class="col-6 sub_total_venta_pos" style="text-align: left; color: #464646; font-size: 14px;font-weight: normal;">Descuento (%)</div>
-<div class="col-6 sub_total_venta_pos" style="text-align: right;"><input type="text" disabled="disabled" style="font-weight: normal; background: none; padding: 0; margin: 0; border: 0; text-align: right; font-size: 14px; max-width: 85%;"id="final_descuento" value="S/0.00"></div>
+<div class="col-6 sub_total_venta_pos css_titulo_totales">Subtotal</div>
+<div class="col-6 sub_total_venta_pos css_titulo_input_totales">
+<input type="text" disabled="disabled" class="input_pos_css_totales"  id="final_subtotal" value="S/0.00"></div>
+<div class="col-6 sub_total_venta_pos css_titulo_totales"  >Descuento (%)</div>
+<div class="col-6 sub_total_venta_pos css_titulo_input_totales"  >
+<input type="text" disabled="disabled" class="input_pos_css_totales"  id="final_descuento" value="S/0.00">
+</div>
 
-<div class="col-6 sub_total_venta_pos" style="text-align: left; color: #464646; font-size: 14px; font-weight: normal;"><?php echo $_SESSION['labsac_empresa_impuesto_nombre'].' ('.$_SESSION['labsac_empresa_impuesto_porcentaje'].'%)'; ?></div>
-<div class="col-6 sub_total_venta_pos" style="text-align: right;"><input type="text" disabled="disabled" style="font-weight: normal; background: none; padding: 0; margin: 0; border: 0; text-align: right; font-size: 14px; max-width: 85%;" id="final_igv" value="S/0.00"></div>
-<div class="col-6 total_venta_pos_css" style="text-align: left; color: #000; font-size: 15px; font-weight: bold;">Total</div>
-<div class="col-6 total_venta_pos_css" style="text-align: right;"><input type="text" readonly="readonly" style="outline: none; font-weight: bold; background: none; padding: 0; margin: 0; border: 0; text-align: right; font-size: 15px; max-width: 85%;" id="final_total" name="final_total_js" value="S/0.00"></div>
+<div class="col-6 sub_total_venta_pos css_titulo_totales"  >IGV (18%)</div>
+<div class="col-6 sub_total_venta_pos css_titulo_input_totales"  >
+<input type="text" disabled="disabled" class="input_pos_css_totales"  id="final_igv" value="S/0.00">
+</div>
+<div class="col-6 total_venta_pos_css css_titulo_total_venta"  >Total</div>
+<div class="col-6 total_venta_pos_css css_titulo_input_totales"  >
+<input type="text" readonly="readonly" class="input_pos_css_totales_total" id="final_total" name="final_total_js" value="S/0.00">
+</div>
 </div>
 
 
@@ -1385,16 +642,7 @@ Cancelar
 </button>
 </div> 
 <div class="col-auto clase_movil_botones_pagar  icono_footer_derecha_1 " style="padding-left:0px;">
-<?php
-if((!empty($_SESSION['poc_actived_fn_restaurant']) && empty($_SESSION['poc_ver_precuenta'])) && (empty($_GET['cotizar'])) || !empty($_SESSION['poc_ver_precuenta']) ){ 
-?>    
-<button  type="button" class="btn <?php if(!empty($excel_conteo)){ echo 'display_excel'; } ?>" onclick="vista_previa_precuenta();" style="background: #F0F0F0; border:0px; padding-top: 5px; padding-bottom: 0px; height: 50px; padding-left: 4px; padding-right: 4px;">
-<i class="bx bx-printer" style="font-size: 22px;"></i>
-<label style="font-size: 10px; display: block; margin-bottom: 3px;">Precuenta</label>
-</button>
-<?php
-}
-?>    
+ 
 </div>
     
 <div class="col-auto clase_movil_botones_pagar  icono_footer_derecha_2">
@@ -1413,24 +661,13 @@ if((!empty($_SESSION['poc_actived_fn_restaurant']) && empty($_SESSION['poc_ver_p
 </div> 
 </div>
 <div class="col-lg-5 col-md-4 col-5" style="padding: 3px;padding-bottom: 7px;padding-top: 7px;padding-right: 0px;">
-<?php
-if(!empty($excel_conteo)){
-?>   
-<button onclick="exportar_conteo_inventario();" id="" type="button" class="btn" style="margin-top: 8px; width: 100%; font-size: 16px; float:right; height: 50px; border-radius: 0px; background: green; color: white; text-align: left;">
-<span class="span_boton_pagar " style="float: left; display: none;">Exportar</span>
-<i class=" bx bx-export" style="float: left; margin-top: 3px;"></i> &nbsp;&nbsp;<span class="">Exportar</span> 
-</button> 
-<?php
-}else{
-?>
-   
+  
 <button onclick="var tipo_op = $('#tpodoc').val(); if(tipo_op == 50 || tipo_op == 51){ $('#btn_pos_pagar').css('display', 'none');  btn_coti_orden_POS(); } else {POS_pagar();}" id="btn_pos_pagar" type="button" class="btn" style="margin-top: 8px; width: 100%; font-size: 16px; float:right; height: 50px; border-radius: 0px; background: #FF4E00; color: white;">
-<span class="span_boton_pagar " style="float: left;">PAGAR</span> <i class=" bx bx-arrow-back fa-rotate-180" style="color:white; font-size: 20px; float: right;"></i>
+<span class="span_boton_pagar " style="float: left;">PAGAR</span> 
+<svg xmlns="http://www.w3.org/2000/svg" class="pagar_venta" width="20" height="20" viewBox="0 0 24 24"><g transform="rotate(180 12 12)"><path fill="#fff" d="M21 11H6.414l5.293-5.293l-1.414-1.414L2.586 12l7.707 7.707l1.414-1.414L6.414 13H21z"/></g></svg>
 </button>
-<?php
-}
-?>
-<button onclick="actualizar_cambios_cuentas();" id="guardar_cambios_dividir" type="button" class="btn" style="display: none; margin-top: 8px; width: 100%; font-size: 16px; float:right; height: 50px; border-radius: 0px; background: #FF4E00; color: white;">
+ 
+<button onclick="actualizar_cambios_cuentas();" id="guardar_cambios_dividir" type="button" class="btn btn_guardar_cambios_pos" >
 <span class=" " style="float: left;">Guardar Cambios</span>
 </button>    
 </div> 
@@ -1447,101 +684,10 @@ if(!empty($excel_conteo)){
 </form>
 
 
-<?php
-//MODAL VENTA GUARDADA
-$query_verificar_tmp = mysqli_query($con, "SELECT id_tmp FROM tmp WHERE session_id = '$session_id' AND check_dividir_cuenta = 1 LIMIT 1");
-if(mysqli_num_rows($query_verificar_tmp) > 0){
-?>
-<div class="modal fade" id="modal_verificar_tmp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog">
-<div class="modal-dialog modal-sm" style="margin: 0 auto;" role="document">
-<div class="modal-content" style="border:0px;">
-<div class="modal-header" style="text-align: left; background: #ff9c00; color: white;">
-<div class="row">
-<div class="col-sm-112 col-12 text-center">
-<h5 class="modal-title" id="myModalLabel"><span style="font-family: arial; font-size: 18px; color:white;">OPERACI&Oacute;N GUARDADA</span></h5>
-</div>
-</div>
-</div>
-<div class="modal-body">
-<div class="container" style="width:100%;">
-<p style="text-align: justify;">
-<br>
-Hola <?php echo $_SESSION['labsac_usuario_nombres']; ?>, <?php if(!empty($excel_conteo)){?> &#161;Deseas realizar un nuevo conteo o seguir con el mismo?<br> <?php }else{ ?> tienes una venta incompleta <br>&#161;Deseas registrar una nueva venta o continuar la venta incompleta?<br> <?php }?> 
-</p>
-<button class="btn" style="margin: 0 auto; background: #FF9C00; color: white; padding: 5px; margin-top: 15px;  margin-bottom: 5px; text-align: center; font-size: 12px; cursor: pointer;" 
-<?php
-if(!empty($excel_conteo)){
-?>
-onclick="location.href='POS_renew.php?success=1&countv=<?php echo $GET_COUNTV;?>&excel=1'"       
-<?php
-}elseif(!empty($orden_pedido)){
-?>
-onclick="location.href='POS_renew.php?success=1&countv=<?php echo $_GET['countv']; ?>&orden_pedido=1&id_mesa=<?php echo $id_mesa; ?>'"       
-<?php    
-}elseif(!empty($cotizar)){
-?>
-onclick="location.href='POS_renew.php?success=1&countv=<?php echo $_GET['countv']; ?>&cotizar=1'"       
-<?php    
-}else{
-?>
-onclick="location.href='POS_renew.php?success=1&countv=<?php echo $GET_COUNTV;?>&id_mesa=<?php echo $id_mesa; ?>'"
-<?php
-}
-?>
-> <?php if(!empty($excel_conteo)){ echo 'Nuevo Conteo';}else{ echo 'Nueva venta'; } ?> </button>
-<button class="btn" style="margin: 0 auto; background: #FF5900; color: white; padding: 5px; margin-top: 15px;  margin-bottom: 5px; text-align: center; font-size: 12px; cursor: pointer;" 
-onclick="$('.outer_div, .div_izquierdo_1, .div_izquierdo_2, .div_izquierdo_3, #tamano_izquierda').css('display', ''); $('.div_load_info_cliente').css('display', 'none'); $('#modal_verificar_tmp').modal('hide');
-<?php if (!empty($_SESSION['TMPPOS_TPODOC_OP_G_'.$GET_COUNTV])){ ?> $('#tpodoc').val('<?php echo $_SESSION['TMPPOS_TPODOC_OP_G_'.$GET_COUNTV]; ?>'); $('#tpodoc').change(); <?php } ?>
-<?php
-if(!empty($excel_conteo)){
-?>
-agregar();
-<?php
-}else{
-?>
-eliminar('negocia.pe');
-<?php
-}
-?>
-">  Continuar <?php if(!empty($excel_conteo)){ echo 'Conteo';}else{ echo 'venta'; } ?>   </button>
-</div>
-</div>
-</div>
-</div>
-</div>
-<?php
-}
-?>
 
-<!--MODAL PRODUCTO TOPPINS-->
-<div class="modal fade modal_css_toppins" id="toppins_modal_pos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog">
-<div class=" modal-dialog" style="margin: 0 auto !important; top: 10%;" role="document">
-<div class="modal-content">
-
-<div class="modal-body">
-<div class="container" style="width:100%;">
-<div class="resultado_producto_toppins"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
 <input value="0" id="select_panel_value" type="hidden">
 
-<style>
-@media (min-width: 768px){
-#modal_buscar_cliente .modal-dialog {
-    width: 450px;
-
-}    
-}
-@media (max-width: 450px){
-#modal_buscar_cliente .modal-dialog {
-    width: auto;
-
-}    
-}    
-</style>
+ 
 <!-- Modal -->
 <div class="modal fade in" id="modal_buscar_cliente" role="dialog" data-backdrop="static" data-keyboard="false">
 <div class="modal-dialog "  style="">
@@ -1569,1277 +715,152 @@ eliminar('negocia.pe');
 </div>
 
 
-
 <div class="resultado_precuenta"></div>
 <div class="resultado_division_cuenta_update"></div>
 <div class="resultado_modal_lista_precio"></div>
-<?php
-//MODAL CREAR PRODUCTO IMPROVISADO
-require_once('../Operaciones/modal/modal_crear_prouducto_improvisado.php');
-$array = array(1, 1, 0, $id_mesa);
-modal_produts_improvisado($array);
 
-require_once('../config/footer.php');
-?>
 <script>
-function modal_productos(id){
-var data = new FormData(); 
-data.append('id', id);
-data.append('session_multiple', '<?php echo $session_id; ?>');
-data.append('pos_from', 1);
-eval(devolver_ajax(2, '{{EC2_DOMINIO}}Operaciones/ajax/recursos_modal_nuevo.php', 'data', '#modal_registrar_productos', '')); 
+function modal_tipo_moneda(tipo){
+if(tipo == 1){
+$('.tipo_m_1').css('background', '#ff9c00'); 
+$('.tipo_m_1').css('color', '#fff');  
+$('.tipo_m_2').css('background', '#EBEBEB'); 
+$('.tipo_m_2').css('color', 'black'); 
+$('#moneda').val('1'); 
+activa_cambio();
 }
-
-
-function mostrar_agregar_nuevo_cliente_mvp(tipo_from){
-var id = 0;
- 
-var data = new FormData();
-data.append('id', id);
-data.append('id_vacio', 1);
-data.append('tipo_from', tipo_from);
-data.append('pos', 2);
-eval(devolver_ajax(2,'{{EC2_DOMINIO}}Operaciones/ajax/recursos_modal_nuevo_cliente.php', 'data', '.ver_modal_cliente_new', ''));
-
+if(tipo == 2){
+$('.tipo_m_2').css('background', '#ff9c00'); 
+$('.tipo_m_2').css('color', '#fff');  
+$('.tipo_m_1').css('background', '#EBEBEB'); 
+$('.tipo_m_1').css('color', 'black');    
+$('#moneda').val('2'); 
+$('.div_select_tipo_moneda').css('display', '');
+activa_cambio();
 }
- 
-
-//function mostrar_modal_cliente_editar() {
-//var id = $('#id_cliente').val();
-//var tipo_from = $('#tipo_from').val();
-//if (tipo_from != "") {
-//tipo_fro = 2;
-//}
-//var data = new FormData();
-//data.append('id', id);
-//data.append('id_vacio', 1);
-//data.append('tipo_from', tipo_fro);
-//data.append('pos', 1);
-//eval(devolver_ajax(2,
-//'{{EC2_DOMINIO}}Operaciones/ajax/recursos_modal_nuevo_cliente.php',
-//'data', '.ver_modal_cliente_new', ''));
-//}
-//mostrar_modal_cliente_editar();
-    
-//ARRAAY FILTRO DE PRODUCTO
-var array_id_producto_excel = [];
-
-var array_id_pedido = [];
-
-
-//ABRIR MODAL LISTA DE PRECIO
-function modal_lista_precio(id_producto_lista){
-   
-var cliente_id_lista = $('#id_cliente').val();    
-var width_lista = $(window).width();
-var data = new FormData();
-data.append('id_producto_lista', id_producto_lista);
-data.append('cliente_id_lista', cliente_id_lista);
-data.append('width_lista', width_lista);
-data.append('session_lista', '<?php echo $session_id; ?>');
-eval(devolver_ajax(2, '{{EC2_DOMINIO}}Operaciones/ajax/modal_lista_precio.php', 'data', '.resultado_modal_lista_precio', ''));    
-}
-
-function actualizar_cambios_cuentas(){
-var data = new FormData();
-
-data.append('session_venta', '<?php echo $session_id; ?>');
-data.append('actualizar_pestana_productos', 1);
-
-eval(devolver_ajax(2, '{{EC2_DOMINIO}}POS/POS_renew.php', 'data', '.resultado_division_cuenta_update', ''));       
-}
-
-function vista_previa_precuenta(){ 
-    
-var moneda = $('#moneda').val();    
-var data = new FormData();
-data.append('session_pos_modal', '<?php echo $session_id; ?>');
-data.append('modal_preventa', 1);
-data.append('moneda', moneda);
-data.append('id_mesa', '<?php echo $id_mesa; ?>');
-eval(devolver_ajax(2, '{{EC2_DOMINIO}}POS/POS_renew.php', 'data', '.resultado_precuenta', ''));  
-}
-
-function seleccion_productos_division(id_tmp_seleccion){
-if(document.getElementById('check_division_cuenta_'+id_tmp_seleccion).checked == true){
-estado_seleccion = 1;
-} else{
-estado_seleccion = 0;
-}    
-
-var data = new FormData();
-data.append('actualizar_seleccion', '<?php echo $session_id; ?>');
-data.append('id_tmp_seleccion', id_tmp_seleccion);
-data.append('estado_seleccion', estado_seleccion);
-eval(devolver_ajax(2, '{{EC2_DOMINIO}}POS/POS_renew.php', 'data', '.resultado_division_cuenta_update', ''));      
-}
-
-function dividir_cuenta_seleccion(tipo_eleccion){
-var data = new FormData();
-data.append('tipo_eleccion', tipo_eleccion);
-data.append('es_division_cuenta', 1);
-data.append('session_dividir_cuenta', '<?php echo $session_id; ?>');
-eval(devolver_ajax(2, '{{EC2_DOMINIO}}POS/POS_renew.php', 'data', '.resultado_division_cuenta_update', ''));    
-}
-//EJECUTAR LOAD PRODUCTOS
-$('#id_cerrar_toppins').on('click', function(){
-actualizar_toppins_pos_producto();
-$('#toppins_modal_pos').modal('hide');
-});
-
-function mostrar_panel_izquierdo(){
-var ver_panel_izquierdo_info = $('#ver_panel_izquierdo_info').val();
-if(ver_panel_izquierdo_info ==1){
-$('#select_panel_value').val(0);    
-//$('.outer_div, .div_izquierdo_1, .div_izquierdo_2, .div_izquierdo_3, #tamano_izquierda').css('display', ''); $('.div_load_info_cliente').css('display', 'none'); $('.div_pos_pagar').html('');
-}
-if(ver_panel_izquierdo_info == 2){
-
-var fn_id_info_cliente = $('#id_cliente').val(); 
-if(fn_id_info_cliente > 0){
-$('#select_panel_value').val(2);      
-genera_info_cliente(fn_id_info_cliente);    
-}else{
-$('.div_btn_cliente ').click();    
-$('#select_panel_value').val(0);    
-}
-}
-
-if(ver_panel_izquierdo_info == 3){
-$('#select_panel_value').val(3);   
-$('#btn_pos_pagar').css('display', ''); 
-$('#btn_save_factura').css('display', 'none'); 
-var fn_id_info_cliente = $('#id_cliente').val(); 
-if(fn_id_info_cliente > 0){genera_info_cliente(fn_id_info_cliente);} 
-else{ <?php if(!empty($_SESSION['neg_ver_cotizaciones_14']) || !empty($_SESSION['neg_ver_orden_venta_7'])){ ?> genera_info_cliente('negocia.pe'); <?php } ?>
-} 
-var funcion_width_movil = $(window).width(); if(funcion_width_movil <= 768){ $('#lado_izquierdo').css('display', '');
-$('#lado_derecho').css('display', 'none'); filtro_fechas(1);}
-
-
-
-
-}
-if(ver_panel_izquierdo_info == 4){
-$('#select_panel_value').val(4);   
-$('#btn_pos_pagar').css('display', ''); $('#btn_save_factura').css('display', 'none'); 
-var fn_id_info_cliente = $('#id_cliente').val(); if(fn_id_info_cliente > 0){genera_info_cliente(fn_id_info_cliente);
-} else{
-$('#modal_buscar_cliente').modal('show');
-}
-var funcion_width_movil = $(window).width(); 
-if(funcion_width_movil <= 768){ 
-$('#lado_izquierdo').css('display', '');        
-$('#lado_derecho').css('display', 'none'); 
-}
-}
-
 
 }
 
-//JS MODAL TOPPINS
-function mostrar_modal_toppins(id_producto_toppins, tipo){
- 
-$('.resultado_producto_toppins').val(''); 
-var data = new FormData();
-data.append('id_producto', id_producto_toppins);
-data.append('tipo_vista', tipo);
-data.append('countv', '<?php echo $GET_COUNTV; ?>');
-eval(devolver_ajax(2, '{{EC2_DOMINIO}}Registros/actmodalproducto_toppins_pos.php', 'data', '.resultado_producto_toppins', ''));
+function adaptar_pos() {
+  // ADAPTAR LADO DERECHO - IZQUIERDO
+  var height_window = window.innerHeight;
+  var width_pantalla_movil_derecha = parseInt(window.innerWidth);
+  var cantidad_desminucion_movil;
+  var cantidad_dis_izquierda;
+  
+  if (width_pantalla_movil_derecha <= 768) {
+    cantidad_desminucion_movil = 185;
+    cantidad_dis_izquierda = 10;
+  } else {
+    cantidad_desminucion_movil = 105;
+    cantidad_dis_izquierda = 30;
+  }
+  
+  document.getElementById('lado_izquierdo').style.height = height_window + 'px';
+  document.getElementById('lado_derecho').style.height = (height_window - 20) + 'px';
+  
+  var ver_puntos_div = document.querySelector('.ver_puntos').offsetHeight;
+  var height_div_izquierdo_1 = document.querySelector('.div_izquierdo_1').offsetHeight;
+  var div_izquierdo_3 = document.querySelector('.div_izquierdo_3').offsetHeight;
+  var tamano_izquierda = height_window - height_div_izquierdo_1 - div_izquierdo_3 - cantidad_dis_izquierda;
+  document.getElementById('tamano_izquierda').style.height = tamano_izquierda + 'px';
+  
+  var div_derecho_1 = document.querySelector('.div_derecho_1').offsetHeight;
+  var div_derecho_3 = document.querySelector('.div_derecho_3').offsetHeight;
+  var tamano_derecha = height_window - div_derecho_1 - div_derecho_3 - cantidad_desminucion_movil - ver_puntos_div;
+  document.getElementById('tamano_derecha').style.height = tamano_derecha + 'px';
+  
+  // ADAPTAR DIV_1 DEL LADO IZQUIERDO
+  var width_div_izquierdo_1 = document.querySelector('.div_izquierdo_1').offsetWidth;
+  var div_select_vendedor = document.querySelector('.div_select_vendedor').offsetWidth;
+  //var div_separator_1 = document.querySelector('.div_separator_1').offsetWidth;
+  var div_separator_1 = 0;
+  //var div_separator_2 = document.querySelector('.div_separator_2').offsetWidth;
+    var div_separator_2 = 0;
+  var div_registrar_producto = document.querySelector('.div_registrar_producto').offsetWidth;
+  //var div_separator_3 = document.querySelector('.div_separator_3').offsetWidth;
+  var div_separator_3 = 0;
+  var div_cambio_vista_producto = document.querySelector('.div_cambio_vista_producto').offsetWidth;
+  
+  if (width_div_izquierdo_1 <= 370) {
+    div_separator_1 = 10;
+    div_separator_2 = 10;
+    div_separator_3 = 10;
+    document.querySelector('.div_separator_1').style.width = div_separator_1 + 'px';
+    document.querySelector('.div_separator_2').style.width = div_separator_2 + 'px';
+    document.querySelector('.div_separator_3').style.width = div_separator_3 + 'px';
+  }
+  
+  var div_buscar_producto = width_div_izquierdo_1 - (div_select_vendedor + div_separator_1 + div_separator_2 + div_registrar_producto + div_separator_3 + div_cambio_vista_producto + 30);
+  //document.querySelector('.div_buscar_producto').style.width = div_buscar_producto + 'px';
+  
+// ADAPTAR DIV_1 LADO DERECHO
+  var width_div_derecho_1 = document.querySelector('.div_derecho_1').offsetWidth;
+  var div_select_serie = document.querySelector('.div_select_serie').offsetWidth;
+  var div_input_num_factura = document.querySelector('.div_input_num_factura').offsetWidth;
+  var div_select_tipodoc = width_div_derecho_1 - (div_select_serie + div_input_num_factura + 100);
+  //document.querySelector('.div_select_tipodoc').style.width = div_select_tipodoc + 'px';
+  
+  var div_btn_cliente = document.querySelector('.div_btn_cliente').offsetWidth;
+  var div_select_tipo_despacho = document.querySelector('.div_select_tipo_despacho').offsetWidth;
+  var div_select_tipo_moneda = document.querySelector('.div_select_tipo_moneda').offsetWidth;
+  var div_input_cliente = width_div_derecho_1 - (div_btn_cliente + div_select_tipo_despacho + div_select_tipo_moneda + 30);
+  //document.querySelector('.div_input_cliente').style.width = div_input_cliente + 'px';
+  
+  // ADAPTAR DIV INFO CLIENTE
+  var div_load_info_cliente = height_window - 50;
+  //document.querySelector('.div_load_info_cliente').style.height = div_load_info_cliente + 'px';
+  
+  // ADAPTAR DIV INFO PRODUCTO
+  var div_load_info_producto = height_window - 50;
+  //document.querySelector('.div_load_info_producto').style.height = div_load_info_producto + 'px';
+  
+  // ADAPTAR DIV POS PAGAR
+  var div_pos_pagar = height_window - 50;
+  document.querySelector('.div_pos_pagar').style.height = div_pos_pagar + 'px';
 }
-
-//IMPRESION DOBLE
-var mywindow = '';
-
-//TIPODOC AL CARGAR LA PAGINA
-var tipodoc_temporal = '';
-
-//GUIAS DE REMISION MULTIPLES
-var select_array_guia_remision = [];
-var x = 1;
-
-//CONTROLADOR DE TIEMPO (OPTIMIZACIÓN KEYUP)
-var time_controller = '';
-
-//ATAJO DE TECLAS
-window.addEventListener("keydown", function (event) {
-var keycode_POS = event.keyCode;
-
-//CONTINUAR
-if(keycode_POS == 120){
-$('#btn_pos_pagar').click();
-}
-
-//COBRAR / COTIZAR / ORDENAR
-if(keycode_POS == 121){
-$('#btn_save_factura').click();
-}
-
-//FOCUS BUSCAR PRODUCTO
-if(keycode_POS == 113){
-$('#n_producto').focus();
-}
-
-//SALIR (CLICK EN RETROCEDER)
-if(keycode_POS == 27){
-$('#btn_new_venta').click();
-$('#btn_lista_de_productos').click();
-}
-
-}, false);
-
-//PRE LOADER
-window.addEventListener("load", function () {
-setTimeout(function () {
-$("#demo-content").css('display', 'none');
-}, 500);
-});
-
-//TIPODOC POSIBLE PARA VENTA EN ORDEN DE VENTA
-function act_serie_pos(){
-var id = $('#tipodoc_venta').val();
-eval(devolver_ajax(3, '{{EC2_DOMINIO}}Operaciones/ajax_operaciones/act_serie.php?sin_num_factura=1&td='+id, '', '#select_serie_pos', ''));
-}
-
-//ADAPTAR HEIGHT 100% SIEMPRE
-function adaptar_pos(){
-    
-//ADAPTAR LADO DERECHO - IZQUIERDO
-var height_window = $(window).height();
-var width_pantalla_movil_derecha = parseInt($(window).width());
-var cantidad_desminucion_movil;
-if(width_pantalla_movil_derecha <= 768){
-cantidad_desminucion_movil = 185;    
-cantidad_dis_izquierda = 10;
-}else{
-cantidad_desminucion_movil = 105;   
-cantidad_dis_izquierda = 30;
-}
-$('#lado_izquierdo').height(height_window);
-$('#lado_derecho').height(height_window-20);    
-var ver_puntos_div  = $('.ver_puntos').height();
-var height_div_izquierdo_1 = $('.div_izquierdo_1').height();
-var div_izquierdo_3 = $('.div_izquierdo_3').height();
-var tamano_izquierda = height_window - height_div_izquierdo_1 - div_izquierdo_3 - cantidad_dis_izquierda;      
-$('#tamano_izquierda').height(tamano_izquierda);
-var div_derecho_1 = $('.div_derecho_1').height();
-var div_derecho_3 = $('.div_derecho_3').height();
-var tamano_derecha = height_window - div_derecho_1 - div_derecho_3 - cantidad_desminucion_movil - ver_puntos_div;    
-$('#tamano_derecha').height(tamano_derecha);
-
-//ADAPTAR DIV_1 DEL LADO IZQUIERDO
-var width_div_izquierdo_1 = $('.div_izquierdo_1').width();
-var div_select_vendedor = $('.div_select_vendedor').width();
-var div_separator_1 = $('.div_separator_1').width();
-var div_separator_2 = $('.div_separator_2').width();
-var div_registrar_producto = $('.div_registrar_producto').width();
-var div_separator_3 = $('.div_separator_3').width();
-var div_cambio_vista_producto = $('.div_cambio_vista_producto').width();
-if(width_div_izquierdo_1 <= 370){
-div_separator_1 = 10;  
-div_separator_2 = 10;  
-div_separator_3 = 10;  
-$('.div_separator_1').width(div_separator_1+'px');
-$('.div_separator_2').width(div_separator_2+'px');
-$('.div_separator_3').width(div_separator_3+'px');
-}
-var div_buscar_producto = width_div_izquierdo_1 - (div_select_vendedor + div_separator_1 + div_separator_2 + div_registrar_producto + div_separator_3 + div_cambio_vista_producto + 30);
-$('.div_buscar_producto').width(div_buscar_producto+'px');
-
-//ADAPTAR DIV_1 LADO DERECHO
-var width_div_derecho_1 = $('.div_derecho_1').width();
-var div_select_serie = $('.div_select_serie').width();
-var div_input_num_factura = $('.div_input_num_factura').width();
-var div_select_tipodoc = width_div_derecho_1 - (div_select_serie + div_input_num_factura + 100);
-$('.div_select_tipodoc').width(div_select_tipodoc+'px');
-//$('#tipodoc_venta').width(div_select_tipodoc+'px');
-//$('#serie_venta').width((div_input_num_factura + 10)+'px');
-
-var div_btn_cliente = $('.div_btn_cliente').width();
-var div_select_tipo_despacho = $('.div_select_tipo_despacho').width();
-var div_select_tipo_moneda = $('.div_select_tipo_moneda').width();
-var div_input_cliente = width_div_derecho_1 - (div_btn_cliente +div_select_tipo_despacho + div_select_tipo_moneda + 30);
-$('.div_input_cliente').width(div_input_cliente+'px');
-
-//ADAPTAR DIV INFO CLIENTE
-var div_load_info_cliente = height_window - 50;
-$('.div_load_info_cliente').height(div_load_info_cliente);
-
-//ADAPTAR DIV INFO PRODUCTO
-var div_load_info_producto = height_window - 50;
-$('.div_load_info_producto').height(div_load_info_producto);
-
-//ADAPTAR DIV POS PAGAR
-var div_pos_pagar = height_window - 50;
-$('.div_pos_pagar').height(div_pos_pagar);
-
-};
 
 //FUNCIONES EJECUTAR AUTOMATICAMENTE
 function contador_adaptar_pos(){
 adaptar_pos();
 }
-
-function contador_correlativo(){
-$('#serie').change();
-}
-var function_contador_correlativo = null;
-function myStartFunction() {
-function_contador_correlativo = setInterval(function() {
-if(pausar_contador_all == 0){
-//VERIFICAR SI HAY INTERNET
-if(navigator.onLine){
-contador_correlativo();
-}
-}
-}, 3000);
-}
-
-function contador_correlativo_orden_venta_cotizacion(){
-var tpodoc_contador = $('#tpodoc').val();
-if(pausar_contador_all == 0){
-if(tpodoc_contador == 50 || tpodoc_contador == 51){
-<?php if (empty((int)$_GET['orden_pedido']) || (empty((int)$_GET['orden_pedido']) && !empty($_SESSION['poc_actived_fn_restaurant']))) {
-?>
-$('.btn_todos_los_pedidos').css('display', 'none');
-<?php
-} ?>
-eval(devolver_ajax(3, '{{EC2_DOMINIO}}Operaciones/ajax_operaciones/act_serie.php?td_solo_correlativo='+tpodoc_contador, '', '#select_correlativo_pos', ''));
-}else {
-$('.btn_todos_los_pedidos').css('display', '');    
-}
-}
-}
-var pausar_contador_all = 0; var function_contador_cotz_orden = null;
-function myStartFunction_cotz_orden() {
-function_contador_cotz_orden = setInterval(function() {
-if(pausar_contador_all == 0){
-//VERIFICAR SI HAY INTERNET
-if(navigator.onLine){
-contador_correlativo_orden_venta_cotizacion();
-}
-}
-}, 1000);
-}
-
-$('#num_factura').on('click', function(){
-var tpodoc = $('#tpodoc').val();
-if((tpodoc == 50 || tpodoc == 51) && pausar_contador_all == 0){
-if (confirm("Desea Editar el Correlativo?") == true) {
-pausar_contador_all = 1;
-}
-}
-});
-
-//CONSULTAR INFO CLIENTE
-function genera_info_cliente(id){
-<?php
-$orden_final = 0;
-if(!empty($orden_pedido)){
-$orden_final = 1; 
-}
-?> 
-var panel_select_info = $('#select_panel_value').val(); 
-var data = new FormData();
-data.append('panel_select_info', panel_select_info);
-data.append('fn_id_info_cliente', id);
-data.append('countv', '<?php echo $GET_COUNTV;?>');
-data.append('id_mesa', <?php echo $id_mesa; ?>);
-data.append('excel_conteo', <?php echo $excel_conteo; ?>);
-data.append('orden_pedido_final', <?php echo $orden_final; ?>);
-
-var jqxhr3 = eval(devolver_ajax(2, '{{EC2_DOMINIO}}functions/fn_recursos_POS.php', 'data', '.div_load_info_cliente', ''));
-
-<?php 
-if(!empty($_SESSION['poc_actualizar_notas'])){
-//if ($_SESSION['IDEMPRESA'] != 746 && $_SESSION['IDEMPRESA'] != 740 && $_SESSION['IDEMPRESA'] != 1 ) {
-?>
-jqxhr3.always(function() {
-var fn_tipodoc = $('#tpodoc').val();
-load_info_general(fn_tipodoc);
-});
-<?php 
-}
-?>
-$('.outer_div, .div_izquierdo_1, .div_izquierdo_2, .div_izquierdo_3, #tamano_izquierda, .div_load_info_producto, .div_pos_pagar').css('display', 'none');
-$('.div_pos_pagar').html('');
-$('.div_load_info_cliente, #btn_pos_pagar').css('display', '');
-}
-function genera_info_general(id){
-   
-var data = new FormData();
-data.append('fn_id_info_cliente', id);
-data.append('countv', '<?php echo $GET_COUNTV;?>');
-data.append('id_mesa', <?php echo $id_mesa; ?>);
-data.append('excel_conteo', <?php echo $excel_conteo; ?>);
-
-var jqxhr2 = eval(devolver_ajax(2, '{{EC2_DOMINIO}}functions/fn_recursos_POS.php', 'data', '.div_load_info_cliente', ''));
-
-<?php 
-if(!empty($_SESSION['poc_actualizar_notas'])){
-//if ($_SESSION['IDEMPRESA'] != 746 && $_SESSION['IDEMPRESA'] != 740 && $_SESSION['IDEMPRESA'] != 1 ) {
-?>
-jqxhr2.always(function() {
-var fn_tipodoc = $('#tpodoc').val();
-load_info_general(fn_tipodoc);
-});
-<?php 
-}
-?>
-
-}
-
-//BUSCAR REFERIDO
-$(function(){
-$('#nombre_referido').autocomplete({
-source: function(request, response){
-$.ajax({
-url: '{{EC2_DOMINIO}}Operaciones/ajax/json_referido.php',
-type: 'POST',
-dataType: "JSON",
-data: {
-search: request.term
-},
-success: function(data){
-response(data);
-}
-});
-},
-select: function(event, ui){
-$('#nombre_referido').val(ui.item.label);
-$('#id_referido').val(ui.item.value);
-
-return false;
-}
-});
-});
-$('#nombre_referido').on('keyup', function(){
-$('#id_referido').val('');
-});
-
-//FUNCION LOAD INFO GENERAL
-function load_info_general(fn_tipodoc){
-var ancho_pantalla_movil = $(window).width();    
-var data = new FormData();
-data.append('fn_tipodoc', fn_tipodoc);
-data.append('fn_info_general', 1);
-data.append('ancho_pantalla_movil', ancho_pantalla_movil);
-data.append('id_mesa', <?php echo $id_mesa; ?>);
-data.append('excel_conteo', <?php echo $excel_conteo; ?>);
-data.append('countv', '<?php echo $GET_COUNTV;?>');
-//EJECUTAR FUNCION
-eval(devolver_ajax(2, '{{EC2_DOMINIO}}functions/fn_recursos_POS.php', 'data', '.outer_div_info_general', ''));
-}
-
-//CONFIGURAR DATOS PRODUCTO
-function POS_configuracion_producto(id, tmp, igv){
-var pantalla_pos_movil_congif = $(window).width();    
-var data = new FormData();
-data.append('fn_id_info_producto', id);
-data.append('fn_id_tmp_producto', tmp);
-data.append('fn_tipoigv', igv);
-data.append('ancho_pantalla_movil', pantalla_pos_movil_congif);
-data.append('countv', '<?php echo $GET_COUNTV;?>');
-data.append('id_mesa', <?php echo $id_mesa; ?>);
-data.append('excel_conteo', <?php echo $excel_conteo; ?>);
-eval(devolver_ajax(2, '{{EC2_DOMINIO}}functions/fn_recursos_POS.php', 'data', '.div_load_info_producto', ''));
-$('.outer_div, .div_izquierdo_1, .div_izquierdo_2, .div_izquierdo_3, #tamano_izquierda, .div_load_info_cliente, .div_pos_pagar').css('display', 'none');
-$('.div_pos_pagar').html('');
-$('.div_load_info_producto, #btn_pos_pagar').css('display', '');
-
-if(pantalla_pos_movil_congif <= 768){
-$('#lado_izquierdo').css('display', '');
-$('#lado_derecho').css('display', 'none');   
-}
-}
-
-//BTN PAGAR
-function POS_pagar(){
-var width_pantalla_pos_movil_pagar = $(window).width();   
-var tipo_moneda = $('#moneda').val();
-var id_cliente = $('#id_cliente').val();
-var data = new FormData();
-data.append('fn_pos_pagar', 1);
-data.append('id_cliente', id_cliente);
-data.append('tipo_moneda', tipo_moneda);
-data.append('ancho_pantalla_movil', width_pantalla_pos_movil_pagar);
-data.append('id_mesa', <?php echo $id_mesa; ?>);
-data.append('excel_conteo', <?php echo $excel_conteo; ?>);
-data.append('countv', '<?php echo $GET_COUNTV;?>');
-eval(devolver_ajax(2, '{{EC2_DOMINIO}}functions/fn_recursos_POS.php', 'data', '.div_pos_pagar', ''));
-$('.outer_div, .div_izquierdo_1, .div_izquierdo_2, .div_izquierdo_3, #tamano_izquierda, .div_load_info_cliente, .div_load_info_producto, #btn_pos_pagar').css('display', 'none');
-$('.div_pos_pagar').css('display', '');
-if(width_pantalla_pos_movil_pagar >=769 && width_pantalla_pos_movil_pagar <= 820){
-$('#lado_izquierdo').css('display', '');
-$('#lado_derecho').css('display', 'none');
-$('#lado_izquierdo').addClass('width_820');
-}else if(width_pantalla_pos_movil_pagar <=768){
-$('#lado_izquierdo').css('display', '');
-$('#lado_derecho').css('display', 'none');
-}else{
-  
-}
-
-
-}
-
-//BOTON VISTA
-$('#btn_vista').on('click', function(){
-var page = $('#input_page').val();
-eval(devolver_ajax(3, '{{EC2_DOMINIO}}Operaciones/ajax_punto_venta/vista_usuario.php?page='+page, '', '.resultados_pos', ''));
-});
-
-//FUNCION LOAD PRINCIPAL
-var xhr_fn_buscar_productos = false;
-function fn_buscar_productos(){
-if(xhr_fn_buscar_productos[1] == true){ xhr_fn_buscar_productos[0].abort(); }
-clearTimeout(time_controller);
-time_controller = setTimeout(function(){
-//FUNCION BUSQUEDA DE BARRAS
-var data = new FormData();
-data.append('n_producto', $('#n_producto').val());
-data.append('n_tipo_comprobante', $('#tpodoc').val());
-xhr_fn_buscar_productos = devolver_ajax_2022([4, '{{EC2_DOMINIO}}Operaciones/ajax_punto_venta/agregar_facturacion_barcode.php', data, '.resultados_pos', '', 5000, 0]);    
-$('#id_filtro_detalle_relacion').val('');
-$('.color_adicional_off_estatico').css('background','#F7F7F7');  
-}, 200);
-}
-
-//FUNCION LOAD
-function load(page){
-var n_producto = $('#n_producto').val();
-var tipo_comprobante = $('#tpodoc').val();
-var almacen_empresa = $('#almacen_empresa').val();
-var filtro_campos_adicionales = $('#filtro_campos_adicionales').val();
-var id_filtro_detalle_relacion = $('#id_filtro_detalle_relacion').val();
-var ancho_pantalla_movil = $(window).width();
-if(ancho_pantalla_movil <= 768){
-$('#lado_derecho').css('display', 'none');
-}
-//FORMAR ARRAY DATA
-var data = new FormData();
-data.append('action', 'ajax');
-data.append('page', page);
-data.append('n_producto', n_producto);
-data.append('tipo_comprobante', tipo_comprobante);
-data.append('almacen_empresa', almacen_empresa);
-data.append('ancho_pantalla_movil', ancho_pantalla_movil);
-data.append('filtro_campos_adicionales', filtro_campos_adicionales);
-data.append('id_filtro_detalle_relacion', id_filtro_detalle_relacion);
-data.append('id_mesa', <?php echo $id_mesa; ?>);
-data.append('excel_conteo', <?php echo $excel_conteo; ?>);
-data.append('countv', '<?php echo $GET_COUNTV;?>');
-
-//EJECUTAR FUNCION
-eval(devolver_ajax(2, '{{EC2_DOMINIO}}functions/fn_recursos_POS.php', 'data', '.outer_div', ''));
-}
-
-//NUEVO PRODUCTO
-$('#btn_new').on('click', function(){
-<?php
-if(!empty($_SESSION['neg_reg_new_producto_1'])){
-?>
-$('.salir1').remove();
-<?php
-} else {
-?>
-alert('Usted no cuenta con los permisos necesarios para registrar productos');
-<?php
-}
-?>    
-
-});
-
-//BORDER DE TR EN FUNCION GENERAR DETALLE
-function remover_tr_borde(id_tmp_tr){
-var input_borde = $('#activar_borde_tr_detalle_'+id_tmp_tr).val();
-if(input_borde ==1){
-$(".border_remove_mous_"+id_tmp_tr).css('border-bottom-width','0px');
-$("#tr_append_"+id_tmp_tr+", #tr_append_sub_tabla_"+id_tmp_tr).css('border-left','3px solid red');
-$('#activar_borde_tr_detalle_'+id_tmp_tr).val(2); 
-}
-if(input_borde ==2){
-$(".border_remove_mous_"+id_tmp_tr).css('border-bottom-width','1px');
-$("#tr_append_"+id_tmp_tr+", #tr_append_sub_tabla_"+id_tmp_tr).css('border-left','0px');
-$('#activar_borde_tr_detalle_'+id_tmp_tr).val(1);
-}
-}
-
-//RECURSOS DETALLE PRODUCTOS
-function agregar(id){
-var id_cliente = $('#id_cliente').val();
-if($('#tipo_operacion').length){
-var tipo_operacion = $('#tipo_operacion').val();
-} else {
-var tipo_operacion = 1;
-}
-if($('#tpodoc').length){
-var tipodoc = $('#tpodoc').val();
-} else {
-var tipodoc = 1;
-}
-if($('#countv').length){
-var countv = $('#countv').val();
-} else {
-var countv = 0;
-}
-if($('#almacen_empresa').length){
-var almacen_empresa = $('#almacen_empresa').val();
-} else {
-var almacen_empresa = 0;
-}
-var data = new FormData();
-data.append('punto_venta', 1);
-data.append('bd', 1);
-data.append('id', id);
-data.append('id_cliente', id_cliente);
-data.append('tipo_operacion', tipo_operacion);
-data.append('tipodoc', tipodoc);
-data.append('countv', countv);
-data.append('almacen_empresa', almacen_empresa);
-data.append('orden_pedido', '<?php echo $orden_pedido; ?>');
-<?php
-if(!empty($excel_conteo)){
-?>
-data.append('excel_conteo_producto', 1);   
-<?php  
-} else{
-?>
-document.getElementById('tpodoc').disabled = true;
-document.getElementById('serie').disabled = true;
-document.getElementById('btn_pos_pagar').disabled = true;        
-<?php  
-}
-?>
- 
-var jqxhr_agregar = eval(devolver_ajax(2, '{{EC2_DOMINIO}}Operaciones/ajax_operaciones/agregar_facturacion.php', 'data', '#div_load_tabla_detalle', ''));
-<?php
-if(empty($excel_conteo)){
-?>
-jqxhr_agregar.always(function() {
-document.getElementById('tpodoc').disabled = false;
-document.getElementById('serie').disabled = false;
-document.getElementById('btn_pos_pagar').disabled = false;
-});
-<?php
-}
-?>
-var ancho_pantalla_telefono = $(window).width();
-if(ancho_pantalla_telefono <= 768){
-$('#lado_derecho').css('display', '');
-$('#lado_izquierdo').css('display', 'none');
-}  
-
-}
-function eliminar(id){
-if($('#countv').length){
-var countv = $('#countv').val();
-} else {
-var countv = 0;
-}
-
-var data = new FormData();
-data.append('punto_venta', 1);
-data.append('bd', 1);
-data.append('countv', countv);
-<?php
-if(!empty($excel_conteo)){
-?>
-data.append('excel_conteo_producto', 1);   
-<?php  
-}else{
-?>
-document.getElementById('tpodoc').disabled = true;
-document.getElementById('serie').disabled = true;
-document.getElementById('btn_pos_pagar').disabled = true;   
-<?php      
-}
-?>
-
-
-var jqxhr = eval(devolver_ajax(2, '{{EC2_DOMINIO}}Operaciones/ajax_operaciones/agregar_facturacion.php?id='+id, 'data', '#div_load_tabla_detalle', ''));
-<?php
-if(empty($excel_conteo)){
-?>
-jqxhr.always(function() {
-document.getElementById('tpodoc').disabled = false;
-document.getElementById('serie').disabled = false;
-document.getElementById('btn_pos_pagar').disabled = false;
-var select_orden_venta = $('#select_orden_venta').val();
-var id_tipodoc_venta = $('#id_tipodoc_venta').val();
-if(select_orden_venta > 0 && id_tipodoc_venta > 0){
-$('#tpodoc').val(id_tipodoc_venta);
-}
-$('#tpodoc').change();
-});
-<?php
-}
-?>
-}
-
-
-function eliminar_array_excel(id_producto_excel){
-
-var array_conteo = array_id_producto_excel.indexOf(id_producto_excel);  
-if(array_conteo >= 0){
-var posi_id_producto_excel = array_id_producto_excel.indexOf(id_producto_excel);    
-array_id_producto_excel.splice(posi_id_producto_excel, 1);
-}
-}
-
-
-function fn_actualizar(id){
-if($('#observacion_'+id).length){
-var observacion = $('#observacion_'+id).val();
-} else {
-var observacion = '';
-}
-if($('#cantidad_'+id).length){
-var cantidad = $('#cantidad_'+id).val();
-} else {
-var cantidad = 0;
-}
-if($('#idequivalencia_'+id).length){
-var idequivalencia = $('#idequivalencia_'+id).val();
-} else {
-var idequivalencia = 0;
-}
-if($('#tmp_valor_unitario_'+id).length){
-var tmp_valor_unitario = $('#tmp_valor_unitario_'+id).val();
-} else {
-var tmp_valor_unitario = 0;
-}
-if($('#tmp_valor_descuento_'+id).length){
-var tmp_valor_descuento = $('#tmp_valor_descuento_'+id).val();
-} else {
-var tmp_valor_descuento = 0;
-}
-if($('#tmp_total_descuento_'+id).length){
-var tmp_total_descuento = $('#tmp_total_descuento_'+id).val();
-} else {
-var tmp_total_descuento = 0;
-}
-if($('#tipoigv_'+id).length){
-var tipoigv = $('#tipoigv_'+id).val();
-} else {
-var tipoigv = 1;
-}
-if($('#tmp_subtotal_'+id).length){
-var tmp_subtotal = $('#tmp_subtotal_'+id).val();
-} else {
-var tmp_subtotal = 0;
-}
-if($('#tmp_total_igv_'+id).length){
-var tmp_total_igv = $('#tmp_total_igv_'+id).val();
-} else {
-var tmp_total_igv = 0;
-}
-if($('#tmp_total_isc_'+id).length){
-var tmp_total_isc = $('#tmp_total_isc_'+id).val();
-} else {
-var tmp_total_isc = 0;
-}
-if($('#peso_'+id).length){
-var peso = $('#peso_'+id).val();
-} else {
-var peso = 0;
-}
-if($('#select_lista_precio_'+id).length){
-var id_lista_precio = $('#select_lista_precio_'+id).val();
-} else {
-var id_lista_precio = 0;
-}
-if($('#countv').length){
-var countv = $('#countv').val();
-} else {
-var countv = 0;
-}
-if($('#tmp_nombre_producto_'+id).length){
-var tmp_nombre_producto = $('#tmp_nombre_producto_'+id).val();
-} else {
-var tmp_nombre_producto = 0;
-}
-if($('#ch_id_'+id).length){
-var ch_id = $('#ch_id_'+id).val();
-} else {
-var ch_id = 0;
-}
-if($('#estado_atendido_'+id).length){
-var estado_atendido = $('#estado_atendido_'+id).val();
-} else {
-var estado_atendido = 0;
-}
-if($('#tpodoc').length){
-var tpodoc = $('#tpodoc').val();
-} else {
-var tpodoc = 0;
-}
-if($('#almacen_empresa').length){
-var almacen_empresa = $('#almacen_empresa').val();
-} else {
-var almacen_empresa = 0;
-}
-
-var data = new FormData();
-data.append('bd', 1);
-data.append('id_refresh', id);
-data.append('observacion', observacion);
-data.append('cantidad', cantidad);
-data.append('idequivalencia', idequivalencia);
-data.append('tmp_valor_unitario', tmp_valor_unitario);
-data.append('tmp_valor_descuento', tmp_valor_descuento);
-data.append('tmp_total_descuento', tmp_total_descuento);
-data.append('tipoigv', tipoigv);
-data.append('tmp_subtotal', tmp_subtotal);
-data.append('tmp_total_igv', tmp_total_igv);
-data.append('tmp_total_isc', tmp_total_isc);
-data.append('peso', peso);
-data.append('id_lista_precio', id_lista_precio);
-data.append('countv', countv);
-data.append('punto_venta', 1);
-data.append('tmp_nombre_producto', tmp_nombre_producto);
-data.append('estado_atendido', estado_atendido);
-data.append('ch_id', ch_id);
-data.append('tipodoc', tpodoc);
-data.append('almacen_empresa', almacen_empresa);
-eval(devolver_ajax(4, '{{EC2_DOMINIO}}Operaciones/ajax_operaciones/agregar_facturacion.php', 'data', '#resultados', ''));
-}
-
-function exportar_conteo_inventario(){
-    
-window.open('{{EC2_DOMINIO}}inventario/backend/reportes_inventario.php?tipo_reporte_excel=1&menu=1&n_sucursal=<?php echo $_SESSION['IDSUCURSAL']; ?>&n_producto='+array_id_producto_excel+'&n_tipo_producto=&n_categoria=&n_marca=&stock_minimo=&n_get_productos=&n_productos_actividad=&n_texto_busqueda=&fnlab_productos_existentes=&fn_id_codigo_sunat=&fn_fecha_hasta=&fnlab_vista_inventario=&filtro_stock_cantidad=&excel=1&session_id_excel=<?php echo $session_id; ?>', '_blank'); 
-}
-
-function mandaprecio(id){
-var cantidad = $('#cantidad_'+id).val();
-var equivalencia = $('#idequivalencia_'+id).val();
-var select_lista_precio = $('#select_lista_precio_'+id).val();
-
-var data = new FormData();
-data.append('id', id);
-data.append('cantidad', cantidad);
-data.append('equivalencia', equivalencia);
-data.append('select_lista_precio', select_lista_precio);
-eval(devolver_ajax(4, '{{EC2_DOMINIO}}Operaciones/ajax_operaciones/cambia_precio_unidad.php', 'data', '#resultados_lp', ''));
-}
-function actualiza_cantidad(lmpm_producto, lmpm_bd, valor_descuento, total_desc, lmpm_tipo_igv, lmpm_observacion, lmpm_isc, lmpm_cantidad_oficial, lmpm_valor_unit_precio, lmpm_equivalencia, lmpm_uequivalente, lmpm_valor_v, lmpm_igv){
-var data = new FormData();
-data.append('lmpm_producto', lmpm_producto);
-data.append('lmpm_bd', lmpm_bd);
-data.append('valor_descuento', valor_descuento);
-data.append('total_desc', total_desc);
-data.append('lmpm_tipo_igv', lmpm_tipo_igv);
-data.append('lmpm_observacion', lmpm_observacion);
-data.append('lmpm_isc', lmpm_isc);
-data.append('lmpm_cantidad_oficial', lmpm_cantidad_oficial);
-data.append('lmpm_valor_unit_precio', lmpm_valor_unit_precio);
-data.append('lmpm_equivalencia', lmpm_equivalencia);
-data.append('lmpm_uequivalente', lmpm_uequivalente);
-data.append('lmpm_valor_v', lmpm_valor_v);
-data.append('lmpm_igv', lmpm_igv);
-eval(devolver_ajax(4, '{{EC2_DOMINIO}}Operaciones/ajax_tmp/actualiza_precio.php', 'data', '#resultados', ''));
-}
-function precio_decimal(id){
-var valor = $('#precio_valor_decimal_'+id).val();
-if($('#tpodoc').length){
-var document = $('#tpodoc').val();
-} else {
-var document = 1;
-}
-var valor_final;
-if(document == 5){
-valor_final = parseFloat(valor);
-} else {
-valor_final = parseFloat(valor) / 1.18;
-}
-$('#precio_venta_'+id).val(valor_final);
-$('#valor_decimal_'+id).val(valor_final);
-}
-function refresh_price(id){
-if(confirm('Guardar precio como predeterminado?')){
-var price = $('#precio_valor_decimal_'+id).val();
-var idequivalencia = $('#idequivalencia_'+id).val();
-
-var data = new FormData();
-data.append('id', id);
-data.append('price', price);
-data.append('idequivalencia', idequivalencia);
-eval(devolver_ajax(4, '{{EC2_DOMINIO}}Operaciones/ajax_punto_venta/refresh_price.php', 'data', '#resultados', ''));
-}
-}
-//VER PUNTOS CLIENTE - POS
-function puntos_clientes_pos(id) {
-
-var data = new FormData();
-data.append('id', id);
-eval(devolver_ajax(2, '{{EC2_DOMINIO}}Operaciones/ajax/ajax_puntos_clientes.php', 'data', '.ver_puntos', ''));
-}
-
-function mp_load_campo_adicional_cliente(id){
-var data = new FormData();
-data.append('id_cliente_editar', id); 
-data.append('id_modulo', 1);
-eval(devolver_ajax(2, '{{EC2_DOMINIO}}Operaciones/modal/campo_adicional_cliente.php', 'data', '.div_campo_adicional', ''));    
-}
-//BUSCAR CLIENTE / PROVEEDOR
-$(function(){
-$("#b").autocomplete({
-source: function(request, response){
-$.ajax({
-url: '{{EC2_DOMINIO}}Operaciones/ajax/json_cliente.php',
-type: 'POST',
-dataType: "JSON",
-data: {
-search: request.term
-},
-success: function(data){
-response(data);
-}
-});
-},
-select: function(event, ui){
-if(ui.item.value == "0"){
-
-//CLIENTES
-mostrar_agregar_nuevo_cliente_mvp(1);
-//limpiamodalclienteproveedor();
-//$('#fc_nuevoClienteProveedor').modal('show');
-
-//NOMBRE DE CLIENTE EN MODAL DE REGISTRO
-var num_doc_cliente = $('#b').val();
-$('#fc_dni_cliente_proveedor').val(num_doc_cliente);
-
-
-} else {
-//mp_load_campo_adicional_cliente(ui.item.value);
-$('#id_cliente').val(ui.item.value);
-$('#b').val(ui.item.label);
-$('#n_direccion_cliente').val(1);
-puntos_clientes_pos(ui.item.value);
-
-
-}
-return false;
-}
-});
-});
-//BUSCAR GUIAS CON CLIENTE
-$(function(){
-$("#buscar_cliente_mod").autocomplete({
-source: function(request, response){
-$.ajax({
-url: '{{EC2_DOMINIO}}Operaciones/ajax/json_cliente.php',
-type: 'POST',
-dataType: "JSON",
-data: {
-search: request.term
-},
-success: function(data){
-response(data);
-}
-});
-},
-select: function(event, ui){
-if(ui.item.value == "0"){
-
-//CLIENTES
-limpiamodalclienteproveedor();
-$('#fc_nuevoClienteProveedor').modal('show');
-//window.open('{{EC2_DOMINIO}}registros.php?id=1&nuevo_registro=1', '_blank');
-
-//NOMBRE DE CLIENTE EN MODAL DE REGISTRO
-var num_doc_cliente = $('#b').val();
-$('#fc_dni_cliente_proveedor').val(num_doc_cliente);
-
-
-} else {
-$('#id_cliente').val(ui.item.value);
-$('#b').val(ui.item.label);
-$('#buscar_cliente_mod').val(ui.item.label);
-$('#n_direccion_cliente').val(1);
-genera_info_cliente(ui.item.value);
-if (screen.width > 768){ 
-$('#modal_buscar_cliente').modal('hide');    
-puntos_clientes_pos(ui.item.value);
-}
-$('#buscar_cliente_mod').val('');
-}
-return false;
-}
-});
-});
-
-$('#b').on('keyup', function(e){
-var keyCode = e.keyCode || e.which;
-if((keyCode >= 48 && keyCode <= 90) || (keyCode >= 96 && keyCode <= 105) || (keyCode == 8) || (keyCode == 46)){
-$('#b_ruc').html("");
-$('#b_nombre').html("");
-$('#b_direccion').html("");
-$('#id_cliente').val("");
-$('#select_orden_venta').val("");
-$('#check_multiple_guia_remision').val("");
-$('#n_direccion_cliente').val("");
-$('.outer_div, .div_izquierdo_1, .div_izquierdo_2, .div_izquierdo_3, #tamano_izquierda').css('display', ''); $('.div_load_info_cliente').css('display', 'none');
-$('#btn_pos_pagar').css('display', ''); $('#btn_save_factura').css('display', 'none');
-$('.ver_puntos').html('');
-$('.ver_linea_credito').html('');
-}
-});
-$('#b').blur(function(){
-var lmpm = $('#id_cliente').val();
-if(lmpm == "" || lmpm == 0){
-$('#b_ruc').html("");
-$('#b_nombre').html("");
-$('#b_direccion').html("");
-$('#b').val("");
-$('#id_cliente').val("");
-$('#select_orden_venta').val("");
-$('#check_multiple_guia_remision').val("");
-$('#n_direccion_cliente').val("");
-$('.outer_div, .div_izquierdo_1, .div_izquierdo_2, .div_izquierdo_3, #tamano_izquierda').css('display', ''); $('.div_load_info_cliente').css('display', 'none');
-$('#btn_pos_pagar').css('display', ''); $('#btn_save_factura').css('display', 'none');
-$('.ver_puntos').html('');
-$('.ver_linea_credito').html('');
-}
-});
-
-//CAMBIAR TIPO DE DOCUMENTO DE LA VENTA FINAL
-var xhr_tpodoc_change = false, xhr_tpodoc_change_2 = false;
-$('#tpodoc').on('change', function(){
-var id = $('#tpodoc').val();
-var fn_tipodoc = $('#fn_tipodoc').val();
-var id_serie_venta = $('#id_serie_venta').val();
-
-//FUNCTION ABORTAR LOADERS
-if(xhr_tpodoc_change[1] == true){ xhr_tpodoc_change[0].abort(); }
-//AJAX 2022
-url = "{{EC2_DOMINIO}}Operaciones/ajax_operaciones/act_serie.php?td="+id+"&id_serie_venta="+id_serie_venta;
-xhr_tpodoc_change = devolver_ajax_2022([3, url, '', '#select_serie', '', 2000, 1]);
-
-//FUNCTION ABORTAR LOADERS
-if(xhr_tpodoc_change_2[1] == true){ xhr_tpodoc_change_2[0].abort(); }
-//AJAX 2022
-url = "{{EC2_DOMINIO}}Operaciones/ajax_operaciones/change_tipo_documento.php?se=<?php echo $session_id; ?>&bd=1";
-xhr_tpodoc_change_2 = devolver_ajax_2022([3, url, '', '.agregar_factura', '', 2000, 1]);
-
-//COTIZACIONES / ORDEN DE VENTA
-if(id == 50 || id == 51){
-$('#serie').css('display', 'none');
-//$('#num_factura').css('width', '30%');
-$('.span_boton_pagar').html('ORDENAR');
-if(id == 50){
-$('#id_tipodoc_venta').val('');
-$('#id_serie_venta').val('');
-$('.div_tipodoc_serie_venta').css('display', '');
-$('.div_tipodoc_serie_venta_ser').css('display', '');
-$('.mostrar_serie_orden_venta').css('display', 'none');
-//$('.n_factura_remove_class').removeClass('col-lg-3 col-md-3 ').addClass('col-lg-2 col-md-2');
-
-}
-if(id == 51){
-$('#tipodoc_venta').val(0);
-$('#serie_venta').val(0);
-$('#id_tipodoc_venta').val('');
-$('#id_serie_venta').val('');
-$('.span_boton_pagar').html('COTIZAR');
-//$('.div_tipodoc_serie_venta').css('display', 'none');
-//$('.div_tipodoc_serie_venta_ser').css('display', 'none');
-$('.mostrar_serie_orden_venta').css('display', 'none');
-}
-$('.n_factura_remove_class').removeClass('col-lg-3 col-md-3 col-sm-3 col-3').addClass('col-lg-6 col-md-6 col-sm-6 col-6');
-
-} else {
-$('#tipodoc_venta').val(0);
-$('#serie_venta').val(0);
-$('#id_tipodoc_venta').val('');
-$('#id_serie_venta').val('');
-$('#serie').css('display', 'inline-block');
-//$('#num_factura').css('width', '15%');
-$('.span_boton_pagar').html('PAGAR');
-//$('.div_tipodoc_serie_venta').css('display', 'none');
-//$('.div_tipodoc_serie_venta_ser').css('display', 'none');
-$('.mostrar_serie_orden_venta').css('display', '');
-//$('.clase_tipo_doc_remove').addClass('col-lg-5 col-md-5 ');
-$('.n_factura_remove_class').removeClass('col-lg-6 col-md-6 col-sm-6 col-6').addClass('col-lg-3 col-md-3 col-sm-3 col-3');
-
-}
-
-//ACTULIAZAR SOLO CUANDO SE CAMBIA
-if (id != fn_tipodoc) {
-load_info_general(id);
-}
-
-
-});
-
-var xhr_serie_change = false;
-$('#serie').on('change', function(){
-var ns = $('#serie').val();
-if(ns == 'nueva'){
-$('#modalSerie').modal();
-$('#serie').val('0');
-} else {
-var data = new FormData();
-data.append('ns', parseInt(ns));
-//FUNCTION ABORTAR LOADERS
-if(xhr_serie_change[1] == true){ xhr_serie_change[0].abort(); }
-if(pausar_contador_all == 1){
-pausar_contador_all = 0;
-}
-if(pausar_contador_all == 0){
-//AJAX 2022
-url = "{{EC2_DOMINIO}}Operaciones/ajax/cargar_correlativo_venta.php";
-xhr_serie_change = devolver_ajax_2022([4, url, data, '#resultados_serie_f', '', 2000, 0]);  
-}
-}
-});
-
-//IMPRIMIR
-function imprimir_kiosko_doble(){
-setTimeout(function(){
-mywindow.print();
-}, 1500);
-};
-function imprimir_ticket(id){
-<?php
-if(!empty($_SESSION['poc_impresion_doble_ticket'])){
-?>
-mywindow = window.open('{{EC2_DOMINIO}}Operaciones/pdf/documentos/Ticket_de_Venta.php?id_operacion=2&C6008D00E='+id, 'Ticket de Venta', 'Height = 1, Width = 1');   
-//mywindow = window.open('{{EC2_DOMINIO}}librerias/mpdf/ver_documento-ticket2.php?tipo_operacion=1&id='+id, 'Ticket de Venta', 'Height = 1, Width = 1');   
-imprimir_kiosko_doble();
-setTimeout(function(){
-imprimir_kiosko_doble();
-}, 5000);
-$('.btn_ticket_kiosko').css('display', 'none');
-$('.btn_ticket_kiosko2').css('display', '');
-<?php   
-}
-else{
-?>
-mywindow = window.open('{{EC2_DOMINIO}}Operaciones/pdf/documentos/Ticket_de_Venta.php?id_operacion=2&C6008D00E='+id, 'Ticket de Venta', 'Height = 1024, Width = 768');   
-mywindow.print();
-<?php
-}
-?>
-}
-function imprimir_factura(id_factura){
-var mywindow = window.open('{{EC2_DOMINIO}}librerias/mpdf/ver_documento.php?id='+id_factura+'&tipo_operacion=2', 'PDF de Venta', 'Height = 1024, Width = 768');   
-mywindow.print();
-}
-function imprimir_facturaA5(id_factura){
-var mywindow = window.open('{{EC2_DOMINIO}}Operaciones/pdf/documentos/ver_documento.php?id='+id_factura+'&tipo_operacion=2&A5', 'PDF de Venta', 'Height = 1024, Width = 768');   
-mywindow.print();
-}
-
-//COTIZAR U ORDENAR
-function btn_coti_orden_POS(){
-var data = new FormData();
-var url = '{{EC2_DOMINIO}}Operaciones/ajax/agregar_cotizacion.php';
-var parametros = $("#datos_factura").serializeArray();
-$.each(parametros, function(key, input){
-data.append(input.name, input.value);
-});
-
-var tipodoc = $('#tpodoc').val();
-var countv = $('#countv').val();
-if(tipodoc == 51){
-data.append('n_operacion', 1);//COTIZACION
-}
-if(tipodoc == 50){
-data.append('n_operacion', 2);//OTDEN DE VENTA
-}
-
-data.append('id_mesa', <?php echo $id_mesa; ?>);
-data.append('tmp_POS_cot_orden', 1);//TMP
-data.append('session_id_pos', '<?php echo $session_id;?>');//TMP
-data.append('countv', countv);//TMP
-eval(devolver_ajax(4, url, 'data', '#agregar_cotizacion_orden_pos', '#btn_pos_pagar'));
-}
-
-//TIPO MONEDA
-function activa_cambio(){
-var id = $('#moneda').val();
-if ((!(/^([0-9])*$/).test(id)) || (id != 1 && id != 2)){
-alert("Error.");
-location.reload();
-} else {
-if(id == 1){
-document.getElementById("tipo_cambio").style.display = "none";
-document.getElementById("tipo_cambio").value = "";
-} if(id == 2){
-document.getElementById("tipo_cambio").style.display = "block";
-}
-}
-}
-
-function stop_contador_correlativo(){
-    
-}
-
-//EJECUTAR AL CARGAR LA PAGINA
-$(document).ready(function() {
-
-//ACTUALIZAR TIPO DE DOCUMENTO SERIE
-$('#tpodoc').change();
-
-//EJECUTAR LOAD
-load(1);
-
-//TIPODOC AL CARGAR LA PÁGINA
-tipodoc_temporal = $('#tpodoc').val();
-
-genera_info_general('negocia.pe');
-<?php
-if(mysqli_num_rows($query_verificar_tmp) > 0){
-?>
-$('#modal_verificar_tmp').modal('show');  
-<?php
-}
-if(empty($excel_conteo) && empty($orden_pedido) && empty($cotizar)){
-$sql_orden_venta_cotizaciones = "SELECT * FROM cotizaciones WHERE estado_check = 0 AND empresa = '".$_SESSION['IDEMPRESA']."' AND id_almacen = '".$_SESSION['IDSUCURSAL']."' LIMIT 1";
-$query_orden_venta_cotizaciones = mysqli_query($con, $sql_orden_venta_cotizaciones);
-$numrows_orden_venta_cotizaciones = mysqli_num_rows($query_orden_venta_cotizaciones);
-if(!empty($numrows_orden_venta_cotizaciones) && (!empty($_SESSION['neg_ver_cotizaciones_14']) || !empty($_SESSION['neg_ver_orden_venta_7']))){
-?>
-$('.outer_div, .div_izquierdo_1, .div_izquierdo_2, .div_izquierdo_3, #tamano_izquierda, .div_load_info_producto, .div_pos_pagar').css('display', 'none');
-$('.div_pos_pagar').html('');
-$('.div_load_info_cliente, #btn_pos_pagar').css('display', '');
-<?php
-}
-}
-?>
-
-//FOCUS AL BUSCADOR DE PRODUCTOS
-$('#n_producto').focus();
-
-//EJECUTAR AUTOMATICAMENTE LUEGO DE UN DETERMINADO PERIODO DE TIEMPO
 setInterval('contador_adaptar_pos()', 500);
-myStartFunction_cotz_orden();
-myStartFunction();
-if (screen.width < 768){ 
-$("#ver_panel_izquierdo_info option[value='4']").remove();
-}
+
+const axios = require('axios');
 
 
-<?php
-//DIVIDIR CUENTA
-if(mysqli_num_rows($query_verificar_tmp) == 0){
-$query_verificar_tmp = mysqli_query($con, "SELECT id_tmp FROM tmp WHERE session_id = '$session_id' AND check_dividir_cuenta = 0 LIMIT 1");
-if(mysqli_num_rows($query_verificar_tmp) > 0){    
-?>
-eliminar('negocia.pe');
-<?php
-}
-}
-?>
+// Función para buscar un producto
+async function buscarProducto(producto) {
+  try {
+    const url = `http://negocialab.com:4000/api/datos_perfil?id_perfil=1`;
+    const response = await axios.get(url);
 
-});
+    // Aquí puedes procesar la respuesta y utilizar los datos obtenidos
+    const data = response.data;
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 </script>
-<?php    
-    
-}
+ 
     
 
+    
 
 
+
+
+
+
+
+
+
+
+
+ 
+
+
+  </body>
+</html>

@@ -3,12 +3,9 @@ const TaskController = require('../controllers/TaskController');
 
 const router = express.Router();
 
-router.get('/pos', TaskController.index_renew);
-router.get('/tasks', TaskController.index);
-router.get('/crear', TaskController.create);
-router.post('/crear', TaskController.store);
-router.post('/tasks/delete', TaskController.destroy);
-router.get('/tasks/edit/:id', TaskController.edit);
-router.post('/tasks/edit/:id', TaskController.update);
-
+// Ruta para buscar un cliente
+ 
+router.post('/buscarCliente', TaskController.buscarcliente);
+ 
+ 
 module.exports = router;
