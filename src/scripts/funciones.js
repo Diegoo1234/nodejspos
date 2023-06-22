@@ -1,6 +1,8 @@
  
 // Variable para almacenar la instancia de CancelToken
-let  cancelTokenSource = null;
+let cancelTokenSource = null;
+let cancel_colaboradores  = null;
+let cancel_series = null;
 
 //LLAMAR DATOS CLIENTE
 async function buscarCliente(buscador) {
@@ -53,7 +55,7 @@ if(resultado.nombre_cliente != ''){
 }
  
 
-formato_ul += `<li onclick="setinputvalue('`+resultado.id_cliente+`', "`+cliente+`", '1');">`+cliente+`</li>`;
+formato_ul += `<li onclick="setinputvalue('`+resultado.id_cliente+`', '`+cliente+`', '1');">`+cliente+`</li>`;
 });
 
 
@@ -67,6 +69,85 @@ formato_ul += `</div>`;
 $('#load_result_clientes').append(formato_ul);
 }
 }
+
+//CARGAR RESULTADOS BUSCADOR VENDEDORES
+async function opciones_colaboradores(){  
+
+  try {
+        // Cancela la petición anterior si existe
+        if (cancel_colaboradores) {
+       cancel_colaboradores.cancel('Petición cancelada por una nueva');
+        }
+        // Crea una nueva instancia de CancelToken
+        cancel_colaboradores = axios.CancelToken.source();
+
+        const result = await axios.post('/buscarcolaboradores', {nombre: 1}, {
+          cancelToken: cancel_colaboradores.token
+        });
+        
+        const resultado_colaborador = result.data;
+
+        if(resultado_colaborador.length > 0){
+        var option = ``;
+        resultado_colaborador.map(function(row) {
+        option += `<option value="`+row.id_cliente+`" >`+row.nombre_cliente+`</option>`;
+        });
+        $('#elvendedor').append(option);
+        }
+
+      } catch (error) {
+        if (axios.isCancel(error)) {
+          console.log('Petición cancelada:', error.message);
+        } else {
+          console.error(error);
+        }
+        
+      }
+
+
+}
+  
+//CARGAR SERIES
+async function cargar_series(){
+  $('#serie').html(``);
+  var tipo_doc = document.getElementById('tpodoc').value;
+
+  try {
+    // Cancela la petición anterior si existe
+    if (cancel_series) {
+    cancel_series.cancel('Petición cancelada por una nueva');
+    }
+    // Crea una nueva instancia de CancelToken
+    cancel_series = axios.CancelToken.source();
+
+    const result_serie = await axios.post('/buscarseries', {tipo: tipo_doc} , {
+      cancelToken: cancel_series.token
+    });
+   
+    const array_serie = result_serie.data;
+    console.log(array_serie);
+    var option = ``;
+    option += `<option value="0" >Seleccione</option>`;
+    if(array_serie.length > 0){
+   
+    array_serie.map(function(row_serie) {
+    option += `<option value="`+row_serie.id+`" >`+row_serie.numero+`</option>`;
+    });
+   
+    }
+    $('#serie').append(option);
+
+  } catch (error) {
+    if (axios.isCancel(error)) {
+      console.log('Petición cancelada:', error.message);
+    } else {
+      console.error(error);
+    }
+    
+  }
+
+} 
+
 
 //INSERTAR VALOR EN INPUT
 function setinputvalue(id, texto, tipo){
@@ -90,4 +171,6 @@ $('#b').on('keyup', function(e){
   
 });
   
+
+
  

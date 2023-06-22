@@ -12,9 +12,10 @@ const { window } = new JSDOM();
 const axios = require('axios');
 */
 
+
+
 const app = express();
 app.use(cors());
- 
  
 
 /*PERMITIR LEER LIBRERIAS COMO LINK*/
@@ -54,6 +55,9 @@ app.listen(app.get('port'), () => {
 app.use('/', tasksRoutes);
 
 app.get('/', (req, res) => {
+//OBTENER EL DOMINIO  
+//const hostname = req.hostname;
+//console.log(hostname);
 
 // Variables que quieres pasar a la plantilla
 const EC2_DOMINIO = 'https://negocia.pe/';

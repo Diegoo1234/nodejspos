@@ -361,9 +361,12 @@ $('#lado_derecho').css('display', 'block');" >Continuar
 <!--TIPO DOCUMENTO div_select_tipodoc-->
 <div class="col-lg-5 col-md-5 col-sm-4 col-5 padding_celda_encabezado clase_tipo_doc_remove border_tipo_doc"  >
 <label class="d-flex text-start titulo_opciones_pos">Tipo de documento</label>    
-<select class="form-control formato_select_number" name="tipodoc" id="tpodoc" 
-onchange="">
+<select class="form-control formato_select_number" name="tipodoc" id="tpodoc" onchange="cargar_series();" >
 <option value="0" hidden="hidden">Tipo Documento:</option>
+<option value="3">Boleta electronica</option>
+<option value="4">Factura electronica</option>
+<option value="5">Nota de venta</option>
+<option value="14" >Factura de contingencia</option>
 </select>
 </div>
 
@@ -715,7 +718,7 @@ Cancelar
 </div>
 </div>
 <script src="/axios/axios.min.js"></script>
- <script src="../../scripts/funciones.js"></script>
+<script src="../../scripts/funciones.js"></script>
 <div class="resultado_precuenta"></div>
 <div class="resultado_division_cuenta_update"></div>
 <div class="resultado_modal_lista_precio"></div>
@@ -821,12 +824,18 @@ function adaptar_pos() {
   document.querySelector('.div_pos_pagar').style.height = div_pos_pagar + 'px';
 }
 
-//FUNCIONES EJECUTAR AUTOMATICAMENTE
-function contador_adaptar_pos(){
+const contador_adaptar_pos = () => {
 adaptar_pos();
-}
-setInterval('contador_adaptar_pos()', 500);
+};
 
+setInterval(contador_adaptar_pos, 500);
+
+
+
+//EJECUTAR AL CARGAR LA PAGINA
+document.addEventListener("DOMContentLoaded", function (event) {
+opciones_colaboradores();  
+});
 </script>
  
     
