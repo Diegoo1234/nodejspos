@@ -109,7 +109,7 @@
 
 <div class="row mobile_row"  >
 <div class="col-lg-7 col-md-6 col-sm-12 col-12 width_col_lg_izquiera_renew padding_izquierdo" id="lado_izquierdo">
-<div class="row div_izquierdo_1 padding_izquierdo margin_div_1" >
+<div class="row div_izquierdo_1 padding_izquierdo margin_div_1 products_none" >
 <div class="row p_movil_ca_adcionale">  
 
 <div class="col-lg-12 col-md-12 col-sm-12 col-12 row bloque_select_productos" >
@@ -128,7 +128,7 @@
 </div> 
 
 <div class="col-lg-6 col-md-5 col-sm-6 col margen_modo_tablet border_radius buscador_margin"  >   
-<input id="n_producto" onkeyup="fn_buscar_productos();" type="text" class="btn form-control css_buscador" placeholder=" Buscar producto:" autocomplete="off"  >
+<input id="n_producto" type="text" class="btn form-control css_buscador" placeholder=" Buscar producto:" autocomplete="off"  >
 <span class="visualizar_lupa" >
 <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"><path fill="#999999" d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396l1.414-1.414l-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8s3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6s-6-2.691-6-6s2.691-6 6-6z"/></svg>
 </span>
@@ -204,109 +204,20 @@
 <!--CAMBIAR VISTA PRODUCTOS div_cambio_icono-->
 <div class="col-lg-1 col-md-1 col-sm-1 col-1 d-flex justify-content-start padding_icono_products ">
 <button tabindex="-1" onclick="" id="btn_vista" type="button" class="btn hint--bottom hint--negocia div_cambio_vista_producto border_radius" aria-label="Cambiar vista de productos"  >
-<svg xmlns="http://www.w3.org/2000/svg" class="icon_cambio_vista"   viewBox="0 0 24 24"><path   d="M4 6h2v2H4zm0 5h2v2H4zm0 5h2v2H4zm16-8V6H8.023v2H18.8zM8 11h12v2H8zm0 5h12v2H8z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" class="icon_cambio_vista" onclick="load_vista();"  viewBox="0 0 24 24"><path   d="M4 6h2v2H4zm0 5h2v2H4zm0 5h2v2H4zm16-8V6H8.023v2H18.8zM8 11h12v2H8zm0 5h12v2H8z"/></svg>
 </button>
 </div>
-
+<input type="hidden" id="vista_products" value="0">
 </div>
 </div> 
 </div>
 </div>
 
 
-<div id="tamano_izquierda" class="col-sm-12 col-12 p-0" >
+<div id="tamano_izquierda" class="col-sm-12 col-12 p-0 products_none" >
 <div class="row div_izquierdo_2 padding_izquierdo row_productos_load" >
 <div class="outer_div padding_izquierdo" style="padding-top: 5px; padding-bottom: 5px; border-radius: 5px;">
-<!--FORMATO DE PRODUCTOS CUADRADOS-->
-<div class="row formato_1">
-<div class="col-lg-3 col-md-4 col-sm-6 col-6 text-center col_vista1_hover"  >
-<table title="PRODUCTO OFFLINE" class="tmano_tabla_tipo_1" >
-<tr>
-<td class="titulo_vista_1" >
-<div style="width: 100%;">
-<a id="btn_info_producto_343434" class="icono_vista_1" href="javascript:void(0)"  >
-<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 1536 1536"><path fill="#ff5900" d="M1024 1248v-160q0-14-9-23t-23-9h-96V544q0-14-9-23t-23-9H544q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 352V192q0-14-9-23t-23-9H672q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zm640 416q0 209-103 385.5T1153.5 1433T768 1536t-385.5-103T103 1153.5T0 768t103-385.5T382.5 103T768 0t385.5 103T1433 382.5T1536 768z"/></svg>
-</a>
-</div>
-<div class="nombre_product_vista_1" >
-  {{#each datos}}
-<span   title="PRODUCTO OFFLINE">{{datos.ruc}}</span> 
-  {{/each}} 
-</div>    
-</td>
-</tr>
-<tr>
-<td  class="img-tabla img_vista_1" style=" background-image: url('views/images/null.png');"></td>
-</tr>
-<tr>
-<td>
-<div class="precio_vista_1" >
-<span> S/ 12.55 </span>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<!--FORMATO DE PRODUCTOS LISTA-->
-<div class="row formato_2">
-<table title="PRODUCTO NODE JS" class="tabla_movil_producto_tabla" >
-<tr>
-
-<td>
-
-<table style="width: 100%;">
-<tr>
-<td>
-<button type="button" class="btn_click_tabla" >
-<table style="width: 100%;">
-<tr>
-<td  class="img-tabla tipo_2_css_img" style=" background-image: url('views/images/null.png');"></td>
-<td style="width: 2%; height: 40px !important;"></td>
-<td style="width: 80%; height: 40px !important; cursor: pointer; border-radius: 0px !important; background-color:transparent;">
-<table style="width: 100% !important; background: #fff; border-radius:5px; height: 40px !important;">
-<tr>
-<td style="font-size: 14px; font-weight: bold; text-align: left; height: 20px !important; ">
-PRODUCTO NODE JS
-</td>
-</tr>
-<tr>
-<td class="td_contenedor_detalle">
-
-<span class="precio_real">Precio: S/ 300.00</span>
-<span class="costo_registrado"  >Precio Costo Registrado: S/ 12.00</span>
-<span class="stock_real"  >Stock Real: 13</span>
-<span class="marca_detalle">Marca: Saga</span>
-<span class="descripcion_pos_producto" >Descripci&oacute;n: Negocia.pe</span>
  
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</button>
-</td>
-<td class="img-tabla icon_tabla_css_prod" >
-<a tabindex="-1" id="btn_info_producto_9899" class="inline css_a_tabla" href="javascript:void(0)"   >
- <svg xmlns="http://www.w3.org/2000/svg" class="inline" width="15" height="15" viewBox="0 0 1536 1536"><path fill="#ff5900" d="M1024 1248v-160q0-14-9-23t-23-9h-96V544q0-14-9-23t-23-9H544q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 352V192q0-14-9-23t-23-9H672q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zm640 416q0 209-103 385.5T1153.5 1433T768 1536t-385.5-103T103 1153.5T0 768t103-385.5T382.5 103T768 0t385.5 103T1433 382.5T1536 768z"></path></svg>
-
-  </a>
-</td>
-</tr>
-</table>
-</td>
-
-
-
-
-
-</tr>
-</table>
-
-</div>
-
-
 
 
 </div>
@@ -316,7 +227,8 @@ PRODUCTO NODE JS
 <div id="resultados_lp"></div>
 </div>
 </div>
-<div class="text-center div_izquierdo_3 col-sm-12 col-12" id="lado_pagination" >
+
+<div class="text-center div_izquierdo_3 col-sm-12 col-12 products_none" id="lado_pagination" >
 <button id="load_left" type="button" class="btn">
 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 608 1280"><path fill="white" d="M595 288q0 13-10 23L192 704l393 393q10 10 10 23t-10 23l-50 50q-10 10-23 10t-23-10L23 727q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l50 50q10 10 10 23z"/></svg>
 </button>
@@ -337,7 +249,1662 @@ $('#lado_derecho').css('display', 'block');" >Continuar
 
 <div class="div_load_info_cliente " style="margin-top: 10px; display: none; overflow-y: auto;"></div>
 <div class="div_load_info_producto " style="margin-top: 10px;display: none; overflow-y: auto;"></div>
-<div class="div_pos_pagar " style="margin-top: 10px; display: none; overflow-y: auto;"></div>
+
+
+
+<!--HTML COBRAR-->
+<div class="div_pos_pagar " style="margin-top: 10px; display: none; overflow-y: auto;">   
+ 
+  
+
+<div class="agregar_factura2"></div>
+<div class="row " style="padding:0px;">
+<div class="col-lg-2 col-md-12 col-sm-12 col-12" id="focus_formas_pagos" style="padding:0px; background: #E6E6E6;">
+<!--MINI HEADER-->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 tipo_medio_pago row" style="font-weight: 700; padding-right: 0.75rem;">
+
+<div class="col-4 col-sm-4 col-md-4 col-lg-12 tipo_medio_pago" >
+<div class="col-12 border_color_info_forma_pago border_info_forma_pago_1" onclick="border_info_forma_pago(1);"  style="color: #000000; background: #FFF; border-radius: 5px; margin-bottom: 10px; border: 1px solid #FF4E00;">   
+<div class="col-12 d-flex justify-content-center py-1"><img src="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/ingresos_pos_opcion.png" class="opacity_img_medios opacity_active_img_medios_1" style="width: auto; height: 30px;"></div>    
+<div class="col-12 col-sm-12 col-md-12 col-lg-12" style=" cursor: pointer; text-align: center; font-size: 13px; font-weight: 700; padding-bottom: 6px;">Contado</div>
+</div> 
+</div>
+    
+<div class="col-4 col-sm-4 col-md-4 col-lg-12 tipo_medio_pago">
+<div class="col-12 border_color_info_forma_pago border_info_forma_pago_2" onclick="border_info_forma_pago(2);" style="color: #A8A8A8; background: #FFF;border-radius: 5px;margin-bottom: 10px; border: 1px solid #E5E5E5;">
+<div class="col-12 d-flex justify-content-center  py-1"><img src="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/credit-card_pos.png" class="opacity_img_medios opacity_active_img_medios_2" style="width: auto; height: 30px; opacity: 0.3; filter: alpha(opacity=30);"></div>    
+<div class="col-12 col-sm-12 col-md-12 col-lg-12" style="cursor: pointer; text-align: center; font-size: 13px; font-weight: 700;padding-bottom:6px; ">Cr&eacute;dito</div>
+</div>
+</div>
+    
+<div class="col-4 col-sm-4 col-md-4 col-lg-12 tipo_medio_pago">
+<div class="col-12  border_color_info_forma_pago border_info_forma_pago_3" onclick="border_info_forma_pago(3);" style="color: #A8A8A8; background: #FFF;border-radius: 5px;margin-bottom: 10px; border: 1px solid #E5E5E5;">
+<div class="col-12 d-flex justify-content-center  py-1"><img src="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/billetera_pos.png" class="opacity_img_medios opacity_active_img_medios_3" style="width: auto; height: 30px; opacity: 0.3; filter: alpha(opacity=30);"></div>    
+<div class="col-12 col-sm-12 col-md-12 col-lg-12" style=" cursor: pointer; text-align: center; font-size: 13px; font-weight: 700; padding-bottom: 6px;">Contado Y Cr&eacute;dito</div>
+</div>
+</div>
+
+
+    
+</div>
+
+
+<input type="hidden" id="tipo_forma_pago_pos" name="tipo_forma_pago_pos" value="1">
+</div>    
+<div class="col-lg-10 col-md-12 col-sm-12 col-12 box_izquierdo background_pago">    
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center" style="padding-top: 15px;padding-bottom: 20px; border-bottom: 1px solid #E5E5E5;;">
+<div>
+<div class="col-12">    
+<span style="font-size: 18px; color: #495057; font-weight: 400; color: #ff9c00;">Total a Pagar:</span>
+</div>
+<div class="col-12" style="font-size: 22px; color: #000000; font-weight: 400;">      
+<?php echo $simbolo_moneda.''; ?><span id="modal_total_factura"></span>
+</div>
+</div>
+</div>
+
+<!--CONTADO-->
+<div class="div_forma_contado" style="border-radius: 5px;">
+<h5 class="titulo_h5_borde" style=" margin-top:-17px; margin-left:17px; background: #fff;width: 60px; color: #FF4E00; padding-left: 3px; padding-right: 3px; display: none;">Contado</h5>   
+<!--EFECTIVO min-width: 540px;-->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 pago_efectivo_movil row <?php echo $stylo; ?>">
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 div_check_efectivo row <?php echo $stylo; ?>" style="padding:0px; padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #E5E5E5;">   
+<div style="padding:0px;" class="col-12 row <?php echo $stylo; ?>">  
+<div class="col-auto col-sm-auto col-md-auto col-lg-auto d-flex align-items-center" >
+<label class="container-checkbox2">
+<input type="checkbox" name="checkbox_multi_medio_pago[]" id="check_efectivo" value="check_efectivo" onclick="mostrar_caja_banco_efectivo()"><span class="checkmark-box2" style="top:-5px;"></span>
+</label>
+</div>    
+<div class="col-9 col-sm-10 col-md-8 col-lg-auto d-flex justify-content-start align-items-center" style="margin: 0; padding: 0; padding-top: 7px; color: #000000 !important;">    
+<b>Efectivo</b>
+</div>
+<!--BANCO CAJA CHICA-->
+<div class="col-12 row pago_efectivo_movil pe-0 d-none" id="select_banco_caja_efectivo" >
+    <div class="col-6 ps-0">
+<label style="color: #ccc;">Seleccione el destino del dinero (opcional)</label>
+<select class="form-control pv_select2" id="pago_efectivo_caja" name="pago_efectivo_caja" style="font-size: 15px; height: 40px; padding: 0; border: 1px solid #E5E5E5; border-radius:5px;">
+
+<option value="0" selected="selected">Seleccione Caja</option>
+
+</select>        
+    </div>    
+    <div class="col-3">
+        
+    </div>    
+    <div class="col-3 p-0 pt-4">
+ <div class="col-12 text-center monto_pago_pos_movil border_div_titulo" style="margin: 0; padding: 0;">
+<h5 class="titulo_borde_inputs_totales">Total</h5>     
+<input type="number" id="metodo_pago_efectivo" name="metodo_pago_efectivo" onkeyup="calc_diferencia()" min="0" placeholder="0.00"  step="any" class="form-control pv_input_tabla" style="font-size: 20px; height: 32px; border:none;">
+</div>       
+    </div>    
+    
+
+
+</div>
+</div>  
+
+    
+ <!--BILLETES-->   
+<div class="col-12 col-sm-12 col-md-8 col-lg-8 text-center billetes_pago_pos" style="margin: 0; padding: 0; padding-left: 10px; display: none;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 billetes_1">
+
+<div class="col-1 col-sm-1 col-md-1 col-lg-1" style="padding: 0; padding-left: 2px;">
+
+</div>
+
+<div class="col-2 col-sm-2 col-md-2 col-lg-2 primer_billete" style="padding: 0; padding-left: 2px;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12" onclick="$('#billetes_mas_usados').val(2); calc_diferencia()" style="background: #555; color: #fff; padding: 2px; border-radius: 5px; cursor: pointer; height: 35px; padding-top: 7px;">
+2
+</div>
+</div>
+
+<div class="col-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0; padding-left: 2px;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12" onclick="$('#billetes_mas_usados').val(5); calc_diferencia()" style="background: #555; color: #fff; padding: 2px; border-radius: 5px; cursor: pointer; height: 35px; padding-top: 7px;">
+5
+</div>
+</div>
+
+<div class="col-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0; padding-left: 2px;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12" onclick="$('#billetes_mas_usados').val(10); calc_diferencia()" style="background: #555; color: #fff; padding: 2px; border-radius: 5px; cursor: pointer; height: 35px; padding-top: 7px;">
+10
+</div>
+</div>
+
+<div class="col-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0; padding-left: 2px;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12" onclick="$('#billetes_mas_usados').val(15); calc_diferencia()" style="background: #555; color: #fff; padding: 2px; border-radius: 5px; cursor: pointer; height: 35px; padding-top: 7px;">
+15
+</div>
+</div>
+
+<div class="col-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0; padding-left: 2px;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12" onclick="$('.billetes_1').css('display','none'); $('.billetes_2').css('display','');" style="font-size: 25px; background: green; color: #fff; border-radius: 5px; cursor: pointer; height: 35px;">
+<i class="fa fa-money"></i>
+</div>
+</div>
+<div class="col-1 col-sm-1 col-md-1 col-lg-1" style="padding: 0; padding-left: 2px;">
+
+</div>
+<div class="col-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0; padding-left: 2px; display: none;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12" onclick="$('#billetes_mas_usados').val(''); calc_diferencia()" style="background: red; color: #fff; padding: 2px; border-radius: 5px; cursor: pointer; height: 35px; padding-top: 7px;">
+X
+</div>
+</div>
+
+</div>
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 billetes_2" style="display: none;">
+
+<div class="col-2 col-sm-2 col-md-2 col-lg-2 primer_billete" style="padding: 0; padding-left: 2px;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12" onclick="$('#billetes_mas_usados').val(20); calc_diferencia()" style="background: #555; color: #fff; padding: 2px; border-radius: 5px; cursor: pointer; height: 35px; padding-top: 7px;">
+20
+</div>
+</div>
+
+<div class="col-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0; padding-left: 2px;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12" onclick="$('#billetes_mas_usados').val(50); calc_diferencia()" style="background: #555; color: #fff; padding: 2px; border-radius: 5px; cursor: pointer; height: 35px; padding-top: 7px;">
+50
+</div>
+</div>
+
+<div class="col-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0; padding-left: 2px;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12" onclick="$('#billetes_mas_usados').val(100); calc_diferencia()" style="background: #555; color: #fff; padding: 2px; border-radius: 5px; cursor: pointer; height: 35px; padding-top: 7px;">
+100
+</div>
+</div>
+
+<div class="col-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0; padding-left: 2px;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12" onclick="$('#billetes_mas_usados').val(200); calc_diferencia()" style="background: #555; color: #fff; padding: 2px; border-radius: 5px; cursor: pointer; height: 35px; padding-top: 7px;">
+200
+</div>
+</div>
+
+<div class="col-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0; padding-left: 2px;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12" onclick="$('.billetes_1').css('display',''); $('.billetes_2').css('display','none');" style="font-size: 15px; background: green; color: #fff; padding: 2px; border-radius: 5px; cursor: pointer; height: 35px; padding-top: 7px;">
+<i class="fa fa-database"></i>
+</div>
+</div>
+
+<div class="col-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0; padding-left: 2px;display: none;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12" onclick="$('#billetes_mas_usados').val(''); calc_diferencia()" style="background: red; color: #fff; padding: 2px; border-radius: 5px; cursor: pointer; height: 35px; padding-top: 7px;">
+X
+</div>
+</div>
+<input type="hidden" id="billetes_mas_usados">
+
+</div>
+
+</div>
+</div>
+</div>
+
+<!--TARJETA CREDITO / DEBITO min-width: 540px;-->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 pago_efectivo_movil row <?php echo $stylo; ?>" style="padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #E5E5E5;">
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 div_check_tarjeta row <?php echo $stylo; ?>" style="padding:0px;">
+<div style="padding:0px;" class="col-lg-9 col-md-7 row <?php echo $stylo; ?> d-flex align-items-center">  
+<div class="col-auto col-sm-auto col-md-auto col-lg-auto">
+<label class="container-checkbox2">
+    <input type="checkbox" name="checkbox_multi_medio_pago[]" id="check_tarjeta" onclick="mostrar_datos_tarjeta()" value="check_tarjeta" ><span class="checkmark-box2" style="top:-6px;"></span>
+</label>
+</div>
+<div class="col-9 col-sm-8 col-md-4 col-lg-auto text-left" style="margin: 0; padding: 0; ">    
+<b>Tarjeta:&nbsp;</b>
+</div>
+<div class="col-12 col-sm-12 col-md-12 col-lg-8 text-center padding_tarjeta_movil" style="margin: 0; padding: 0; ">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 padding_tarjeta_movil row <?php echo $stylo; ?>" style="margin: 0; padding: 0; padding-left: 0.47rem; ">
+
+<div class="col-3 col-sm-3 col-md-3 col-lg-auto content_img_tarjeta" style="padding: 0; padding-left: 3px; margin: 0px;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 div_operador_tarjeta div_operador_tarjeta_<?php echo $id_operador; ?>" 
+onclick="$('.div_operador_tarjeta').css('border-color', 'whitesmoke'); $('#tipo_operador_tarjeta').val(<?php echo $id_operador; ?>); $('.div_operador_tarjeta_<?php echo $id_operador; ?>').css('border', '1px solid #ff9c00');" 
+style="padding: 5px;padding-bottom: 7px; padding-top: 7px; border-radius: 5px; cursor: pointer; border: 0px solid #ccc; background: whitesmoke;">
+<?php
+if($id_operador == 1){
+?>
+<img src="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/pos_tarjetas_visa.png" style="height: 20px; width: auto; ">
+<?php
+}
+if($id_operador == 2){
+?>
+<img src="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/pos_tarjetas_mastercard.png" style="height: 20px; width: auto;">
+<?php
+}
+if($id_operador == 3){
+?>
+<img src="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/pos_tarjetas_americanexpress.png" style="height: 20px; width: auto;">
+<?php
+}
+if($id_operador == 4){
+?>
+<img src="https://{{EC2_BUCKET_S3}}-img-recursos.s3.amazonaws.com/pos_tarjetas_diners.png" style="height: 20px; width: auto;">
+<?php
+}
+?>
+</div>
+</div>
+
+<input type="hidden" id="tipo_operador_tarjeta" name="tipo_operador_tarjeta" value="0">    
+
+</div>
+   
+</div>    
+</div>
+
+</div>
+<div class="col-12 row align-items-center d-none" id="select_tarjeta_cobrar"  style="padding:0px;margin:0px;margin-top: 5px;">
+<div class="col-6" >
+<select class="form-control pv_select2 select_bancos_movil" id="pago_banco_tarjeta_cre_deb" name="pago_banco_tarjeta_cre_deb" style="font-size: 15px; border: 1px solid #E5E5E5; height: 40px">
+  
+<option selected="selected" hidden="hidden">Seleccione:</option>
+
+<option value="<?php echo $id_banco; ?>" <?php if(!empty($banco_predeterminado) && $banco_predeterminado == 1){ echo 'selected="selected"';} ?>><?php echo $mostrar_cuenta; ?></option>
+<option value="0" style="color: red" >Registrar Nuevo </option>
+</select>
+</div>
+
+<div class="col-3 ps-0">
+<div class="col-12 n_operacion_movil border_div_titulo">
+<h5 class="titulo_borde_inputs_operacion">N&#176; de operaci&oacute;n</h5>  
+<input autocomplete="off" style="font-size: 15px; padding: 0; height: 30px; border:none; padding-left: 10px;" placeholder="Nro. Operacion" type="text" class="form-control input-sm" name="nro_pago_credito" id="nro_pago_credito">
+</div>
+</div>
+    
+<div class="col-3 p-0" >
+<div class="col-12 text-center tarjeta_botom border_div_titulo" style="margin: 0; padding: 0; ">
+<h5 class="titulo_borde_inputs_totales">Total</h5>    
+<input type="number" id="metodo_pago_credito" name="metodo_pago_credito" onkeyup="calc_diferencia()" min="0" placeholder="0.00"  step="any" class="form-control pv_input_tabla" style="font-size: 20px; height: 30px; border:none;">
+</div>
+</div>    
+    
+    
+
+
+<div class="col-12 check_comision_active " style="padding-top: 8px; padding-bottom: 0px; display: none;">
+<label class="container_check" style="font-size: 13px; padding-left: 20px;">Agregar Comisi&oacute;n&nbsp;
+<input type="checkbox" id="cargar_panel_comision" onclick="mostrar_comision_panel();"> <span class="checkmark" style="top:2px;left: 0px;"></span>
+</label>    
+<script>
+function mostrar_comision_panel(){    
+if(document.getElementById('cargar_panel_comision').checked == true){
+$('.div_comision_tarjeta').css('display', '');   
+}else{
+$('.div_comision_tarjeta').css('display', 'none');      
+}    
+    
+}
+</script>
+</div>
+<!--COMISION-->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 div_comision_tarjeta row <?php echo $stylo; ?>" style=" display: none;">
+<div class="col-1 col-sm-1 col-md-1 col-lg-1 text-right" style="">
+
+</div>
+<div class="col-11 row <?php echo $stylo; ?>">
+
+<div class="col-4 text-center border_div_titulo" style="margin: 0; padding: 0;margin-top: 10px;">
+<h5 class="titulo_borde_inputs">% Comisi&oacute;n</h5>  
+<input type="number" id="metodo_comision_tarjeta"  onkeyup="calc_comision();" min="0" placeholder="0.00"  step="any" class="form-control pv_input_tabla" style="font-size: 20px; height: 30px; border:none;">
+</div>
+<div class="col-2 text-center" style="margin: 0; padding: 0; padding-top: 7px;">    
+<b>Total:&nbsp;</b>
+</div>
+<div class="col-4 text-center d-flex align-items-center border_div_titulo" style="margin: 0; padding: 0;">
+<input type="number" id="metodo_comision_tarjeta_2"  min="0" placeholder="0.00"  step="any" class="form-control pv_input_tabla" style="font-size: 20px; height: 35px; outline: none; border: none; background: transparent; text-align: left;" readonly></input>
+</div>    
+<div class="col-12 col-sm-12 col-md-4 col-lg-4 text-center" style="margin: 0; padding: 0; padding-left: 10px;">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<!--TRANSFERENCIA BANCARIA min-width: 540px;-->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 otro_metodo_transferencia_bancaria row <?php echo $stylo; ?>" style=" margin-bottom: 25px; display: none;">
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 div_check_transferencia row <?php echo $stylo; ?>" style="padding:0px;">
+   
+<div class="col-auto col-sm-auto col-md-auto col-lg-auto text-left botones_padd" style="margin-top: -5px;">
+<label class="container-checkbox2">
+    <input type="checkbox" name="checkbox_multi_medio_pago[]" id="check_transferencia" onclick="mostrar_transferencia_bancaria()" value="check_transferencia"><span class="checkmark-box2"></span>
+</label>
+</div>
+  
+<div class="col-10 col-sm-8 col-md-6 col-lg-10 " style="margin: 0; padding: 0; padding-top: 7px;">    
+<b>Transferencia Bancaria:</b>
+</div>
+    <div class="col-12 row <?php echo $stylo; ?> p-0 m-0 pt-3 d-none" id="select_transferencia_bancaria">
+<div class="col-6" >
+<select class="form-control pv_select2 select_bancos_movil" id="pago_banco" name="pago_banco" style="font-size: 15px; border: 1px solid #E5E5E5; height: 40px; ">
+
+<option value="0" selected="selected" hidden="hidden">Seleccione:</option>
+
+<option value="<?php echo $id_banco; ?>" <?php if(!empty($banco_predeterminado) && $banco_predeterminado == 1){ echo 'selected="selected"';} ?>><?php echo $mostrar_cuenta; ?></option>
+
+</select>
+</div>
+
+<div class="col-3 ps-0">
+<div class="col-12 n_operacion_movil border_div_titulo">
+<h5 class="titulo_borde_inputs_operacion">N&#176; de operaci&oacute;n</h5>  
+<input autocomplete="off" style="font-size: 15px; padding: 0; height: 30px; border:none;  padding-left: 10px;" placeholder="Nro. Operacion" type="text" class="form-control input-sm" name="nro_de_operacion" id="nro_de_operacion">
+
+</div>             
+        </div>
+        <div class="col-3 p-0">
+            <div class="col-12 border_div_titulo" style="">
+<h5 class="titulo_borde_inputs_totales">Total</h5>      
+<input type="number" id="metodo_pago_transferencia" name="metodo_pago_transferencia" onkeyup="calc_diferencia()" min="0" placeholder="0.00"  step="any" class="form-control pv_input_tabla" style="font-size: 20px; height: 30px; border:none; ">
+</div>
+        </div>        
+
+
+</div>
+</div>
+</div>
+
+<!--DEPSOITO-->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 otro_metodo_deposito_bancaria row <?php echo $stylo; ?>" style=" display: none;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 div_check_deposito row <?php echo $stylo; ?>" style="padding:0px;">  
+<div class="col-auto col-sm-auto col-md-auto col-lg-auto text-left botones_padd" >
+<label class="container-checkbox2">
+    <input type="checkbox" name="checkbox_multi_medio_pago[]" id="check_deposito" onclick="mostrar_deposito()" value="check_deposito"><span class="checkmark-box2" style="top:0px;"></span>
+</label>
+</div>    
+<div class="col-10 col-sm-8 col-md-5 col-lg-10 text-left" style="margin: 0; padding: 0; padding-top: 7px;">    
+<b>Dep&oacute;sito Bancario:</b>
+</div>
+    <div class="col-12 pt-3 row <?php echo $stylo; ?> d-none" style="padding:0px; margin:0px;" id="select_deposito">    
+<div class="col-6" >
+<select class="form-control pv_select2 select_bancos_movil" id="pago_banco_deposito" name="pago_banco_deposito" style="font-size: 15px; border: 1px solid #E5E5E5; height:40px;">
+  
+<option value="0" selected="selected" hidden="hidden">Seleccione:</option>
+
+<option value="<?php echo $id_banco; ?>" <?php if(!empty($banco_predeterminado) && $banco_predeterminado == 1){ echo 'selected="selected"';} ?>><?php echo $mostrar_cuenta; ?></option>
+
+</select>
+</div>
+<div class="col-3 ps-0">
+<div class="col-12 n_operacion_movil border_div_titulo">
+<h5 class="titulo_borde_inputs_operacion">N&#176; de operaci&oacute;n</h5>     
+<input autocomplete="off" style="font-size: 15px; border: 0px; height:33px; padding-left: 10px;" placeholder="Nro. Operacion" type="text" class="form-control input-sm" name="nro_de_operacion_deposito" id="nro_de_operacion_deposito">
+</div>              
+</div>
+<div class="col-3 p-0">
+<div class="col-12 text-center border_div_titulo" style="float: right;">
+<h5 class="titulo_borde_inputs_totales">Total</h5>     
+<input type="number" id="metodo_pago_deposito" name="metodo_pago_deposito" onkeyup="calc_diferencia()" min="0" placeholder="0.00"  step="any" class="form-control pv_input_tabla" style="font-size: 20px; border: 0px; height:33px;">
+</div>             
+</div>
+
+
+
+   
+</div>
+</div>
+</div>
+
+<!--Puntos ID= 13-->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 otro_metodo_puntos row <?php echo $stylo; ?>" style="display: none;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 div_check_puntos row <?php echo $stylo; ?>" style="padding:0px; padding-top: 5px;">
+<div class="col-lg-7 col-md-6 row <?php echo $stylo; ?>" style="padding:0px;">   
+<div class="col-auto col-sm-auto col-md-auto col-lg-auto text-left botones_padd">
+<label class="container-checkbox2">
+<input type="checkbox" name="checkbox_multi_medio_pago[]" id="check_puntos" value="check_puntos"><span class="checkmark-box2" style="top: 0px;"></span>
+</label>
+</div>
+<div class="col-10 col-sm-8 col-md-8 col-lg-8 text-left" style="margin: 0; padding: 0; padding-top: 7px;">    
+<b>Puntos:<br> <span class="texto_puntos" style="font-size: 12px;color: #A5A5A5;"></span> <span class="texto_monto_total_puntos" style="color:red;font-size: 12px;"></span> <span class="texto_soles_puntos" style="font-size: 12px;color: #A5A5A5;"></span> <span class="soles_puntos_red" style="font-size: 12px;color: red;"></span> </b>
+</div>
+</div>
+<div class="col-lg-5 col-md-6 col-12 row <?php echo $stylo; ?> d-flex justify-content-end" style="padding:0px;">
+<div class="col-lg-12 col-md-12 col-12 d-flex justify-content-end" style="padding: 0px; padding-top: 10px;">     
+<div class="col-12 col-sm-11 col-md-8 col-lg-7 border_div_titulo" style="margin: 0; padding: 0; width: 183.14px">
+<h5 class="titulo_borde_inputs_totales">Total</h5>    
+<input type="number" id="metodo_pago_puntos" name="metodo_pago_puntos" onkeyup="calc_diferencia()" min="0" placeholder="0.00"  step="any" class="form-control pv_input_tabla" style="font-size: 20px; height: 30px; border: 0px ;">
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<!--YAPE-->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 otro_metodo_yape row <?php echo $stylo; ?>" style="display: none;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 div_check_yape row <?php echo $stylo; ?>" style="padding:0px; padding-top: 5px;">
+   
+<div class="col-auto col-sm-auto col-md-auto col-lg-auto text-left botones_padd">
+<label class="container-checkbox2">
+    <input type="checkbox" name="checkbox_multi_medio_pago[]" id="check_yape" onclick="mostrar_datos_yape()" value="check_yape"><span class="checkmark-box2" style="top: 0px;"></span>
+</label>
+</div>
+  
+    <div class="col-10 col-sm-8 col-md-8 col-lg-10 text-left " style="margin: 0; padding: 0; padding-top: 7px;" >    
+<b>Yape:</b>
+</div>
+<div class="col-12 pe-0 row <?php echo $stylo; ?> padd_top_movil d-none" style="padding-top: 10px;" id="select_yape"> 
+<div class="col-6 ps-0" >
+<select class="form-control pv_select2 select_bancos_movil" id="pago_yape" name="pago_yape" style="font-size: 15px; border: 1px solid #E5E5E5; height: 40px;">
+
+<option value="0" selected="selected" hidden="hidden">Seleccione:</option>
+
+<option value="<?php echo $id_banco; ?>" <?php if(!empty($banco_predeterminado) && $banco_predeterminado == 1){ echo 'selected="selected"';} ?>><?php echo $mostrar_cuenta; ?></option>
+
+</select>
+</div>
+    <div class="col-3 ps-0">
+           <div class="col-12 n_operacion_movil border_div_titulo">
+<h5 class="titulo_borde_inputs_operacion">N&#176; de operaci&oacute;n</h5>     
+<input autocomplete="off" style="font-size: 15px; border: 0px; height:33px; padding-left: 10px;" placeholder="Nro. Operacion" type="text" class="form-control input-sm" name="nro_de_operacion_yape" id="nro_de_operacion_yape">
+    </div> 
+    </div>
+    <div class="col-3 p-0">
+<div class="col-12 border_div_titulo" style="float: right; ">
+<h5 class="titulo_borde_inputs_totales">Total</h5>    
+<input type="number" id="metodo_pago_yape" name="metodo_pago_yape" onkeyup="calc_diferencia()" min="0" placeholder="0.00"  step="any" class="form-control pv_input_tabla" style="font-size: 20px; height: 33px; border: 0px ;">
+</div>        
+    </div>
+
+</div>   
+    
+</div>
+</div>
+
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 otro_metodo_1 row <?php echo $stylo; ?>" style="<?php echo $mostrar_metodo_pago_uno; ?> padding:0px;">
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 div_check_metodo_1 row <?php echo $stylo; ?>" style="padding:0px;">    
+<div class="col-auto col-sm-auto col-md-auto col-lg-auto text-left botones_padd" >
+<label class="container-checkbox2">
+<input type="checkbox" name="checkbox_multi_medio_pago[]" id="check_metodo_1" onclick="mostrar_metodo_1()" value="check_metodo_1"><span class="checkmark-box2" style="top:0px;"></span>
+</label>
+</div>    
+
+<div class="col-6 col-sm-8 col-md-7 col-lg-9 text-left" style="margin: 0; padding: 0; padding-top: 7px;">    
+<b><?php echo $nombre_medio_pago_uno; ?>:</b>
+</div>
+<div class="col-12 row <?php echo $stylo; ?> padd_top_movil d-none" style="padding-top: 10px;" id="datos_metodo_1">  
+ <div class="col-6" >
+<select class="form-control pv_select2 select_bancos_movil" id="pago_otro_medio_1" name="pago_otro_medio_1" style="font-size: 15px; border: 1px solid #E5E5E5; height: 40px;">
+
+
+<option value="<?php echo $id_banco; ?>" <?php if(!empty($banco_predeterminado) && $banco_predeterminado == 1){ echo 'selected="selected"';} ?>><?php echo $mostrar_cuenta; ?></option>
+
+</select>
+</div>
+    <div class="col-3">
+    <div class="col-12 n_operacion_movil border_div_titulo">
+<h5 class="titulo_borde_inputs_operacion">N&#176; de operaci&oacute;n</h5>     
+<input autocomplete="off" style="font-size: 15px; border: 0px; height:33px; padding-left: 10px;" placeholder="Nro. Operacion" type="text" class="form-control input-sm" name="nro_pago_adiconal_uno" id="nro_pago_adiconal_uno">
+    </div>         
+    </div>    
+    <div class="col-3">
+<div class="col-12 border_div_titulo" style="margin: 0; padding: 0; margin-top: 10px;">
+<h5 class="titulo_borde_inputs_totales">Total</h5>      
+<input type="number" id="metodo_pago_uno" name="metodo_pago_uno" onkeyup="calc_diferencia()" min="0" placeholder="0.00"  step="any" class="form-control pv_input_tabla" style="font-size: 20px; height: 30px; border: 0px;">
+</div>        
+    </div>    
+    
+  
+
+
+
+</div>
+</div>
+</div>
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 otro_metodo_2" style=" <?php echo $mostrar_metodo_pago_dos; ?> padding:0px;">
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 div_check_metodo_2 row <?php echo $stylo; ?>" style="padding:0px;">
+    
+<div class="col-auto col-sm-auto col-md-auto col-lg-auto text-left botones_padd" >
+<label class="container-checkbox2">
+    <input type="checkbox" name="checkbox_multi_medio_pago[]" id="check_metodo_2" onclick="mostrar_metodo_2()" value="check_metodo_2"><span class="checkmark-box2" style="top:0px;"></span>
+</label>
+</div>
+  
+<div class="col-10 col-sm-8 col-md-8 col-lg-9 text-left" style="margin: 0; padding: 0; padding-top: 7px;">    
+<b><?php echo $nombre_medio_pago_dos; ?>:</b>
+</div>
+    <div class="col-12 pe-0 row <?php echo $stylo; ?> padd_top_movil d-none" style="padding-top: 10px;" id="datos_metodo_2"> 
+        
+<div class="col-6" >
+<select class="form-control pv_select2 select_bancos_movil" id="pago_otro_medio_2" name="pago_otro_medio_2" style="font-size: 15px; height: 40px; border: 1px solid #E5E5E5;">
+
+
+   
+<option value="0" selected="selected">Seleccione Banco</option>
+
+<option value="<?php echo $id_banco; ?>" <?php if(!empty($banco_predeterminado) && $banco_predeterminado == 1){ echo 'selected="selected"';} ?>><?php echo $mostrar_cuenta; ?></option>
+
+</select>
+</div>
+        <div class="col-3 ps-0">
+    <div class="col-12 n_operacion_movil border_div_titulo">
+<h5 class="titulo_borde_inputs_operacion">N&#176; de operaci&oacute;n</h5>  
+<input autocomplete="off" style="font-size: 15px; border: 0px; height:33px; padding-left: 10px;" placeholder="Nro. Operacion" type="text" class="form-control input-sm" name="nro_pago_adiconal_dos" id="nro_pago_adiconal_dos">
+
+    </div>            
+        </div>
+        <div class="col-3 p-0">
+  <div class="col-12 border_div_titulo" style="float: right;">
+<h5 class="titulo_borde_inputs_totales">Total</h5>    
+<input type="number" id="metodo_pago_dos" name="metodo_pago_dos" onkeyup="calc_diferencia()"  placeholder="0.00"  step="any" class="form-control pv_input_tabla" style="font-size: 20px;  height: 33px; border: 0px;">
+</div>          
+        </div>
+
+
+
+</div>
+
+</div>
+</div>
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 otro_metodo_3" style="padding:0px; <?php echo $mostrar_metodo_pago_tres; ?>">
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 div_check_metodo_3 row <?php echo $stylo; ?>" style="padding:0px;">
+  
+<div class="col-auto col-sm-auto col-md-auto col-lg-auto text-left botones_padd" style="margin-top: -5px;">
+<label class="container-checkbox2">
+    <input type="checkbox" name="checkbox_multi_medio_pago[]" id="check_metodo_3" onclick="mostrar_metodo_3()" value="check_metodo_3"><span class="checkmark-box2" style="top:0px;"></span>
+</label>
+</div>
+  
+<div class="col-10 col-sm-8 col-md-8 col-lg-9 text-left" style="margin: 0; padding: 0; padding-top: 7px;">    
+<b><?php echo $nombre_medio_pago_tres; ?>:</b>
+</div>
+
+    <div class="col-12 pe-0 row <?php echo $stylo; ?> padd_top_movil d-none" style="padding-top: 10px;" id="datos_metodo_3">  
+
+<div class="col-6 ps-0" >
+<select class="form-control pv_select2 select_bancos_movil" id="pago_otro_medio_3" name="pago_otro_medio_3" style="font-size: 15px;height: 40px; border: 1px solid #E5E5E5;">
+
+<option value="0" selected="selected">Seleccione Banco</option>
+
+<option value="<?php echo $id_banco; ?>" <?php if(!empty($banco_predeterminado) && $banco_predeterminado == 1){ echo 'selected="selected"';} ?>><?php echo $mostrar_cuenta; ?></option>
+
+</select>
+</div>
+<div class="col-3 ps-0">
+<div class="col-12 n_operacion_movil border_div_titulo">
+<h5 class="titulo_borde_inputs_operacion">N&#176; de operaci&oacute;n</h5>  
+<input autocomplete="off" style="font-size: 15px; padding: 0; height: 33px; border:none;  padding-left: 10px;" placeholder="Nro. Operacion" type="text" class="form-control input-sm" name="nro_pago_adiconal_tres" id="nro_pago_adiconal_tres">
+</div>            
+</div>
+<div class="col-3 p-0">
+<div class="col-12 border_div_titulo" style="margin-top: 10px;">
+<h5 class="titulo_borde_inputs_totales">Total</h5>    
+<input type="number" id="metodo_pago_tres" name="metodo_pago_tres" onkeyup="calc_diferencia()" min="0" placeholder="0.00"  step="any" class="form-control pv_input_tabla" style="font-size: 20px; height: 33px; border: 0px;">
+</div>            
+</div>
+        
+
+
+</div>
+   
+</div>
+</div>
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 otro_metodo_4" style="padding:0px; <?php echo $mostrar_metodo_pago_cuatro; ?>">
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 div_check_metodo_4 row <?php echo $stylo; ?>" style="padding:0px;">
+   
+<div class="col-auto col-sm-auto col-md-auto col-lg-auto text-left botones_padd" >
+<label class="container-checkbox2">
+    <input type="checkbox" name="checkbox_multi_medio_pago[]" id="check_metodo_4" onclick="mostrar_metodo_4()" value="check_metodo_4"><span class="checkmark-box2" style="top:0px;"></span>
+</label>
+</div>
+  
+<div class="col-10 col-sm-8 col-md-8 col-lg-9 text-left" style="margin: 0; padding: 0; padding-top: 7px;">    
+<b><?php echo $nombre_medio_pago_cuatro; ?>:</b>
+</div>
+
+<div class="col-12 pe-0 row <?php echo $stylo; ?> padd_top_movil d-none" style="padding-top: 10px;" id="datos_metodo_4">
+<div class="col-6" >
+<select class="form-control pv_select2 select_bancos_movil" id="pago_otro_medio_4" name="pago_otro_medio_4" style="font-size: 15px; border: 1px solid #E5E5E5; height: 40px;">
+ 
+<option value="0" selected="selected">Seleccione Banco</option>
+
+<option value="<?php echo $id_banco; ?>" <?php if(!empty($banco_predeterminado) && $banco_predeterminado == 1){ echo 'selected="selected"';} ?>><?php echo $mostrar_cuenta; ?></option>
+</select>
+</div>
+<div class="col-3 ps-0">
+<div class="col-12 n_operacion_movil border_div_titulo">
+<h5 class="titulo_borde_inputs_operacion">N&#176; de operaci&oacute;n</h5>  
+<input autocomplete="off" style="font-size: 15px; padding: 0; height: 33px; border:none; padding-left: 10px;" placeholder="Nro. Operacion" type="text" class="form-control input-sm" name="nro_pago_adiconal_cuatro" id="nro_pago_adiconal_cuatro">
+</div>       
+</div>
+<div class="col-3 p-0">
+<div class="col-12  border_div_titulo" style="float: right; ">
+<h5 class="titulo_borde_inputs_totales">Total</h5>    
+<input type="number" id="metodo_pago_cuatro" name="metodo_pago_cuatro" onkeyup="calc_diferencia()" min="0" placeholder="0.00"  step="any" class="form-control pv_input_tabla" style="font-size: 20px; border: 0px; height: 30px;">
+</div>        
+</div>
+</div>  
+    
+</div>
+</div>
+
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 otro_metodo_5" style="padding:0px; <?php echo $mostrar_metodo_pago_cinco; ?>">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 div_check_metodo_5 row <?php echo $stylo; ?>" style="padding:0px;"> 
+<div class="col-auto col-sm-auto col-md-auto col-lg-auto text-left botones_padd" >
+<label class="container-checkbox2">
+    <input type="checkbox" name="checkbox_multi_medio_pago[]" id="check_metodo_5" onclick="mostrar_metodo_5()" value="check_metodo_5"><span class="checkmark-box2" style="top:0px;"></span>
+</label>
+</div>
+<div class="col-10 col-sm-8 col-md-8 col-lg-9 text-left" style="margin: 0; padding: 0; padding-top: 7px;">    
+<b><?php echo $nombre_medio_pago_cinco; ?>:</b>
+</div>
+    <div class="col-12 pe-0 row <?php echo $stylo; ?> padd_top_movil d-none" style="padding-top: 10px;" id="datos_metodo_5">
+<div class="col-6" >
+<select class="form-control pv_select2 select_bancos_movil" id="pago_otro_medio_5" name="pago_otro_medio_5" style="font-size: 15px; height: 40px; border: 1px solid #E5E5E5;">
+
+<option value="0" selected="selected">Seleccione Banco</option>
+
+<option value="<?php echo $id_banco; ?>" <?php if(!empty($banco_predeterminado) && $banco_predeterminado == 1){ echo 'selected="selected"';} ?>><?php echo $mostrar_cuenta; ?></option>
+
+</select>
+</div>
+<div class="col-3 ps-0">
+<div class="col-12 n_operacion_movil border_div_titulo">
+<h5 class="titulo_borde_inputs_operacion">N&#176; de operaci&oacute;n</h5>         
+<input autocomplete="off" style="font-size: 15px; padding: 0; height: 33px; border:none; padding-left: 10px;" placeholder="Nro. Operacion" type="text" class="form-control input-sm" name="nro_pago_adiconal_cinco" id="nro_pago_adiconal_cinco">
+
+</div>             
+</div>
+<div class="col-3 p-0">
+<div class="col-12 border_div_titulo" style="float: right; ">
+<h5 class="titulo_borde_inputs_totales">Total</h5>     
+<input type="number" id="metodo_pago_cinco" name="metodo_pago_cinco" onkeyup="calc_diferencia()" min="0" placeholder="0.00"  step="any" class="form-control pv_input_tabla" style="font-size: 20px; height: 33px; border: 0px;">
+</div>             
+</div>
+
+
+
+
+</div>
+</div>
+</div>
+
+<!--NOTA DE CREDITO 14-->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 otro_metodo_nota_credito row <?php echo $stylo; ?>" style="display:none;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 div_check_nota_credito row <?php echo $stylo; ?>" style="padding:0px; padding-top: 5px;">
+<div class="col-lg-7 col-md-6 row <?php echo $stylo; ?>" style="padding:0px;">   
+<div class="col-auto col-sm-auto col-md-auto col-lg-auto text-left botones_padd">
+<label class="container-checkbox2">
+    <input type="checkbox" name="checkbox_multi_medio_pago[]" id="check_nota_credito" onclick="mostrar_metodo_nota_credito()" value="check_nota_credito"><span class="checkmark-box2" style="top: 0px;"></span>
+</label>
+</div>
+<div class="col-10 col-sm-8 col-md-8 col-lg-8 text-left" style="margin: 0; padding: 0; padding-top: 7px;">    
+<b>Nota cr&eacute;dito:  </b>
+</div>
+</div>
+
+<div class=" col-12 pe-0 pt-2 row d-none" id="datos_metodo_nota_credito">
+    <div class="col-5">
+<input style="font-size: 8pt; height: 33px; padding: 0; text-align: center;" class="form-control input-sm" autocomplete="off" type="text" placeholder="N&#176; Serie" name="serie_nota_credito" id="serie_nota_credito"> 
+        
+    </div> 
+    <div class="col-4 ps-0">
+<input value="" autocomplete="off" style="font-size: 8pt; height: 33px; padding: 0; text-align: center; " id="correlativo_nota_credito" name="correlativo_nota_credito" type="text" class="form-control input-sm" minlength="1" maxlength="200" pattern="[0-9]{1,200}" placeholder="Correlativo">
+        
+    </div> 
+    <div class="col-3 p-0">
+<div class="col-12 border_div_titulo" style="">
+<h5 class="titulo_borde_inputs_totales">Total</h5>    
+<input type="number" id="metodo_pago_nota_credito" name="metodo_pago_nota_credito" onkeyup="calc_diferencia()" min="0" placeholder="0.00"  step="any" class="form-control pv_input_tabla" style="font-size: 20px; height: 30px; border: 0px ;">
+</div>         
+    </div> 
+
+   
+</div>    
+    
+</div>
+</div>
+
+<!--OTROS-->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 pago_efectivo_movil" style=" padding: 0px; margin-bottom: 25px; padding-top: 10px;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 row <?php echo $stylo; ?>" style="padding:0px;">
+<div class=" col-lg-block col-md-block col-md-auto col-lg-auto d-none text-start" >
+
+</div>     
+<div class="col-12 col-sm-6 col-md-5 col-lg-auto text-center padding_otros" style="margin: 0; padding: 0;  padding-top: 4px;">
+<select id="select_metodo_otros" class="form-control pv_select2 height_otros_css_movil" style="padding:0px;font-size: 15px; border:none; font-weight: 700;">
+<option hidden="hidden" value="0">Otro Medio de Pago</option>
+<option value="4">Transferencia Bancaria</option>
+<option value="5">Dep&oacute;sito Bancario</option>
+<option value="6">Yape</option>
+<option value="11">Puntos</option>
+
+<option value="1"><?php echo $nombre_medio_pago_uno; ?></option>
+
+<option value="2"><?php echo $nombre_medio_pago_dos; ?></option>
+
+<option value="3"><?php echo $nombre_medio_pago_tres; ?></option>
+
+<option value="7"><?php echo $nombre_medio_pago_cuatro; ?></option>
+
+<option value="8"><?php echo $nombre_medio_pago_cinco; ?></option>
+
+<option value="9">Nota de Cr&eacute;dito</option>
+
+<option value="10" style=" color:Red;" >Registrar Nuevo</option>
+
+</select>
+</div>
+</div>
+</div>
+
+
+<script>
+   
+function mostrar_caja_banco_efectivo() {
+ if(document.getElementById('check_efectivo').checked == true){
+    
+    $('#select_banco_caja_efectivo').removeClass('d-none');
+    
+}  else {
+$('#select_banco_caja_efectivo').addClass('d-none');    
+}   
+} 
+mostrar_caja_banco_efectivo(); 
+function mostrar_datos_tarjeta() {
+ if(document.getElementById('check_tarjeta').checked == true){
+    
+    $('#select_tarjeta_cobrar').removeClass('d-none');
+    
+}  else {
+$('#select_tarjeta_cobrar').addClass('d-none');   
+}   
+}    
+function mostrar_transferencia_bancaria() {
+ if(document.getElementById('check_transferencia').checked == true){
+         $('#select_transferencia_bancaria').removeClass('d-none');
+
+
+ 
+    
+}  else {
+             $('#select_transferencia_bancaria').addClass('d-none');
+
+}   
+}        
+function mostrar_deposito() {
+ if(document.getElementById('check_deposito').checked == true){
+                  $('#select_deposito').removeClass('d-none');
+
+
+    
+}  else {
+                      $('#select_deposito').addClass('d-none');
+
+}   
+}        
+function mostrar_datos_yape() {
+ if(document.getElementById('check_yape').checked == true){
+                           $('#select_yape').removeClass('d-none');
+
+
+    
+}  else {
+                               $('#select_yape').addClass('d-none');
+
+}   
+}        
+function mostrar_metodo_1() {
+ if(document.getElementById('check_metodo_1').checked == true){
+                           $('#datos_metodo_1').removeClass('d-none');
+
+
+    
+}  else {
+                               $('#datos_metodo_1').addClass('d-none');
+
+}   
+}        
+function mostrar_metodo_2() {
+ if(document.getElementById('check_metodo_2').checked == true){
+                           $('#datos_metodo_2').removeClass('d-none');
+
+
+    
+}  else {
+                               $('#datos_metodo_2').addClass('d-none');
+
+}   
+}        
+function mostrar_metodo_3() {
+ if(document.getElementById('check_metodo_3').checked == true){
+                           $('#datos_metodo_3').removeClass('d-none');
+
+
+    
+}  else {
+                               $('#datos_metodo_3').addClass('d-none');
+
+}   
+}        
+function mostrar_metodo_4() {
+ if(document.getElementById('check_metodo_4').checked == true){
+                           $('#datos_metodo_4').removeClass('d-none');
+
+
+    
+}  else {
+                               $('#datos_metodo_4').addClass('d-none');
+
+}   
+}        
+function mostrar_metodo_5() {
+ if(document.getElementById('check_metodo_5').checked == true){
+                           $('#datos_metodo_5').removeClass('d-none');
+
+
+    
+}  else {
+                               $('#datos_metodo_5').addClass('d-none');
+
+}   
+}        
+function mostrar_metodo_nota_credito() {
+ if(document.getElementById('check_nota_credito').checked == true){
+                           $('#datos_metodo_nota_credito').removeClass('d-none');
+
+
+    
+}  else {
+                               $('#datos_metodo_nota_credito').addClass('d-none');
+
+}   
+}        
+
+</script>
+
+</div>
+
+<!--CREDITO-->
+<div class="div_forma_credito" style="display:none; border-radius: 5px;">
+<h5 class="titulo_h5_borde" style=" margin-top:-17px; margin-left:17px; background: #fff;width: 60px; color: #FF4E00; padding-left: 3px; padding-right: 3px; display: none;">Cr&eacute;dito</h5>    
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 credito_css_mobile" style=" margin-bottom: 25px;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 div_check_credito_cuotas row <?php echo $stylo; ?>" style="padding-top: 15px; padding-bottom: 15px; border-radius: 5px;">
+ 
+<div class="col-1 col-sm-1 col-md-1 col-lg-auto text-start" style="display:none;">
+<label class="container-checkbox2">
+<input type="checkbox" name="checkbox_multi_medio_pago[]" id="check_credito_cuotas" value="check_credito_cuotas"><span class="checkmark-box2"></span>
+<input type="hidden" id="opcion_cambiar_credito" name="opcion_cambiar_credito" value="1" readonly="readonly">
+</label>
+</div>
+    
+<div class="col-10 col-sm-10 col-md-1 col-lg-10 text-start" style="margin: 0; padding: 0; padding-top: 7px; display: none;">    
+<b>Cr&eacute;dito:</b>
+</div>
+    
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center" style="margin: 0; padding: 0;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 div_num_cuotas p-0" style="display: none;">
+<div class="ro <?php echo $stylo; ?>w" style="padding:0px; margin:0px;">
+<!--MINI HEADER-->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 row <?php echo $stylo; ?> p-0">
+    
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 row <?php echo $stylo; ?> p-0" style="border-bottom: 1px solid #E5E5E5; padding-bottom:15px;">
+<div class="col-lg-6 col-md-6 col-sm-6 col-6 row <?php echo $stylo; ?>">    
+<div class="col-auto">
+<label class="container-checkbox2">
+<input type="checkbox"  id="check_otro_medio_vista_credito_1" onclick="border_info_cuotas(1);" checked="checked"><span class="checkmark-box2" style="top: 0px;"></span>
+</label>  
+</div>  
+<div class="col-6 col-sm-6 col-md-4 col-lg-3 padding_credito_etiqueta border_color_credito border_info_cuotas_1" onclick="border_info_cuotas(1);" style="color: #666; cursor: pointer; text-align: left; font-size: 13px; font-weight: 700; padding-bottom: 15px; padding-top: 6px;">Cuotas</div>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-end align-items-center">    
+<div class="col-6 col-sm-6 col-md-10 col-lg-10 p-0">
+<div class="col-12 d-flex justify-content-end align-items-center" style="padding:0px; float: right; padding-bottom:15px;">    
+<div class="col-auto p-0 div_contenido_info_cuotas div_contenido_info_cuotas_1" style="border: 1px solid #ccc;border-radius: 0.25rem;">    
+<h5 class="titulo_borde_inputs">N&#176; de Cuotas</h5>      
+<input type="number" id="pv_cuotas" name="pv_cuotas"  value="0" placeholder="cuotas" class="form-control pv_input" onkeyup="dar_height();" style="margin:0px; height: 30px; width: 100% !important; border:0px !important; font-size: 12px;">   
+</div>
+</div>
+</div>
+</div>
+<!--CUOTAS-->
+<div class="div_contenido_info_cuotas div_contenido_info_cuotas_1 col-12">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center" style="margin-bottom: 0px;">
+<div class="col-12 col-sm-3 col-md-3 col-lg-3"></div>
+<div class="col-12 col-sm-3 col-md-3 col-lg-3"></div>
+</div>
+<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+<div class="pv_ajax_cuotas row <?php echo $stylo; ?>"></div>
+</div>
+</div>
+
+</div>
+    
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 row <?php echo $stylo; ?>" style="border-bottom: 1px solid #E5E5E5; padding-bottom:10px; padding-top: 14px; padding-left: 2px;">
+<div class="col-lg-6 col-md-6 col-sm-12 col-12 row <?php echo $stylo; ?>">      
+<div class="col-auto">
+<label class="container-checkbox2">
+<input type="checkbox"  id="check_otro_medio_vista_credito_2" onclick="border_info_cuotas(2);" ><span class="checkmark-box2" style="top: 0px;"></span>
+</label>  
+</div>     
+<div class="col-7 col-sm-7 col-md-8 padding_credito_etiqueta col-lg-auto border_color_credito border_info_cuotas_2" onclick="border_info_cuotas(2);" style="color: #666; cursor: pointer; text-align: left; font-size: 13px; font-weight: 700; padding-bottom: 15px; padding-top: 8px;">Otro Plazo</div>
+</div>
+<!--OTRO PLAZO-->
+<div class="col-lg-6 col-md-6 col-sm-8 col-8 d-flex justify-content-end p-0">  
+<div class="div_contenido_info_cuotas div_contenido_info_cuotas_2 col-lg-10" style="display: none; padding: 0px;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-end" style="padding-right: 0px;">
+<div class="col-12 col-sm-12 col-md-12 col-lg-11 d-flex justify-content-end">
+<div class="col-auto p-0" style="border: 1px solid #ccc;border-radius: 0.25rem;">    
+<h5 class="titulo_borde_inputs">D&iacute;as a Vencer</h5>  
+<input type="number" id="vencimiento_dias" name="vencimiento_dias" min="1" class="form-control pv_input" style="margin:0px; height: 30px; width: 100% !important; border:none;">   
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-12 row <?php echo $stylo; ?>" style="padding:0px;margin:0px;display: flex;justify-content: center;">   
+<div id="pv_div_vuelto_debe" class="d-flex justify-content-center" style="margin-bottom: 2rem; ">
+    
+    <span id="modal_total_diferencia" class="pv_texto_color2" style="font-size: 22px;"></span>
+    <div class="ver_monto_deve"></div>
+</div>    
+<div class="col-12 fixed_btn_pagar " id="div_height">
+<div class="row">    
+
+<div class="col-6 col-sm-6 col-md-6 col-lg-6 d-flex justify-content-end align-items-center" style="cursor: pointer; font-size: 15px; color: #FE5900;  margin-bottom: 7px;">
+<button class="btn width_css_movil_btn_1" style="margin:0px; background: #fff; border:1px solid #FCA485;border-radius: 0px;box-shadow: 1px 1px 1px #E5E5E5 !important;width: 150px;" onclick="
+var width_pos_pgar = parseInt($(window).width());
+if(width_pos_pgar >=769 && width_pos_pgar <= 820){
+$('#lado_izquierdo').removeClass('width_820');   
+$('.outer_div, .div_izquierdo_1, .div_izquierdo_2, .div_izquierdo_3, #tamano_izquierda, #lado_izquierdo,#lado_derecho ').css('display', ''); $('.div_load_info_cliente').css('display', 'none');
+}else if (width_pos_pgar <=768){
+$('.outer_div, .div_izquierdo_1, .div_izquierdo_2, .div_izquierdo_3, #tamano_izquierda, #btn_lista_de_productos, #lado_derecho').css('display', ''); $('.div_load_info_cliente, #btn_ir_venta, #lado_izquierdo').css('display', 'none');    
+}else{
+$('.outer_div, .div_izquierdo_1, .div_izquierdo_2, .div_izquierdo_3, #tamano_izquierda').css('display', ''); $('.div_load_info_cliente, .div_pos_pagar').css('display', 'none');
+}
+$('#btn_pos_pagar').css('display', '');
+
+">    
+<i class="bx bx-arrow-back" style="font-size: 18px; color: #000000;float:left;padding-top:2px;"></i>  Regresar
+</button>
+</div>    
+<div class="col-6 col-sm-6 col-md-6 col-lg-6" style="text-align: left; margin-bottom: 15px;">
+<button type="button" id="btn_save_factura" class="btn width_css_movil_btn" style=" text-align: center;margin: 0 auto; width: 160px; border-radius: 0px; color: #fff; background: #ff5900; margin-top: 8px;">
+COBRAR <i class="bx bx-arrow-back fa-rotate-180" onclick="$('#btn_pos_pagar').css('display', '');" style="font-size: 18px; color: #fff;float:right;padding-top:2px;"></i> 
+</button>  
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+//MINI HEADER           MINI HEADER             MINI HEADER             MINI HEADER             MINI HEADER             MINI HEADER             MINI HEADER             MINI HEADER             MINI HEADER 
+function border_info_cuotas(id){
+//$('.border_color_credito').css('border-bottom', '3px solid #ccc');   
+//$('.border_info_cuotas_'+id).css('border-bottom', '3px solid #ff5900');
+$('.div_contenido_info_cuotas').css('display', 'none');   
+$('.div_contenido_info_cuotas_'+id).css('display', '');  
+if(id == 1){
+$("#check_otro_medio_vista_credito_1").prop("checked", true); 
+$("#check_otro_medio_vista_credito_2").prop("checked", false);
+}
+if(id == 2){
+$("#check_otro_medio_vista_credito_2").prop("checked", true); 
+$("#check_otro_medio_vista_credito_1").prop("checked", false);
+}
+}
+function border_info_forma_pago(id){
+$('.border_color_info_forma_pago').css('border', '1px solid #E5E5E5').css('color','#A8A8A8');   
+$('.border_info_forma_pago_'+id).css('border', '1px solid #FF4E00').css('color','#000000');
+$('.opacity_img_medios').css('opacity', '0.3').css('filter','alpha(opacity=30)');
+$('.opacity_active_img_medios_'+id).css('opacity', '1').css('filter','alpha(opacity=100)');
+$('.div_contenido_info_forma_pago').css('display', 'none');   
+$('.div_contenido_info_forma_pago_'+id).css('display', '');  
+$('.div_forma_contado').css('border', '0px solid #FF4E00').css('padding', '0px');
+$('.div_forma_credito').css('border', '0px solid #FF4E00').css('padding', '0px').css('margin-top', '0px');
+$('.titulo_h5_borde').css('display', 'none');
+
+var ancho_pantalla_movil = $(window).width();    
+ 
+
+$('#tipo_forma_pago_pos').val(id);
+
+//CONTADO
+if(id == 1){
+//CHECKBOX EFECTIVO
+if($("#check_efectivo").is(':checked')) {  }
+else{ $('#check_efectivo').click(); }
+
+//CHECKBOX TARJETA
+if($("#check_tarjeta").is(':checked')) { $('#check_tarjeta').click(); 
+
+}
+else{  }
+
+//CHECKBOX TRANSFERENCIA
+if($("#check_transferencia").is(':checked')) { $('#check_transferencia').click(); }
+else{ }
+
+//CHECKBOX YAPE
+if($("#check_yape").is(':checked')) { $('#check_yape').click(); }
+else{ }
+
+//CHECKBOX PUNTOS
+if($("#check_puntos").is(':checked')) { $('#check_puntos').click(); }
+else{ }
+
+//CHECKBOX OTRO MEDIO PAGO 1
+if($("#check_metodo_1").is(':checked')) { $('#check_metodo_1').click(); }
+else{ }
+
+//CHECKBOX OTRO MEDIO PAGO 2
+if($("#check_metodo_2").is(':checked')) { $('#check_metodo_2').click(); }
+else{ }
+
+//CHECKBOX OTRO MEDIO PAGO 3
+if($("#check_metodo_3").is(':checked')) {  $('#check_metodo_3').click(); }
+else{  }
+
+//CHECKBOX OTRO MEDIO PAGO 4
+if($("#check_metodo_4").is(':checked')) {  $('#check_metodo_4').click(); }
+else{  }
+
+//CHECKBOX OTRO MEDIO PAGO 5
+if($("#check_metodo_5").is(':checked')) {  $('#check_metodo_5').click(); }
+
+//CHECKBOX NOTA DE CREDITO
+if($("#check_nota_credito").is(':checked')) {  $('#check_nota_credito').click(); }
+
+else{  }
+
+//CHECKBOX OTRO MEDIO PAGO 3
+if($("#check_credito_cuotas").is(':checked')) {  $('#check_credito_cuotas').click(); }
+else{  }
+
+$('.otro_metodo_1').css('display', 'none');
+$('.otro_metodo_2').css('display', 'none');
+$('.otro_metodo_3').css('display', 'none');
+$('.otro_metodo_4').css('display', 'none');
+$('.otro_metodo_5').css('display', 'none');
+$('.otro_metodo_nota_credito').css('display', 'none');
+$('.otro_metodo_transferencia_bancaria').css('display', 'none');
+$('.otro_metodo_yape').css('display', 'none');
+$('.div_forma_contado').css('display', '');
+$('.div_forma_credito').css('display', 'none');
+$('#vencimiento_dias').val(0);
+$('#pv_cuotas').val(0);
+$('#pv_cuotas').keyup();
+}
+
+//CREDITO
+if(id == 2){
+//CHECKBOX EFECTIVO
+if($("#check_efectivo").is(':checked')) { $('#check_efectivo').click(); }
+else{  }
+
+//CHECKBOX TARJETA
+if($("#check_tarjeta").is(':checked')) { $('#check_tarjeta').click(); }
+else{  }
+
+//CHECKBOX TRANSFERENCIA
+if($("#check_transferencia").is(':checked')) { $('#check_transferencia').click(); }
+else{ }
+
+//CHECKBOX YAPE
+if($("#check_yape").is(':checked')) { $('#check_yape').click(); }
+else{ }
+
+//CHECKBOX PUNTOS
+if($("#check_puntos").is(':checked')) { $('#check_puntos').click(); }
+else{ }
+
+//CHECKBOX OTRO MEDIO PAGO 1
+if($("#check_metodo_1").is(':checked')) { $('#check_metodo_1').click(); }
+else{ }
+
+//CHECKBOX OTRO MEDIO PAGO 2
+if($("#check_metodo_2").is(':checked')) { $('#check_metodo_2').click(); }
+else{ }
+
+//CHECKBOX OTRO MEDIO PAGO 3
+if($("#check_metodo_3").is(':checked')) {  $('#check_metodo_3').click(); }
+else{  }
+
+//CHECKBOX OTRO MEDIO PAGO 4
+if($("#check_metodo_4").is(':checked')) {  $('#check_metodo_4').click(); }
+else{  }
+
+//CHECKBOX OTRO MEDIO PAGO 5
+if($("#check_metodo_5").is(':checked')) {  $('#check_metodo_5').click(); }
+else{  }
+
+//CHECKBOX NOTA DE CREDITO
+if($("#check_nota_credito").is(':checked')) {  $('#check_nota_credito').click(); }
+else{  }
+
+//CHECKBOX OTRO MEDIO PAGO 3
+if($("#check_credito_cuotas").is(':checked')) {  }
+else{ $('#check_credito_cuotas').click(); }
+
+$('.otro_metodo_1').css('display', 'none');
+$('.otro_metodo_2').css('display', 'none');
+$('.otro_metodo_3').css('display', 'none');
+$('.otro_metodo_4').css('display', 'none');
+$('.otro_metodo_5').css('display', 'none');
+$('.otro_metodo_nota_credito').css('display', 'none');
+$('.otro_metodo_transferencia_bancaria').css('display', 'none');
+$('.otro_metodo_yape').css('display', 'none');
+$('.div_forma_contado').css('display', 'none');
+$('.div_forma_credito').css('display', '');
+$('#vencimiento_dias').val(0);
+$('#pv_cuotas').val(0);
+$('#pv_cuotas').keyup();
+}
+
+//CONTADO Y CREDITO
+if(id == 3){
+//CHECKBOX EFECTIVO
+if($("#check_efectivo").is(':checked')) { }
+else{ $('#check_efectivo').click(); }
+
+//CHECKBOX TARJETA
+if($("#check_tarjeta").is(':checked')) { $('#check_tarjeta').click(); }
+else{  }
+
+//CHECKBOX TRANSFERENCIA
+if($("#check_transferencia").is(':checked')) { $('#check_transferencia').click(); }
+else{ }
+
+//CHECKBOX YAPE
+if($("#check_yape").is(':checked')) { $('#check_yape').click(); }
+else{ }
+
+//CHECKBOX PUNTOS
+if($("#check_puntos").is(':checked')) { $('#check_puntos').click(); }
+else{ }
+
+
+//CHECKBOX OTRO MEDIO PAGO 1
+if($("#check_metodo_1").is(':checked')) { $('#check_metodo_1').click(); }
+else{ }
+
+//CHECKBOX OTRO MEDIO PAGO 2
+if($("#check_metodo_2").is(':checked')) { $('#check_metodo_2').click(); }
+else{ }
+
+//CHECKBOX OTRO MEDIO PAGO 3
+if($("#check_metodo_3").is(':checked')) {  $('#check_metodo_3').click(); }
+else{  }
+
+//CHECKBOX OTRO MEDIO PAGO 4
+if($("#check_metodo_4").is(':checked')) {  $('#check_metodo_4').click(); }
+else{  }
+
+//CHECKBOX OTRO MEDIO PAGO 5
+if($("#check_metodo_5").is(':checked')) {  $('#check_metodo_5').click(); }
+else{  }
+
+//CHECKBOX NOTA DE CREDITO
+if($("#check_nota_credito").is(':checked')) {  $('#check_nota_credito').click(); }
+else{  }
+
+//CHECKBOX OTRO MEDIO PAGO 3
+if($("#check_credito_cuotas").is(':checked')) {  }
+else{ $('#check_credito_cuotas').click(); }
+
+$('.otro_metodo_1').css('display', 'none');
+$('.otro_metodo_2').css('display', 'none');
+$('.otro_metodo_3').css('display', 'none');
+$('.otro_metodo_4').css('display', 'none');
+$('.otro_metodo_5').css('display', 'none');
+$('.otro_metodo_nota_credito').css('display', 'none');
+$('.otro_metodo_transferencia_bancaria').css('display', 'none');
+$('.otro_metodo_yape').css('display', 'none');
+$('.div_forma_contado').css('display', '');
+$('.div_forma_credito').css('display', '');
+$('#vencimiento_dias').val(0);
+$('#pv_cuotas').val(0);
+$('#pv_cuotas').keyup();
+$('.div_forma_contado').css('border', '1px solid #FF4E00').css('padding', '5px');
+$('.div_forma_credito').css('border', '1px solid #FF4E00').css('padding', '5px').css('margin-top', '20px');
+$('.titulo_h5_borde').css('display', '');
+}
+}
+//MINI HEADER           MINI HEADER             MINI HEADER             MINI HEADER             MINI HEADER             MINI HEADER             MINI HEADER             MINI HEADER             MINI HEADER 
+
+
+//DAR LARGO - MODAL PAGAR
+
+function dar_height(){
+var cuotas = parseInt($('#pv_cuotas').val());
+var width = $("#div_style").height();
+if(cuotas > 1){
+if(width >= 502 && width <= 564){
+$("#div_height").css("position", "");
+$("#div_height").css("bottom", "0px");
+}  
+}
+if(cuotas > 4){
+if(width >= 565){
+$("#div_height").css("bottom", "28px");
+$("#div_height").css("position", "fixed");
+}  
+}
+}
+//FORMA DE PAGO Y CUOTAS
+$('#pv_cuotas').on('keyup', function(){
+var cuotas = parseInt($('#pv_cuotas').val());
+if(cuotas > 24){
+alert('M\u00E1ximo 24 cuotas');
+} else {
+//FORMAR ARRAY DATA
+var data = new FormData();
+data.append('cuotas', cuotas);
+eval(devolver_ajax(2, '{{EC2_DOMINIO}}Operaciones/ajax_punto_venta/div_cuotas.php?fn_recursos_pos=1', 'data', '.pv_ajax_cuotas', ''));
+}
+});
+$('#check_credito_cuotas').click(function(){
+var valor = parseInt($('#opcion_cambiar_credito').val());
+if(valor == 1){
+$('#opcion_cambiar_credito').val('2');
+$('.div_num_cuotas').css('display', '');
+//$(".div_check_credito_cuotas").css('border', '1px solid #ff9c00');
+} else {
+$('#opcion_cambiar_credito').val('1');
+$('.div_num_cuotas').css('display', 'none');
+//$(".div_check_credito_cuotas").css('border', '1px solid #ccc');
+}
+});
+
+//OTRO MEDIO DE PAGO SELECT
+$('#select_metodo_otros').change(function(){
+var valor = parseInt($('#select_metodo_otros').val());
+if(valor == 1){
+$('.otro_metodo_1').css('display', '');
+$('#check_metodo_1').click();
+$('#select_metodo_otros').val(0);
+}
+if(valor == 2){
+$('.otro_metodo_2').css('display', '');
+$('#check_metodo_2').click();
+$('#select_metodo_otros').val(0);
+}
+if(valor == 3){
+$('.otro_metodo_3').css('display', '');
+$('#check_metodo_3').click();
+$('#select_metodo_otros').val(0);
+}   
+if(valor == 4){
+$('.otro_metodo_transferencia_bancaria').css('display', '');
+$('#check_transferencia').click();
+$('#select_metodo_otros').val(0);
+}   
+if(valor == 5){
+$('.otro_metodo_deposito_bancaria').css('display', '');
+$('#check_deposito').click();
+$('#select_metodo_otros').val(0);
+}  
+
+if(valor == 6){
+$('.otro_metodo_yape').css('display', '');
+$('#check_yape').click();
+$('#select_metodo_otros').val(0);
+} 
+
+if(valor == 7){
+$('.otro_metodo_4').css('display', '');
+$('#check_metodo_4').click();
+$('#select_metodo_otros').val(0);
+} 
+
+if(valor == 8){
+$('.otro_metodo_5').css('display', '');
+$('#check_metodo_5').click();
+$('#select_metodo_otros').val(0);
+} 
+
+if(valor == 9){
+$('.otro_metodo_nota_credito').css('display', '');
+$('#check_nota_credito').click();
+$('#select_metodo_otros').val(0);
+} 
+if(valor == 11){
+$('.otro_metodo_puntos').css('display', '');
+$('#check_puntos').click();
+$('#select_metodo_otros').val(0);
+} 
+
+if(valor == 10){
+modal_medio_pago(); 
+} 
+
+//$("#check_otro_medio_vista").prop("checked", true); 
+});
+
+var x = 1;
+$('#check_efectivo, #check_tarjeta, #check_transferencia, #check_deposito, #check_metodo_1, #check_metodo_2, #check_metodo_3 , #check_metodo_4, #check_metodo_5, #check_yape, #check_puntos, #check_nota_credito').click(function(){
+if(x == 1){ $("#check_efectivo").prop("checked", false);  x = 2; $('#billetes_mas_usados').val(''); $('#metodo_pago_efectivo').val('');}
+
+var check_efectivo = 1;
+var check_tarjeta = 0;
+var check_transferencia = 0;
+var check_deposito = 0;
+var check_metodo_1 = 0;
+var check_metodo_2 = 0;
+var check_metodo_3 = 0;
+var check_metodo_4 = 0;
+var check_metodo_5 = 0;
+var check_yape = 0;
+var check_puntos = 0;
+var check_nota_credito = 0;
+
+//CHECKBOX EFECTIVO
+if($("#check_efectivo").is(':checked')) { check_efectivo = 1; }
+else{ check_efectivo = 0; }
+
+//CHECKBOX TARJETA
+if($("#check_tarjeta").is(':checked')) { check_tarjeta = 1; $('.check_comision_active').css('display', ''); }
+else{ check_tarjeta = 0; 
+$('.div_comision_tarjeta').css('display', 'none'); $("#cargar_panel_comision").prop("checked", false);  $('.check_comision_active').css('display', 'none');  }
+
+//CHECKBOX TRANSFERENCIA
+if($("#check_transferencia").is(':checked')) { check_transferencia = 1; }
+else{ check_transferencia = 0; }
+
+//CHECKBOX YAPE
+if($("#check_yape").is(':checked')) { check_yape = 1; }
+else{ check_yape = 0; }
+
+//CHECKBOX PUNTOS
+if($("#check_puntos").is(':checked')) { check_puntos = 1; }
+else{ check_puntos = 0; }
+
+//CHECKBOX DEPOSITO
+if($("#check_deposito").is(':checked')) { check_deposito = 1; }
+else{ check_deposito = 0; }
+
+//CHECKBOX OTRO MEDIO PAGO 1
+if($("#check_metodo_1").is(':checked')) { check_metodo_1 = 1; }
+else{ check_metodo_1 = 0; }
+
+//CHECKBOX OTRO MEDIO PAGO 2
+if($("#check_metodo_2").is(':checked')) {  check_metodo_2 = 1; }
+else{  check_metodo_2 = 0; }
+
+//CHECKBOX OTRO MEDIO PAGO 3
+if($("#check_metodo_3").is(':checked')) {  check_metodo_3 = 1; }
+else{  check_metodo_3 = 0; }
+
+//CHECKBOX OTRO MEDIO PAGO 4
+if($("#check_metodo_4").is(':checked')) {  check_metodo_4 = 1; }
+else{  check_metodo_4 = 0; }
+
+//CHECKBOX OTRO MEDIO PAGO 5
+if($("#check_metodo_5").is(':checked')) {  check_metodo_5 = 1; }
+else{  check_metodo_5 = 0; }
+
+//CHECKBOX check_nota_credito
+if($("#check_nota_credito").is(':checked')) {  check_nota_credito = 1; }
+else{  check_nota_credito = 0; }     
+        
+var monto_total = parseFloat($('#modal_total_factura').html());
+var dividir = parseInt(check_efectivo) + parseInt(check_tarjeta) + parseInt(check_transferencia) + parseInt(check_deposito) + parseInt(check_metodo_1) + parseInt(check_metodo_2) + parseInt(check_metodo_3) + parseInt(check_metodo_4) + parseInt(check_metodo_5) + parseInt(check_yape) + parseInt(check_puntos) + parseInt(check_nota_credito);
+var monto_proporcional = monto_total / dividir;
+
+if(check_efectivo == 1){ $('#metodo_pago_efectivo').val(monto_proporcional); }
+else{ $('#metodo_pago_efectivo').val(''); $('#billetes_mas_usados').val(''); }
+
+if(check_tarjeta == 1){ $('#metodo_pago_credito').val(monto_proporcional); 
+//$('.div_comision_tarjeta').css('display', '');  
+}
+else{ $('#metodo_pago_credito').val(''); }
+
+if(check_transferencia == 1){ $('#metodo_pago_transferencia').val(monto_proporcional); }
+else{ $('#metodo_pago_transferencia').val(''); }
+
+if(check_yape == 1){ $('#metodo_pago_yape').val(monto_proporcional); }
+else{ $('#metodo_pago_yape').val(''); }
+
+if(check_puntos == 1){ $('#metodo_pago_puntos').val(monto_proporcional); }
+else{ $('#metodo_pago_puntos').val(''); }
+
+if(check_deposito == 1){ $('#metodo_pago_deposito').val(monto_proporcional); }
+else{ $('#metodo_pago_deposito').val(''); }
+
+if(check_metodo_1 == 1){ $('#metodo_pago_uno').val(monto_proporcional); }
+else{ $('#metodo_pago_uno').val(''); }
+
+if(check_metodo_2 == 1){ $('#metodo_pago_dos').val(monto_proporcional); }
+else{ $('#metodo_pago_dos').val(''); }
+
+if(check_metodo_3 == 1){ $('#metodo_pago_tres').val(monto_proporcional); }
+else{ $('#metodo_pago_tres').val(''); }
+
+if(check_metodo_4 == 1){ $('#metodo_pago_cuatro').val(monto_proporcional); }
+else{ $('#metodo_pago_cuatro').val(''); }
+
+if(check_metodo_5 == 1){ $('#metodo_pago_cinco').val(monto_proporcional); }
+else{ $('#metodo_pago_cinco').val(''); }
+
+if(check_nota_credito == 1){ $('#metodo_pago_nota_credito').val(monto_proporcional); }
+else{ $('#metodo_pago_nota_credito').val(''); }
+
+calc_diferencia();
+
+}); 
+
+function calc_diferencia(){
+
+if($('#modal_total_factura').html() == ''){
+var total = 0;
+} else {
+var total = parseFloat($('#modal_total_factura').html());
+}
+
+if($('#metodo_pago_efectivo').val() == ''){
+var total_efectivo = 0;
+} else {
+var total_efectivo = parseFloat($('#metodo_pago_efectivo').val());
+}
+if($('#billetes_mas_usados').val() != ''){
+var billetes_mas_usados = parseInt($('#billetes_mas_usados').val());
+$('#metodo_pago_efectivo').val(billetes_mas_usados);
+var total_efectivo = parseFloat($('#metodo_pago_efectivo').val());
+}
+
+if($('#metodo_pago_credito').val() == ''){
+var total_credito = 0;
+} else {
+var total_credito = parseFloat($('#metodo_pago_credito').val());
+}
+
+if($('#metodo_pago_transferencia').val() == ''){
+var total_transferencia = 0;
+} else {
+var total_transferencia = parseFloat($('#metodo_pago_transferencia').val());
+}
+
+if($('#metodo_pago_yape').val() == ''){
+var total_yape = 0;
+} else {
+var total_yape = parseFloat($('#metodo_pago_yape').val());
+}
+
+if($('#metodo_pago_puntos').val() == ''){
+var total_puntos = 0;
+} else {
+var total_puntos = parseFloat($('#metodo_pago_puntos').val());
+}
+
+if($('#metodo_pago_deposito').val() == ''){
+var total_deposito = 0;
+} else {
+var total_deposito = parseFloat($('#metodo_pago_deposito').val());
+}
+
+if($('#metodo_pago_uno').val() == ''){
+var total_pago_uno = 0;
+} else {
+var total_pago_uno = parseFloat($('#metodo_pago_uno').val());
+}
+
+if($('#metodo_pago_dos').val() == ''){
+var total_pago_dos = 0;
+} else {
+var total_pago_dos = parseFloat($('#metodo_pago_dos').val());
+}
+
+if($('#metodo_pago_tres').val() == ''){
+var total_pago_tres = 0;
+} else {
+var total_pago_tres = parseFloat($('#metodo_pago_tres').val());
+}
+
+if($('#metodo_pago_cuatro').val() == ''){
+var total_pago_cuatro = 0;
+} else {
+var total_pago_cuatro = parseFloat($('#metodo_pago_cuatro').val());
+}
+
+if($('#metodo_pago_cinco').val() == ''){
+var total_pago_cinco = 0;
+} else {
+var total_pago_cinco = parseFloat($('#metodo_pago_cinco').val());
+}
+
+if($('#metodo_pago_nota_credito').val() == ''){
+var total_pago_nota_credito = 0;
+} else {
+var total_pago_nota_credito = parseFloat($('#metodo_pago_nota_credito').val());
+}
+
+var subtotal = total_efectivo + total_credito + total_transferencia + total_deposito + total_pago_uno + total_pago_dos + total_pago_tres + total_pago_cuatro + total_pago_cinco + total_yape + total_puntos + total_pago_nota_credito;
+
+var txt;
+var diferencia = total - subtotal;
+var pruebita = total - subtotal;
+
+function pruebaxd() {
+    alert(pruebita);
+}
+
+if(subtotal >= total){
+txt = 'Vuelto:  <?php echo $simbolo_moneda; ?>';
+$("#modal_total_diferencia").css('color', '#000');
+$('#vuelto_POS').val(Math.abs(diferencia.toFixed(2)));
+} else{
+txt = 'Debe:  <?php echo $simbolo_moneda; ?>';
+$("#modal_total_diferencia").css('color', 'red');
+$('#vuelto_POS').val(0);
+}
+
+$('#modal_total_diferencia').html(txt+' '+Math.abs(diferencia.toFixed(2)));
+var holitas = Math.abs(diferencia.toFixed(2));
+
+//VER PUNTOS CLIENTE - POS
+function deuda_venta(holitas) {
+
+var data = new FormData();
+data.append('monto_debe_venta', holitas);
+eval(devolver_ajax(4, '{{EC2_DOMINIO}}Operaciones/ajax/agregar_factura.php', 'data', '.ver_monto_deve', ''));
+}
+
+}
+
+
+calc_diferencia();
+
+function calc_comision(){
+if($('#metodo_comision_tarjeta').val() == ''){
+var subtotal_tarjeta = 0;
+var comision_tarjeta = 0;
+} else {
+var comision_tarjeta = parseFloat($('#metodo_comision_tarjeta').val());
+var subtotal_tarjeta = parseFloat($('#metodo_pago_credito').val());
+total_tarjeta = ((comision_tarjeta/100+1))*subtotal_tarjeta
+$('#metodo_comision_tarjeta_2').val(total_tarjeta.toFixed(2));
+}    
+}
+
+$('#btn_save_factura').on('click', function(){
+
+var url = '{{EC2_DOMINIO}}Operaciones/ajax/agregar_factura.php';
+    
+var data = new FormData();
+
+valor_select_id_valores = [];
+valor_id_campo_adicional = '';
+//CAPTURAR DATOS DE NUEVOS SELECT MULTIPLES
+var mp_contador_campo_adicional_tipo = $('#mp_contador_campo_adicional').val();
+var mp_ = 'mp_';
+if(mp_contador_campo_adicional_tipo > 0){
+data.append('mp_contador_detalle_compuesto_adicional', mp_contador_campo_adicional_tipo);
+for (var c = 1; c <= mp_contador_campo_adicional_tipo; c++) {
+var valor_id_campo_adicional = $('#mp_id_campo_obligatorio_'+c).val();
+var valor_select_id_valores = $('#mp_select_detalle_campo_'+valor_id_campo_adicional).val();
+if(valor_select_id_valores != ""){
+data.append('mp_select_detalle_campo_js_'+c, valor_select_id_valores);
+}
+
+}
+
+}
+data.append('tipo_form', mp_);
+
+var parametros = $("#datos_factura").serializeArray();
+$.each(parametros, function(key, input){
+data.append(input.name, input.value);
+});
+ 
+ 
+//SELECTS UNIDAD MEDIDA
+var array_each = [];
+$(".each_id_tmp").each(
+function(index, value){
+var id_tmp = $(this).val();
+var option_unidad = $('#idequivalencia_'+id_tmp).val();
+array_each.push( [id_tmp,  option_unidad]);
+}
+);
+data.append( 'array_each', JSON.stringify(array_each) );
+data.append( 'session_id_each', '<?php echo $session_id; ?>' );
+
+
+eval(devolver_ajax(4, url, 'data', '.agregar_factura2', '#btn_save_factura')); 
+
+});
+
+function imprimir_tetxo_puntos(){
+if($('#monto_puntos_por_pagar').length){
+var puntos = $('#monto_puntos_por_pagar').val();   
+var soles_puntos = $('#soles_puntos_por_pagar').val();
+$('.texto_puntos').html('Puntos disponibles ');
+$('.texto_monto_total_puntos').html(puntos);
+$('.texto_soles_puntos').html('- Equivalen a ');
+$('.soles_puntos_red').html('S/.'+soles_puntos);
+}
+}
+imprimir_tetxo_puntos();
+</script>
+ 
+
+
+
+</div>
 
 </div>
 
@@ -374,7 +1941,7 @@ $('#lado_derecho').css('display', 'block');" >Continuar
 <!--SERIE-->
 <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding_celda_encabezado mostrar_serie_orden_venta border_serie_orden" >
 <label class="d-flex text-star titulo_opciones_pos">Serie</label>     
-<select class="form-control div_select_serie seleccion_serie_movil formato_select_number" name="serie" id="serie"  >
+<select class="form-control div_select_serie seleccion_serie_movil formato_select_number" name="serie" id="serie" onchange="cargar_correlativo();" >
 <option value="0">N&#176; Serie</option>
 </select>
 </div>
@@ -666,7 +2233,7 @@ Cancelar
 </div>
 <div class="col-lg-5 col-md-4 col-5" style="padding: 3px;padding-bottom: 7px;padding-top: 7px;padding-right: 0px;">
   
-<button onclick="var tipo_op = $('#tpodoc').val(); if(tipo_op == 50 || tipo_op == 51){ $('#btn_pos_pagar').css('display', 'none');  btn_coti_orden_POS(); } else {POS_pagar();}" id="btn_pos_pagar" type="button" class="btn" style="margin-top: 8px; width: 100%; font-size: 16px; float:right; height: 50px; border-radius: 0px; background: #FF4E00; color: white;">
+<button onclick="ir_apagar_venta();" id="btn_pos_pagar" type="button" class="btn" style="margin-top: 8px; width: 100%; font-size: 16px; float:right; height: 50px; border-radius: 0px; background: #FF4E00; color: white;">
 <span class="span_boton_pagar " style="float: left;">PAGAR</span> 
 <svg xmlns="http://www.w3.org/2000/svg" class="pagar_venta" width="20" height="20" viewBox="0 0 24 24"><g transform="rotate(180 12 12)"><path fill="#fff" d="M21 11H6.414l5.293-5.293l-1.414-1.414L2.586 12l7.707 7.707l1.414-1.414L6.414 13H21z"/></g></svg>
 </button>
@@ -724,6 +2291,58 @@ Cancelar
 <div class="resultado_modal_lista_precio"></div>
 
 <script>
+
+function ir_apagar_venta(){
+var tipo_op = $('#tpodoc').val(); 
+if(tipo_op == 50 || tipo_op == 51){ 
+$('#btn_pos_pagar').css('display', 'none'); 
+ btn_coti_orden_POS(); 
+ 
+} else {
+//POS_pagar();
+$('.products_none').css('display', 'none');
+$('.div_pos_pagar').css('display', '');
+
+    
+$('.lista_ventas_pos_movil1').css('display', '');
+$('.lista_products_movil1').css('display', 'none');
+
+var tipo_documento = $('#tpodoc').val();
+if(tipo_documento == 11){
+$('#btn_save_factura').click();
+} else {
+var total = $('#final_total').val();
+
+//NUEVO TOTAL - VENTAS ANTICIPADAS
+if ($('#abrir_venta_anticipada').prop("checked")) {
+total = $('#final_total_fanticipadas').val();
+}
+
+total = total.replace("S/","");
+$('.mostrar_encabezado_regresar').css('display', 'none');  
+$('#modal_total_factura').html(total);
+$('#metodo_pago_efectivo').val(total);
+$('#metodo_pago_credito').val('');
+$('#metodo_pago_transferencia').val('');
+$('#metodo_pago_uno').val('');
+$('#metodo_pago_dos').val('');
+$('#metodo_pago_tres').val('');
+x = 1; 
+$("#check_efectivo").prop("checked", true); 
+$("#check_tarjeta").prop("checked", false); 
+$("#check_transferencia").prop("checked", false); 
+$("#check_metodo_1").prop("checked", false); 
+$("#check_metodo_2").prop("checked", false); 
+$("#check_metodo_3").prop("checked", false); 
+$('.mostrar_encabezado_regresar').css('display', 'none');  
+}
+
+ 
+}
+
+}
+
+
 function modal_tipo_moneda(tipo){
 if(tipo == 1){
 $('.tipo_m_1').css('background', '#ff9c00'); 
@@ -835,6 +2454,7 @@ setInterval(contador_adaptar_pos, 500);
 //EJECUTAR AL CARGAR LA PAGINA
 document.addEventListener("DOMContentLoaded", function (event) {
 opciones_colaboradores();  
+cargar_productos(''); 
 });
 </script>
  

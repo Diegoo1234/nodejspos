@@ -7,5 +7,6 @@ const router = express.Router();
 router.post('/buscarCliente', TaskController.buscarcliente);
 router.post('/buscarcolaboradores', TaskController.buscarcolaboradores);
 router.post('/buscarseries', TaskController.buscarseries);
- 
+router.post('/buscarcorrelativo', TaskController.buscarcorrelativo);
+router.post('/buscarproducts', TaskController.buscarproducts);
 module.exports = router;

@@ -45,8 +45,44 @@ const tipo = req.body.tipo;
 
 }
 
+//OBTENER SERIES 
+function buscarcorrelativo(req, res){
+  const serie = req.body.serie;
+  const tipodoc = req.body.tipo;
+  
+    axios.post('//negocialab.com:3000/apirest/configuraciones/data_correlativo', 
+    { empresa: 1, tipodoc: tipodoc, serie: serie})
+    .then(response => {
+      res.json(response.data);
+    }).catch(error => {
+      res.json(error);
+    });
+    
+  
+}
+
+//CARGAR PRODUCTOS
+function buscarproducts(req, res){
+
+  const fn_id_empresa = req.body.empresa;
+  const n_producto = req.body.n_producto;
+  
+    axios.post('//negocialab.com:3000/apirest/productos/fn_principal_producto', 
+    { empresa: 1, fn_texto_busqueda: n_producto, fn_id_sucursal: 6, poc_busq_precisa_producto: 0})
+    .then(response => {
+      res.json(response.data);
+    }).catch(error => {
+      res.json(error);
+    });
+    
+
+}
+
+
 module.exports = {
 buscarcliente: buscarcliente,
 buscarcolaboradores: buscarcolaboradores,
-buscarseries: buscarseries
+buscarseries: buscarseries,
+buscarcorrelativo: buscarcorrelativo,
+buscarproducts: buscarproducts
 }

@@ -1672,3 +1672,192 @@ padding: 0px !important;
     border-bottom: 1px solid #ccc !important; 
 }
     
+/*FUNCTION FN_RECURSOS_POS*/
+.function_padding{
+    padding:0px;   
+    }    
+    .padding_right_left_ocg{
+    padding-left: 20px;
+    padding-right: 20px;
+    }
+    .ubicacion_css_fechas{
+     display: flex;
+    align-items: center;
+    justify-content: start;   
+    }
+    .distancia_info_products{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    }
+    .tabla_div_unidad{
+    font-weight: bold; color: #000000; font-size: 13px;
+    }
+    
+/* Checkbox */
+.container-checkbox2 {
+    font-weight: normal;
+    display: inline-block;
+    position: relative;
+    padding-left: 18px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    }
+    .container-checkbox2 input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    }
+    .checkmark-box2 {
+    position: absolute;
+    top: 7px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 100%;
+    }
+    .container-checkbox2:hover input ~ .checkmark-box2 {
+    background-color: #ccc;
+    }
+    .container-checkbox2 input:checked ~ .checkmark-box2 {
+    background-color: #FF4E00;
+    }
+    .checkmark-box2:after {
+    content: "";
+    position: absolute;
+    display: none;
+    }
+    .container-checkbox2 input:checked ~ .checkmark-box2:after {
+    display: block;
+    }
+    .container-checkbox2 .checkmark-box2:after {
+    left: 8px;
+    top: 4px;
+    width: 5px;
+    height: 11px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    }
+    /* Checkbox */
+    .check_comision_active .container_check input:checked ~ .checkmark {
+        background-color: #FF4E00;
+        border: 1px solid #FF4E00;
+    }
+    .titulo_borde_inputs{
+    margin:0px; 
+    margin-top:-8px; 
+    margin-left:8px; 
+    background: #fff;
+    width: 65px; 
+    color: #ccc; 
+    font-weight: normal; 
+    font-size: 11px;    
+    }
+    .titulo_borde_inputs_totales{
+    margin:0px; 
+    margin-top:-8px; 
+    margin-left:8px; 
+    background: #fff;
+    width: 28px; 
+    color: #ccc; 
+    font-weight: normal; 
+    font-size: 11px;    
+    }
+    .border_div_titulo{
+    border: 1px solid #E5E5E5;border-radius: 0.25rem;    
+    }
+    .titulo_borde_inputs_operacion{
+    margin:0px; 
+    margin-top:-8px; 
+    margin-left:8px; 
+    background: #fff;
+    width: 80px; 
+    color: #ccc; 
+    font-weight: normal; 
+    font-size: 11px;     
+    }
+    /*@media screen and (max-width: 768px) {*/
+    .fixed_btn_pagar{
+        background: #fff;
+    /*    position: fixed;*/
+        bottom: 28px;
+        z-index: 1;
+        width: max-content;
+    }    
+        
+    /*}*/
+    @media screen and (max-width: 768px) {
+    .fixed_btn_pagar{
+    background: #fff;
+    position: fixed;
+    bottom: 10px;
+    z-index: 1;
+    width: 100%;
+    left: 0;
+    right: 0;
+    }   
+    
+    .tipo_medio_pago{
+    padding: 0px !important;    
+    }
+    .titulo_h5_borde{
+    width: 75px !important;    
+    }
+        
+    }
+
+    .cero_padding{
+        padding: 0px;
+        }
+        .cero_padding_left{
+        padding-left: 0px;
+        }
+        .letra{
+        font-size: 13px !important;
+        font-weight: normal !important;
+        margin: 0;
+        color: #999999 !important;
+        }
+        [data-title]:hover:after {
+        opacity: 1;
+        transition: all 0.1s ease 0.5s;
+        visibility: visible;
+        }
+        [data-title]:after {
+            content: attr(data-title);
+            background-color: #E5EBFF;
+            color: #000;
+            font-size: 14px;
+            font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+            position: absolute;
+            padding: 3px 10px;
+            top: 10px;
+            white-space: pre;
+            box-shadow: 1px 1px 3px #222222;
+            opacity: 0;
+            border: 1px solid #E5EBFF;
+            z-index: 1;
+            visibility: hidden;
+            border-radius: 6px;
+        }
+        [data-title] {
+        position: relative;
+        }
+        .i-info{
+        cursor: pointer !important; 
+        }
+.background_pago{
+    background-color: #fff;
+}
+
+
