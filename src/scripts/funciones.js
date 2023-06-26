@@ -258,8 +258,13 @@ function load_productos(array){
     if(n_ubicacion){
     adicionales += `<span class="ubicacion_pos_producto" style="margin-left: 20px;">Ubicaci&oacute;n: `+n_ubicacion+`</span>`;
     }
-    var color = 0;
-    var evento_producto = '';
+    var color = ``;  
+    var evento_producto = "agregar_productos("+ id_producto +")";
+
+    if(stock_real <= 0 ){
+    color = 'color: red;';  
+    evento_producto = "alert('El producto seleccionado no cuenta con stock.')";
+    }
     
     
 
@@ -273,7 +278,7 @@ function load_productos(array){
     <table style="width: 100%;">
     <tr style="background: #fff;">
     <td>
-    <button type="button" 
+    <button type="button" onclick="`+evento_producto+`"
     style="width: 99%; height: 60px; border: none; background: transparent;">
     <table style="width: 100%;">
     <tr>
@@ -358,6 +363,230 @@ function load_productos(array){
 
     $('.outer_div').append(formato_tabla);
   }
+}
+
+//CARGAR DETALLE VENTA POS
+function agregar_productos(){
+//HTML
+var tmp_id_tmp = 1, isc, tmp_precio_producto, precio_venta_to, total_descuento, precio_unitario, total_igv, valorventa, tmp_cantidad, tmp_id_producto , precio_total , tmp_select_und ;
+var tmp_descuento,tmp_observacion, tmp_select_igv, tipo_changue ;
+var tmp_nombre_producto = 'html producto';
+var formato_html = ``;
+if (1 == 1) {
+  formato_html += `
+  <table id="fn_table_load_detalle" class="table table-condensed reportes_tabla_principal" style="width: 100%; ">
+  <tr id="tr_append_`+ tmp_id_tmp + `" class="reportes_tr_tabla_normal" style="border-left: 0px;">
+  <td class="reportes_th_tabla_principal border_remove_mous_`+ tmp_id_tmp + ` nombre_producto_pos_movil" onclick="$('.contenedor_sub_tabla_view_` + tmp_id_tmp + `').toggle();remover_tr_borde(` + tmp_id_tmp + `);" style="text-align: left; padding-top: 0px; padding-bottom: 0px; width: 40% !important; border-bottom-width: 1px;">
+  
+  <input type="text" class="input_hidden_fercho d-none" id="tmp_valor_descuento_`+ tmp_id_tmp + `" value="0">
+  <input type="text" class="input_hidden_fercho d-none" id="tmp_total_descuento_`+ tmp_id_tmp + `" value="0">
+  <input type="text" class="input_hidden_fercho d-none" id="tmp_valor_unitario_`+ tmp_id_tmp + `" value="0">
+  <input type="text" class="input_hidden_fercho d-none" id="tmp_subtotal_`+ tmp_id_tmp + `" value="0">
+  <input type="text" class="input_hidden_fercho d-none" id="tmp_total_igv_`+ tmp_id_tmp + `" value="0">
+  <input type="text" class="input_hidden_fercho d-none" id="tmp_total_isc_`+ tmp_id_tmp + `" value="0">
+  
+  <!--<input type="text" class="input_hidden_fercho d-none" readonly="readonly" id="observacion_`+ tmp_id_tmp + `">-->
+  <input type="text" class="input_hidden_fercho d-none" readonly="readonly" id="precio_venta_`+ tmp_id_tmp + `" value="` + tmp_precio_producto + `">
+  <input type="text" class="input_hidden_fercho d-none" readonly="readonly" id="valor_decimal_`+ tmp_id_tmp + `" value="` + precio_venta_to + `">
+  <input type="text" class="input_hidden_fercho d-none" readonly="readonly" id="total_desc_`+ tmp_id_tmp + `" class="sum_descuento" value="` + total_descuento + `">
+  
+  <input type="text" class="input_hidden_fercho d-none" id="valor_base_lp_`+ tmp_id_tmp + `" value="` + precio_unitario + `">
+  
+  <input class="sum_subtotal" type="hidden" class="input_hidden_fercho d-none" readonly="readonly" id="valorv_total_`+ tmp_id_tmp + `" value="` + Number(valorventa).toFixed(2) + `">
+  <input class="sum_isc" type="hidden" class="input_hidden_fercho d-none" readonly="readonly" id="isc_`+ tmp_id_tmp + `" value="` + Number(isc).toFixed(2) + `">
+  <input class="sum_igv" type="hidden" class="input_hidden_fercho d-none" readonly="readonly" id="venta_igv_`+ tmp_id_tmp + `" value="` + Number(total_igv).toFixed(2) + `">
+  
+  <!--TMP NOMBRE PRODUCTO $codigo_producto-->
+  <textarea readonly="readonly" id="tmp_nombre_producto_`+ tmp_id_tmp + `" style="display: none;">PLAN ANUAL ECOMMERCE</textarea>
+  
+  <span id="nombre_`+ tmp_id_tmp + `" style="font-weight: bold; font-size: 13px; cursor: pointer; display: inline-block;">` + tmp_nombre_producto + `</span>
+  
+  <!--<a id="btn_info_producto_`+ tmp_id_producto + `" href="javascript:void(0)" onclick="info_Producto(` + tmp_id_producto + `)"><i class="fa fa-info-circle" style="font-size: 15px; color: #ff5900;"></i></a>--><br>
+  
+  
+  
+  </td>
+  <!--CONFIGURACION LISTA Y TIPO IGV-->
+  <td class="reportes_th_tabla_principal configuraciones_pc border_remove_mous_`+ tmp_id_tmp + `" style="text-align: left; padding-top: 12px; display: none; width: 3% !important; border-bottom-width: 1px;">
+  <a href="javascript:void(0)" style="width: 5%;" id="POS_configuracion_producto_`+ tmp_id_tmp + `" class=" clase_configuracion_movil" onclick="POS_configuracion_producto(` + tmp_id_producto + `, ` + tmp_id_tmp + `, 0);" title="Configurar Datos Producto"><i class="fa fa-cog" style="font-size: 14px; color: #666;"></i></a>  
+  <a href="javascript:void(0)" id="POS_configuracion_producto_igv_`+ tmp_id_tmp + `" style="padding-top: 8px;" class=" clase_igv_movil" onclick="POS_configuracion_producto(` + tmp_id_producto + `, ` + tmp_id_tmp + `, 1);" title="Configurar Tipo Igv Producto"><i class="fa fa-info-circle" style="font-size: 14px; color: red;"></i></a>
+  </td>
+  
+  <!--CANTIDADES-->
+  <td class="reportes_th_tabla_principal reporte_number_movil border_remove_mous_`+ tmp_id_tmp + `" style="padding-top: 0px; padding-bottom: 0px; width: 25% !important; border-bottom-width: 1px;">
+  <div class="number-input-group d-flex align-items-center">
+  <span style="border:none !important; font-size: 20px; background: #fff;" class="input-number-decrement" id="input-number-decrement_`+ tmp_id_tmp + `" 
+  onclick="input_number_decrement(`+ tmp_id_tmp + `)"> 
+  <svg xmlns="http://www.w3.org/2000/svg" class="svg_resta" viewBox="0 0 24 24"><path  d="M7 11h10v2H7z"/><path   d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10s10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8s8 3.589 8 8s-3.589 8-8 8z"/></svg>
+
+  </span><input id="cantidad_`+ tmp_id_tmp + `" class="input-number-custom" type="number" step="any" value="` + tmp_cantidad + `" min="1" style="border:none !important;" onkeyup="calcular_precios(`+ tmp_id_tmp + `, 1)" ><span class="input-number-increment" 
+  style="border:none !important;font-size: 20px;  background: #fff;" id="input-number-increment_`+ tmp_id_tmp + `" onclick="input_number_increment(` + tmp_id_tmp + `)">
+  <svg xmlns="http://www.w3.org/2000/svg" class="svg_suma" viewBox="0 0 24 24"><path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4z"/><path   d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10s10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8s8 3.589 8 8s-3.589 8-8 8z"/></svg>
+   </span>
+  </div>
+  </td>
+  
+  <!--TOTAL POR PRODUCTO-->
+  <td class="reportes_th_tabla_principal sum_total_td border_remove_mous_`+ tmp_id_tmp + `" style="padding: 0px 10px; width: 25% !important; border-bottom-width: 1px;">
+  
+  <table>
+  <tr>
+  <td style="width: 30% !important; font-size: 13px; text-align: right;" class="border_precio_td_etiqueta">S/</td>
+  <td style="width: 70% !important;" class="border_precio_td"><input autocomplete="off" type="number" step="any" class="form-control input-sm sum_total" 
+  style="border:0px; background: white; text-align:left; font-size: 14px; height: 30px; padding:0; padding-right: 3px; background: white; width: 95%;" 
+  id="venta_valor_`+ tmp_id_tmp + `" value="` + Number(precio_total).toFixed(2) + `" onkeyup="calcular_precios(`+ tmp_id_tmp + `, 2)" ></td>
+  </tr>
+  </table>
+  
+  </td>
+  
+  <!--ELIMIANR EL PRODUCTO-->
+  <td class="reportes_th_tabla_principal eliminar_pos_movil" style="width: 10%;padding-top: 0px; padding: 0px;">
+  <button type="button" class="" title="Eliminar" onclick="deleteData([`+ tmp_id_tmp + `, 'tb_tmp']); cargar_por_cobrar(); enlistar_productos(1); " style="text-align: center; background: none;  border: none; color: #000;"><span class="pointer" style="font-size: 27px;">x</span></button>
+  <span style="position:absolute; padding-top: 11px;">
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" class="pointer" viewBox="0 0 24 24" onclick="$('.contenedor_sub_tabla_view_`+ tmp_id_tmp + `').toggle(); remover_tr_borde(` + tmp_id_tmp + `);"><path fill="currentColor" d="m11.998 17l7-8h-14z"/></svg>
+
+  
+  </span>
+  <input type="text" class="input_hidden_fercho d-none" id="activar_borde_tr_detalle_`+ tmp_id_tmp + `" value="1">
+  </td>
+  
+  
+  <!--NEW POS-->
+  <td class="reportes_th_tabla_principal" style="width: 70px; display: none;">
+  <select id="select_lista_precio_`+ tmp_id_tmp + `" style="font-size: 14px; height: 25px; padding: 0; text-align: left; background: none; color: #000; border: none; background-image: url(https://negsb-img-recursos.s3.amazonaws.com/flecha_select_naranja.png);" class="form-control input-sm control_frm css_flecha_naranja">
+  <option value="0">Seleccione</option>
+  
+  </select>
+  <div class="recargar_lista_precios_volumen_`+ tmp_id_tmp + `"></div>
+  <div class="resultado_lista_precio_`+ tmp_id_tmp + `"></div>
+  <div class="resultado_lista_precio_tmp_`+ tmp_id_tmp + `"></div>
+  </td>
+  
+  </tr>
+  
+  <!--SUB_TABLA-->
+  <tr id="tr_append_sub_tabla_`+ tmp_id_tmp + `" class="paddind_td_sub_tabla contenedor_sub_tabla_view_` + tmp_id_tmp + `" style="border-left: 0px; display: none;">
+  <td colspan="4" style="padding:0px;border:0px;" class="paddind_table_sub_tabla td_css_movil_remove_padding">
+  <table style="width: 100%;">
+  <tr>
+  <td style="width: 30%;" class="borde_sub_tabla">
+  <label class="paddind_td_sub_tabla" style="font-size: 11px; font-weight: normal; margin: 0; color: #464646; text-align: left;">Unidad</label><br>
+  
+  
+  
+  
+  <select class="unidad_derecha_movil paddind_td_sub_tabla" id="idequivalencia_`+ tmp_id_tmp + `" onchange="mandaprecio(`+ tmp_id_tmp +`);"
+  style=" font-size: 14px; height: 25px; width: 90%; text-align: left; border: none; box-shadow: none; outline: none; color: #000;">
+  `+ tmp_select_und + `
+  </select>   
+  </td>
+      
+  <!--CAMPO PRECIO-->
+  <td style="width: 30%;" class="borde_sub_tabla">
+  <label class="paddind_td_sub_tabla" style="font-size: 11px; font-weight: normal; margin: 0; color: #464646; text-align: left;">Precio Unitario</label><br>
+  <!--PRECIO-->
+  <span style="font-size: 13px; font-weight: normal; padding-left: 0.75rem;">S/</span><input type="number" step="any" class="precio_derecha_movil" 
+  style="font-size: 14px; height: 25px; padding: 0; text-align: left; border: none;  box-shadow: none; outline: none; width: 50%; background: white; font-weight: normal; color: #000;"
+  id="precio_valor_decimal_`+ tmp_id_tmp + `" value="` + Number(precio_unitario).toFixed(2) + `" onkeyup="precio_decimal(`+ tmp_id_tmp + `);   calcular_precios(`+ tmp_id_tmp + `, 1);   " >
+  </td>
+      
+      
+  <!--DESCUENTO-->
+  <td style="width: 20%; border-right: 0px !important;" class="borde_sub_tabla">
+      
+  
+  <label class="paddind_td_sub_tabla d-none" style="font-size: 11px; font-weight: normal; margin: 0; color: #464646; text-align: left;">Descuento</label><br>
+  <input autocomplete="off" type="number" step="any" class="form-control paddind_td_sub_tabla input-sm monto_des d-none tb_desc_porcentaje_`+ tmp_id_tmp + ` campo_td_monto_desc" style="text-align:left; font-size: 14px; height: 30px;  border:none; " id="desc_` + tmp_id_tmp + `" value="` + tmp_descuento + `" placeholder="%" onkeyup="calcular_precios(`+ tmp_id_tmp + `, 1)">
+  <input autocomplete="off" type="number" step="any" class="form-control paddind_td_sub_tabla input-sm monto_des d-none tb_desc_monto_`+ tmp_id_tmp + ` campo_td_monto_desc" style=" text-align:left; font-size: 14px; height: 30px; border:none; display: none;" id="desc_monto_` + tmp_id_tmp + `" placeholder="S/" onkeyup="descuento_monto(`+ tmp_id_tmp + `);">
+  
+      
+  </td>
+      
+      
+  <td style="width: 20%; border-left: 0px !important; text-align: center;" class="borde_sub_tabla">
+  
+  <span style="padding: 3px;background: #F0F0F0;padding-bottom: 7px;padding-top: 7px;top: 7px !important; position:relative;" class="d-none">
+  <button onclick="
+  $('.tb_desc_porcentaje_`+ tmp_id_tmp + `').css('display', 'none');
+  $('.tb_desc_monto_`+ tmp_id_tmp + `').css('display', '');
+  $('#desc_`+ tmp_id_tmp + `').val(''); 
+  $('.vista_tipo_descuento_porcentaje_`+ tmp_id_tmp + `').css('background', '#F0F0F0').css('color', '#000');
+  $('.vista_tipo_descuento_soles_`+ tmp_id_tmp + `').css('background', '#ff5900').css('color', 'white');
+  $('#desc_monto_`+ tmp_id_tmp + `').val('');
+  $('#desc_`+ tmp_id_tmp + `').keyup();
+  " tabindex="-1" type="button" class="hint--bottom hint--negocia div_cambio_vista_producto_detalle vista_tipo_descuento_soles_`+ tmp_id_tmp + `" aria-label="Cambiar a Monto" style="width: 25%; height: 25px; display: inline-block; text-align: center; font-size: 13px; background: #F0F0F0; color: #000 !important; padding: 0; outline: none; margin-top: 0px; border: 0px solid #ff9c00; border-left: none; padding:0; border-bottom-right-radius: 3px; border-top-right-radius: 3px;">
+  S/
+  </button>
+  <button onclick="
+  $('.tb_desc_porcentaje_`+ tmp_id_tmp + `').css('display', '');
+  $('.tb_desc_monto_`+ tmp_id_tmp + `').css('display', 'none');
+  $('.vista_tipo_descuento_porcentaje_`+ tmp_id_tmp + `').css('background', '#ff5900').css('color', 'white');
+  $('.vista_tipo_descuento_soles_`+ tmp_id_tmp + `').css('background', '#F0F0F0').css('color', '#000');
+  $('#desc_`+ tmp_id_tmp + `').val('');
+  $('#desc_monto_`+ tmp_id_tmp + `').val('');
+  $('#desc_`+ tmp_id_tmp + `').keyup(); 
+  " tabindex="-1" type="button" class="hint--bottom hint--negocia div_cambio_vista_producto_detalle  vista_tipo_descuento_porcentaje_`+ tmp_id_tmp + `" aria-label="Cambiar a Porcentaje" style="width: 25%; height: 25px; display: inline-block; text-align: center; font-size: 13px; background: #ff5900; color: white !important; padding: 0; outline: none; margin-top: 0px; border: 0px solid #ff9c00; border-right: none;padding: 0;border-top-left-radius: 3px; border-bottom-left-radius: 3px;">
+  %
+  </button>  
+  </span>
+  
+  </td>
+  
+  </tr>
+  <tr>
+  
+  <td colspan="4" style="padding:0px;">
+  <table style="width: 100%;">    
+  <tr>
+  <td style="width: 70%;" class="borde_sub_tabla_mas_opciones">    
+  
+  <textarea type="text" class="form-control paddind_bottom_sub_td" id="observacion_`+ tmp_id_tmp + `" onkeyup="calcular_precios(`+ tmp_id_tmp + `, 1);" style="border: 0px; height: 25px; padding: 5px;" placeholder="Agregar nota...">`+ tmp_observacion + `</textarea>
+  
+  </td>
+  <td style="width: 30%;" class="borde_sub_tabla_mas_opciones">    
+  <select id="tipoigv_`+ tmp_id_tmp + `" class=" paddind_td_sub_tabla" onchange="calcular_precios(`+ tmp_id_tmp + `, 1);" style=" font-size: 14px; height: 25px; width: auto; text-align: left; border: none; box-shadow: none; outline: none; color: #000;">
+  `+tmp_select_igv+`
+  </select>
+  </td>
+  </tr>
+  </table>
+  </td> 
+  
+  </tr>
+  
+  <tr>
+  
+  
+  
+  </tr>
+  
+  </table>
+  </td>
+  </tr>
+  
+  </table>
+  
+  
+  `;
+  var scrip = '<'+'/'+'script>'; 
+  if(tipo_changue == 1){
+    formato_html += 
+  `<script>
+  $('#venta_valor_`+ tmp_id_tmp + `').keyup();`+
+  scrip   
+  ;
+   
+  }else{
+    formato_html += 
+  `<script> $('#cantidad_`+ tmp_id_tmp + `').keyup();`+scrip;
+       
+  }
+      
+  }
+  $( "#div_load_tabla_detalle" ).html('');
+$("#div_load_tabla_detalle" ).append(formato_html);
+  
 }
 
 

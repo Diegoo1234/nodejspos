@@ -1860,4 +1860,10 @@ padding: 0px !important;
     background-color: #fff;
 }
 
+.svg_suma, .svg_resta{
+    fill: #FF4E00; font-size: 20px;padding-top: 5px;
+    width: 25px;
+    height: 25px;
+}
+
 
